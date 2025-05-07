@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #1a1a1c;
+  --foreground: rgba(255, 255, 255, 0.9);
+  --foreground-secondary: rgba(255, 255, 255, 0.6);
+  --foreground-tertiary: rgba(255, 255, 255, 0.4);
+  --accent: rgba(255, 255, 255, 0.1);
+  --border: rgba(255, 255, 255, 0.1);
+  --transition-bezier: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  /* Typography - inspired by thekolapo.com */
+  .display-title {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    font-weight: 300;
+  }
+
+  .section-title {
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .body-text {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+  }
+
+  .meta-text {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    font-weight: 400;
+  }
+
+  /* Layout - inspired by Oliver Gareis */
+  .container-xl {
+    width: 100%;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-xl {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container-xl {
+      padding-left: 8rem;
+      padding-right: 8rem;
+    }
+  }
+
+  .section-spacing {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-spacing {
+      padding-top: 15rem;
+      padding-bottom: 15rem;
+    }
+  }
+
+  /* Custom cursor styles */
+  .cursor-dot {
+    position: fixed;
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: white;
+    border-radius: 9999px;
+    pointer-events: none;
+    z-index: 50;
+    transition-property: transform;
+    transition-duration: 100ms;
+    transition-timing-function: ease-out;
+    mix-blend-mode: difference;
+  }
+
+  .cursor-outline {
+    position: fixed;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid white;
+    border-radius: 9999px;
+    pointer-events: none;
+    z-index: 50;
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
+    mix-blend-mode: difference;
+  }
+
+  /* Contact item styles */
+  .contact-item {
+    margin-bottom: 2rem;
+  }
+
+  .contact-item .contact-value {
+    color: var(--foreground);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+}
