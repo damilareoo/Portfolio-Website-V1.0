@@ -128,6 +128,21 @@ export function ContactSection() {
                 </a>
               </div>
             </motion.div>
+
+            <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
+              <div className="flex items-center justify-between">
+                <span className="text-foreground/60">Dribbble</span>
+                <a
+                  href="https://dribbble.com/damilareoo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
+                >
+                  dribbble.com/damilareoo
+                  <ExternalLink className="h-3.5 w-3.5 opacity-50" />
+                </a>
+              </div>
+            </motion.div>
           </div>
 
           <div className="space-y-8">
@@ -156,6 +171,21 @@ export function ContactSection() {
                   className="text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
                 >
                   pinterest.com/damilareoo
+                  <ExternalLink className="h-3.5 w-3.5 opacity-50" />
+                </a>
+              </div>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
+              <div className="flex items-center justify-between">
+                <span className="text-foreground/60">Contra</span>
+                <a
+                  href="https://contra.com/damilareoo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
+                >
+                  contra.com/damilareoo
                   <ExternalLink className="h-3.5 w-3.5 opacity-50" />
                 </a>
               </div>
