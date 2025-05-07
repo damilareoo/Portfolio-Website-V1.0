@@ -47,7 +47,7 @@ export function HeroSection() {
           <motion.div variants={itemVariants} className="max-w-2xl">
             {isMobile ? (
               <p className="display-title text-foreground-secondary">
-                Designer and Developer creating intuitive digital experiences that blend aesthetics with functionality.
+                Designer and Developer creating intuitive digital experiences merging aesthetics and&nbsp;functionality.
               </p>
             ) : (
               <p className="display-title text-foreground-secondary">

@@ -25,6 +25,12 @@ body {
   overflow-x: hidden;
 }
 
+/* Ensure proper stacking context for all sections */
+section {
+  position: relative;
+  z-index: 1;
+}
+
 @layer components {
   /* Typography - inspired by thekolapo.com */
   .display-title {
@@ -147,4 +153,9 @@ body {
 section {
   position: relative;
   will-change: opacity;
+}
+
+/* Ensure mobile menu is always on top */
+.fixed {
+  isolation: isolate;
 }
