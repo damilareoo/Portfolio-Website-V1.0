@@ -43,8 +43,7 @@ export function HeroSection() {
 
           <motion.div variants={itemVariants} className="max-w-2xl">
             <p className="display-title text-foreground-secondary">
-              I'm a Designer & Developer creating intuitive digital experiences that merge aesthetics with
-              functionality.
+              Designer and Developer creating intuitive digital experiences that merge aesthetics with functionality.
             </p>
           </motion.div>
         </motion.div>

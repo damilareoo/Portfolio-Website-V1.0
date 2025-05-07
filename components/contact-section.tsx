@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Circle, ExternalLink, Mail } from "lucide-react"
+import { Copy, ExternalLink } from "lucide-react"
 import { useState } from "react"
 
 export function ContactSection() {
@@ -67,18 +67,17 @@ export function ContactSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16"
         >
-          <div className="space-y-12">
-            <motion.div variants={itemVariants} className="contact-item">
-              <div className="contact-value">
-                <span className="body-text">Email</span>
+          <div className="space-y-8">
+            <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
+              <div className="flex items-center justify-between">
+                <span className="text-foreground/60">Email</span>
                 <div className="flex items-center gap-2">
                   <a
                     href="mailto:dosofisan7@gmail.com"
-                    className="body-text hover:text-foreground transition-colors duration-300 flex items-center gap-2"
+                    className="text-foreground hover:text-foreground/80 transition-colors duration-300"
                     onClick={(e) => {
-                      // Fallback for mailto links
                       if (window.innerWidth < 768) {
                         e.preventDefault()
                         copyEmail()
@@ -86,109 +85,93 @@ export function ContactSection() {
                     }}
                   >
                     dosofisan7@gmail.com
-                    <Mail className="h-3.5 w-3.5 opacity-70" />
                   </a>
                   <button
                     onClick={copyEmail}
-                    className="text-xs text-foreground-tertiary hover:text-foreground transition-colors duration-300 ml-2"
+                    className="text-foreground/40 hover:text-foreground/80 transition-colors duration-300"
                     aria-label="Copy email address"
                   >
-                    {emailCopied ? "Copied!" : "Copy"}
+                    <Copy className="h-3.5 w-3.5" />
+                    <span className="sr-only">Copy</span>
                   </button>
+                  {emailCopied && <span className="text-xs text-foreground/60 ml-1">Copied</span>}
                 </div>
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="contact-item">
-              <div className="contact-value">
-                <span className="body-text">LinkedIn</span>
+            <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
+              <div className="flex items-center justify-between">
+                <span className="text-foreground/60">LinkedIn</span>
                 <a
                   href="https://linkedin.com/in/damilareoo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="body-text hover:text-foreground transition-colors duration-300 flex items-center gap-2"
+                  className="text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
                 >
-                  <Circle className="h-2 w-2 text-foreground-tertiary" />
-                  <span>linkedin.com/in/damilareoo</span>
-                  <ExternalLink className="h-3.5 w-3.5 opacity-70" />
+                  linkedin.com/in/damilareoo
+                  <ExternalLink className="h-3.5 w-3.5 opacity-50" />
                 </a>
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="contact-item">
-              <div className="contact-value">
-                <span className="body-text">GitHub</span>
+            <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
+              <div className="flex items-center justify-between">
+                <span className="text-foreground/60">GitHub</span>
                 <a
                   href="https://github.com/damilareoo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="body-text hover:text-foreground transition-colors duration-300 flex items-center gap-2"
+                  className="text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
                 >
                   github.com/damilareoo
-                  <ExternalLink className="h-3.5 w-3.5 opacity-70" />
-                </a>
-              </div>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="contact-item">
-              <div className="contact-value">
-                <span className="body-text">Contra</span>
-                <a
-                  href="https://contra.com/damilareoo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="body-text hover:text-foreground transition-colors duration-300 flex items-center gap-2"
-                >
-                  contra.com/damilareoo
-                  <ExternalLink className="h-3.5 w-3.5 opacity-70" />
+                  <ExternalLink className="h-3.5 w-3.5 opacity-50" />
                 </a>
               </div>
             </motion.div>
           </div>
 
-          <div className="space-y-12">
-            <motion.div variants={itemVariants} className="contact-item">
-              <div className="contact-value">
-                <span className="body-text">Layers</span>
+          <div className="space-y-8">
+            <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
+              <div className="flex items-center justify-between">
+                <span className="text-foreground/60">Layers</span>
                 <a
                   href="https://layers.to/damilareoo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="body-text hover:text-foreground transition-colors duration-300 flex items-center gap-2"
+                  className="text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
                 >
-                  <Circle className="h-2 w-2 text-foreground-tertiary" />
-                  <span>layers.to/damilareoo</span>
-                  <ExternalLink className="h-3.5 w-3.5 opacity-70" />
+                  layers.to/damilareoo
+                  <ExternalLink className="h-3.5 w-3.5 opacity-50" />
                 </a>
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="contact-item">
-              <div className="contact-value">
-                <span className="body-text">Pinterest</span>
+            <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
+              <div className="flex items-center justify-between">
+                <span className="text-foreground/60">Pinterest</span>
                 <a
                   href="https://pinterest.com/damilareoo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="body-text hover:text-foreground transition-colors duration-300 flex items-center gap-2"
+                  className="text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
                 >
                   pinterest.com/damilareoo
-                  <ExternalLink className="h-3.5 w-3.5 opacity-70" />
+                  <ExternalLink className="h-3.5 w-3.5 opacity-50" />
                 </a>
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="contact-item">
-              <div className="contact-value">
-                <span className="body-text">Cosmos</span>
+            <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
+              <div className="flex items-center justify-between">
+                <span className="text-foreground/60">Cosmos</span>
                 <a
                   href="https://cosmos.so/damilareoo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="body-text hover:text-foreground transition-colors duration-300 flex items-center gap-2"
+                  className="text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
                 >
                   cosmos.so/damilareoo
-                  <ExternalLink className="h-3.5 w-3.5 opacity-70" />
+                  <ExternalLink className="h-3.5 w-3.5 opacity-50" />
                 </a>
               </div>
             </motion.div>

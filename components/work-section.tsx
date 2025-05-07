@@ -7,49 +7,55 @@ const projects = [
     id: 1,
     title: "cAI",
     category: "AI/ML",
-    year: "2023",
+    year: "2025",
     description:
-      "A conversational AI platform that helps businesses automate customer support with natural language understanding and contextual responses.",
+      "A smart contract analysis platform that helps developers audit and secure blockchain code with automated vulnerability detection and optimization recommendations.",
+    link: "https://smartcai.framer.website",
   },
   {
     id: 2,
     title: "Caged Bird",
     category: "Web App",
-    year: "2022",
+    year: "2025",
     description:
-      "A digital publishing platform that empowers writers to share their stories and connect with readers through an elegant, distraction-free interface.",
+      "An engaging puzzle game that challenges players to solve brain teasers and riddles to free a trapped bird, featuring progressive difficulty and charming visual storytelling.",
+    link: "https://cagedbird.vercel.app",
   },
   {
     id: 3,
     title: "Interactive Quotes App",
     category: "Web App",
-    year: "2022",
+    year: "2025",
     description:
-      "A dynamic application that presents inspirational quotes with interactive elements, allowing users to explore, save, and share their favorites.",
+      "A thoughtfully designed application that presents inspirational quotes with interactive elements, allowing users to explore, save, and share their favorites.",
+    link: "https://v0-interactive-quote-app.vercel.app/",
   },
   {
     id: 4,
     title: "WordLadderWar",
     category: "Game Development",
-    year: "2023",
+    year: "2025",
     description:
       "A competitive word game that challenges players to transform words one letter at a time, featuring engaging gameplay mechanics and striking visual design.",
+    link: "https://word-ladder-war.vercel.app/",
   },
   {
     id: 5,
     title: "Enhanced Mobile Experience for Volvo",
     category: "UX/UI Design",
-    year: "2021",
+    year: "2024",
     description:
       "A comprehensive redesign of Volvo's mobile interface, focusing on intuitive navigation, personalized features, and seamless integration with vehicle systems.",
+    link: "https://dribbble.com/shots/24589230-Enhanced-Mobile-Experience-for-Volvo",
   },
   {
     id: 6,
     title: "Weather App",
     category: "Web App",
-    year: "2022",
+    year: "2024",
     description:
       "A beautifully designed weather application that provides real-time forecasts, location-based weather data, and intuitive visualizations of atmospheric conditions.",
+    link: "https://weather-app-opal-nine-24.vercel.app",
   },
 ]
 
@@ -112,7 +118,9 @@ export function WorkSection() {
           {projects.map((project) => (
             <motion.div key={project.id} variants={itemVariants}>
               <a
-                href="#"
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group block py-8 border-t border-foreground/10 transition-all duration-500 ease-out"
               >
                 <div className="flex items-center justify-between">

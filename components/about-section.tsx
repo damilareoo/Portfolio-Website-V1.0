@@ -59,28 +59,50 @@ export function AboutSection() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32"
         >
-          <motion.div variants={itemVariants}>
+          <motion.div variants={itemVariants} className="flex flex-col justify-between h-full">
             <div className="space-y-8">
               <p className="body-text text-foreground-secondary">
-                I'm a multidisciplinary designer and developer with over 5 years of experience creating digital products
-                that are both beautiful and functional.
+                Designer and developer shaping fluid, engaging digital experiences across platforms and products.
               </p>
+            </div>
+
+            <div className="space-y-8 mt-16 md:mt-32">
               <p className="body-text text-foreground-secondary">
-                My approach combines aesthetic sensibility with technical expertise, allowing me to bridge the gap
-                between design and implementation.
+                Currently at{" "}
+                <a
+                  href="https://hex.inc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground hover:underline transition-colors duration-300"
+                >
+                  HEX
+                </a>{" "}
+                and building playful tools at{" "}
+                <a
+                  href="https://smallchess.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground hover:underline transition-colors duration-300"
+                >
+                  SMALLCHESS
+                </a>
+                . Open to work if you're building something cool.
               </p>
             </div>
           </motion.div>
 
-          <motion.div variants={itemVariants}>
+          <motion.div variants={itemVariants} className="flex flex-col justify-between h-full">
             <div className="space-y-8">
               <p className="body-text text-foreground-secondary">
                 I believe in creating work that not only looks good but also solves real problems and delivers
                 exceptional user experiences.
               </p>
+            </div>
+
+            <div className="space-y-8 mt-16 md:mt-32">
               <p className="body-text text-foreground-secondary">
-                When I'm not designing or coding, I enjoy exploring new technologies, listening to music, and
-                contributing to open-source projects.
+                When I'm not designing or vibe-coding, I enjoy DJ'ing, listening to music, and playing around with fun
+                side projects.
               </p>
             </div>
           </motion.div>

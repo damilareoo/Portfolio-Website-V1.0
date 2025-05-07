@@ -22,6 +22,7 @@ body {
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 @layer components {
@@ -133,4 +134,17 @@ body {
     padding-bottom: 0.75rem;
     border-bottom: 1px solid var(--border);
   }
+}
+
+/* Enhanced smooth scrolling */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Section transitions */
+section {
+  position: relative;
+  will-change: opacity;
 }
