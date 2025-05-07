@@ -1,8 +1,11 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useMobile } from "@/hooks/use-mobile"
 
 export function HeroSection() {
+  const isMobile = useMobile()
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -42,9 +45,15 @@ export function HeroSection() {
           </motion.div>
 
           <motion.div variants={itemVariants} className="max-w-2xl">
-            <p className="display-title text-foreground-secondary">
-              Designer and Developer creating intuitive digital experiences that merge aesthetics with functionality.
-            </p>
+            {isMobile ? (
+              <p className="display-title text-foreground-secondary">
+                Designer and Developer creating intuitive digital experiences that blend aesthetics with functionality.
+              </p>
+            ) : (
+              <p className="display-title text-foreground-secondary">
+                Designer and Developer creating intuitive digital experiences that merge aesthetics with functionality.
+              </p>
+            )}
           </motion.div>
         </motion.div>
       </div>
