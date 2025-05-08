@@ -18,11 +18,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Damilare Osofisan | Designer & Developer",
     description: "Portfolio of Damilare Osofisan, a designer and developer creating digital experiences.",
-    url: "https://damilareoo.xyz",
-    siteName: "Damilare Osofisan | damilareoo.xyz",
+    url: "https://damilareosofisan.com",
+    siteName: "Damilare Osofisan",
     images: [
       {
-        url: "https://damilareoo.xyz/api/og",
+        url: "/api/og",
         width: 1200,
         height: 630,
         alt: "Damilare Osofisan",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Damilare Osofisan | Designer & Developer",
     description: "Portfolio of Damilare Osofisan, a designer and developer creating digital experiences.",
-    images: ["https://damilareoo.xyz/api/og"],
+    images: ["/api/og"],
     creator: "@damilare_oo",
   },
     generator: 'v0.dev'
