@@ -15,11 +15,12 @@ const geistSans = Geist_Sans({
 export const metadata: Metadata = {
   title: "Damilare Osofisan | Designer & Developer",
   description: "Portfolio of Damilare Osofisan, a designer and developer creating digital experiences.",
+  metadataBase: new URL("https://damilareoo.xyz"),
   openGraph: {
     title: "Damilare Osofisan | Designer & Developer",
     description: "Portfolio of Damilare Osofisan, a designer and developer creating digital experiences.",
-    url: "https://damilareosofisan.com",
-    siteName: "Damilare Osofisan",
+    url: "https://damilareoo.xyz",
+    siteName: "Damilare Osofisan | damilareoo.xyz",
     images: [
       {
         url: "/api/og",
@@ -48,6 +49,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Force refresh of social media cache */}
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image" content="https://damilareoo.xyz/api/og" />
+        <meta name="twitter:image" content="https://damilareoo.xyz/api/og" />
+      </head>
       <body className={`${geistSans.variable} font-sans antialiased`}>
         <Suspense fallback={<div>Loading...</div>}>
           {children}
