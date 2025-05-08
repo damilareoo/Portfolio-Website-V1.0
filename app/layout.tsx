@@ -2,6 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Geist as Geist_Sans } from "next/font/google"
 import "./globals.css"
+import { Analytics } from "@vercel/analytics/react"
+import { Suspense } from "react"
 
 // Load Geist Sans
 const geistSans = Geist_Sans({
@@ -46,7 +48,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} font-sans antialiased`}>{children}</body>
+      <body className={`${geistSans.variable} font-sans antialiased`}>
+        <Suspense fallback={<div>Loading...</div>}>
+          {children}
+          <Analytics />
+        </Suspense>
+      </body>
     </html>
   )
 }
