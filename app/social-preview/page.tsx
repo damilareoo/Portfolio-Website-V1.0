@@ -12,8 +12,8 @@ export default function SocialPreviewPage() {
             <h2 className="text-lg font-medium text-gray-900 mb-4">Current OG Image</h2>
 
             <div className="border border-gray-200 rounded-lg p-4 mb-8">
-              <img src="/api/og-image" alt="OG Image" className="w-full h-auto rounded-md shadow-sm" />
-              <p className="mt-2 text-sm text-gray-500">1200 × 630px dynamically generated image</p>
+              <img src="/images/og-image.png" alt="OG Image" className="w-full h-auto rounded-md shadow-sm" />
+              <p className="mt-2 text-sm text-gray-500">Static image for social media sharing</p>
             </div>
 
             <h2 className="text-lg font-medium text-gray-900 mb-4">Platform Previews</h2>
@@ -31,7 +31,7 @@ export default function SocialPreviewPage() {
                         Portfolio of Damilare Osofisan, a designer and developer creating digital experiences.
                       </p>
                     </div>
-                    <img src="/api/og-image" alt="Facebook Preview" className="w-full h-auto" />
+                    <img src="/images/og-image.png" alt="Facebook Preview" className="w-full h-auto" />
                   </div>
                 </div>
               </div>
@@ -41,7 +41,7 @@ export default function SocialPreviewPage() {
                 <h3 className="font-medium text-gray-900 mb-2">Twitter</h3>
                 <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
                   <div className="max-w-md mx-auto bg-white rounded-md shadow-sm overflow-hidden">
-                    <img src="/api/og-image" alt="Twitter Preview" className="w-full h-auto" />
+                    <img src="/images/og-image.png" alt="Twitter Preview" className="w-full h-auto" />
                     <div className="p-4">
                       <h4 className="text-base font-semibold">Damilare Osofisan | Designer & Developer</h4>
                       <p className="text-sm text-gray-500 mt-1">
@@ -58,7 +58,7 @@ export default function SocialPreviewPage() {
                 <h3 className="font-medium text-gray-900 mb-2">LinkedIn</h3>
                 <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
                   <div className="max-w-md mx-auto bg-white rounded-md shadow-sm overflow-hidden">
-                    <img src="/api/og-image" alt="LinkedIn Preview" className="w-full h-auto" />
+                    <img src="/images/og-image.png" alt="LinkedIn Preview" className="w-full h-auto" />
                     <div className="p-4">
                       <p className="text-xs text-gray-500">damilareoo.xyz</p>
                       <h4 className="text-base font-semibold mt-1">Damilare Osofisan | Designer & Developer</h4>
