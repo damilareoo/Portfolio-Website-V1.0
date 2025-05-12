@@ -4,6 +4,7 @@ import { Geist as Geist_Sans } from "next/font/google"
 import "./globals.css"
 import { Analytics } from "@vercel/analytics/react"
 import { Suspense } from "react"
+import { JsonLd } from "./json-ld"
 
 // Load Geist Sans
 const geistSans = Geist_Sans({
@@ -26,9 +27,9 @@ export const metadata: Metadata = {
     siteName: "Damilare Osofisan | damilareoo.xyz",
     images: [
       {
-        url: `/images/og-image.png?v=${timestamp}`,
+        url: `/api/og-image?v=${timestamp}`,
         width: 1200,
-        height: 1200,
+        height: 630,
         alt: "Damilare Osofisan",
       },
     ],
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Damilare Osofisan | Designer & Developer",
     description: "Portfolio of Damilare Osofisan, a designer and developer creating digital experiences.",
-    images: [`/images/og-image.png?v=${timestamp}`],
+    images: [`/api/og-image?v=${timestamp}`],
     creator: "@damilare_oo",
   },
     generator: 'v0.dev'
@@ -54,14 +55,21 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         {/* Force refresh of social media cache with timestamp */}
-        <meta property="og:image" content={`https://damilareoo.xyz/images/og-image.png?v=${timestamp}`} />
+        <meta property="og:image" content={`https://damilareoo.xyz/api/og-image?v=${timestamp}`} />
         <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Damilare Osofisan" />
         <meta property="og:image:type" content="image/png" />
 
-        <meta name="twitter:image" content={`https://damilareoo.xyz/images/og-image.png?v=${timestamp}`} />
+        <meta name="twitter:image" content={`https://damilareoo.xyz/api/og-image?v=${timestamp}`} />
         <meta name="twitter:image:alt" content="Damilare Osofisan" />
+        <meta name="twitter:card" content="summary_large_image" />
+
+        {/* LinkedIn specific */}
+        <meta property="og:image:secure_url" content={`https://damilareoo.xyz/api/og-image?v=${timestamp}`} />
+
+        {/* Facebook specific */}
+        <meta property="fb:app_id" content="your-fb-app-id-if-you-have-one" />
 
         {/* Additional social media tags */}
         <meta property="og:type" content="website" />
@@ -84,6 +92,7 @@ export default function RootLayout({
           <Analytics />
         </Suspense>
       </body>
+      <JsonLd />
     </html>
   )
 }
