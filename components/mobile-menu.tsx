@@ -70,7 +70,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             style={{ zIndex: 2, willChange: "transform" }}
           >
             <div className="flex justify-between items-center p-6 border-b border-foreground/10">
-              <span className="text-lg font-medium">Menu</span>
+              <span className="nav-text">Menu</span>
               <button
                 onClick={onClose}
                 className="text-foreground-secondary hover:text-foreground transition-colors"
@@ -86,7 +86,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   <a
                     key={item.name}
                     href={item.href}
-                    className={`text-2xl font-light ${
+                    className={`mobile-nav-text ${
                       currentSection === item.id ? "text-foreground" : "text-foreground-secondary hover:text-foreground"
                     } transition-colors duration-300 relative pl-4`}
                     onClick={(e) => {
@@ -108,7 +108,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </div>
 
             <div className="border-t border-foreground/10 p-6">
-              <p className="text-sm text-foreground-secondary">&copy; {new Date().getFullYear()} Damilare Osofisan</p>
+              <p className="meta-text text-foreground-secondary">&copy; {new Date().getFullYear()} Damilare Osofisan</p>
             </div>
           </motion.div>
         </div>

@@ -124,15 +124,15 @@ export function WorkSection() {
                 className="group block py-8 border-t border-foreground/10 transition-all duration-500 ease-out"
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="text-xl md:text-2xl lg:text-3xl font-medium text-foreground/80 group-hover:text-foreground transition-colors duration-500 ease-out">
+                  <h3 className="project-title text-foreground/80 group-hover:text-foreground transition-colors duration-500 ease-out">
                     {project.title}
                   </h3>
-                  <div className="text-foreground-secondary text-base md:text-lg">{project.year}</div>
+                  <div className="meta-text text-foreground-secondary">{project.year}</div>
                 </div>
 
                 {/* Project description that appears on hover */}
                 <div className="max-h-0 overflow-hidden group-hover:max-h-20 transition-all duration-500 ease-out">
-                  <p className="text-sm md:text-base text-foreground-secondary max-w-2xl pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 ease-out">
+                  <p className="project-description text-foreground-secondary max-w-2xl pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 ease-out">
                     {project.description}
                   </p>
                 </div>

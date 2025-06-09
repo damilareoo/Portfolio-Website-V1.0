@@ -39,21 +39,13 @@ export function HeroSection() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <motion.div variants={itemVariants} className="mb-16">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-foreground/80 whitespace-normal">
-              DAMILARE OSOFISAN
-            </h1>
+            <h1 className="hero-title text-foreground/80 whitespace-normal">DAMILARE OSOFISAN</h1>
           </motion.div>
 
           <motion.div variants={itemVariants} className="max-w-2xl">
-            {isMobile ? (
-              <p className="display-title text-foreground-secondary">
-                Designer and Builder shaping intuitive digital experiences.
-              </p>
-            ) : (
-              <p className="display-title text-foreground-secondary">
-                Designer and Builder shaping intuitive digital experiences.
-              </p>
-            )}
+            <p className="hero-subtitle text-foreground-secondary">
+              Designer and Builder shaping intuitive digital experiences.
+            </p>
           </motion.div>
         </motion.div>
       </div>

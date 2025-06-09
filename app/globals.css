@@ -2,6 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Geist Font Face Declarations */
+@font-face {
+  font-family: "Geist";
+  src: url("/fonts/Geist-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url("/fonts/Geist-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url("/fonts/Geist-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url("/fonts/Geist-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url("/fonts/Geist-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #1a1a1c;
   --foreground: rgba(255, 255, 255, 0.9);
@@ -19,7 +60,7 @@ html {
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -32,37 +73,118 @@ section {
 }
 
 @layer components {
-  /* Typography - inspired by thekolapo.com */
-  .display-title {
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
-    line-height: 1.2;
+  /* Geist Typography System with Weight-Based Hierarchy */
+
+  /* HERO TITLE - Bold (700) */
+  .hero-title {
+    font-family: "Geist", sans-serif;
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
     letter-spacing: -0.02em;
-    font-weight: 300;
   }
 
+  /* HERO SUBTITLE - Light (300) */
+  .hero-subtitle {
+    font-family: "Geist", sans-serif;
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-weight: 300;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  /* SECTION TITLES - SemiBold (600) */
   .section-title {
-    font-size: 1rem;
-    line-height: 1.5;
-    letter-spacing: 0.02em;
-    font-weight: 500;
+    font-family: "Geist", sans-serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
-  .body-text {
-    font-size: 1.125rem;
-    line-height: 1.6;
+  /* PROJECT TITLES - SemiBold (600) */
+  .project-title {
+    font-family: "Geist", sans-serif;
+    font-size: clamp(1.25rem, 2.8vw, 2rem);
+    font-weight: 600;
+    line-height: 1.3;
     letter-spacing: -0.01em;
-    font-weight: 300;
   }
 
-  .meta-text {
-    font-size: 0.875rem;
+  /* NAVIGATION - Medium (500) */
+  .nav-text {
+    font-family: "Geist", sans-serif;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 500;
     line-height: 1.5;
     letter-spacing: 0.01em;
-    font-weight: 400;
   }
 
-  /* Layout - inspired by Oliver Gareis */
+  /* BODY TEXT - Regular (400) */
+  .body-text {
+    font-family: "Geist", sans-serif;
+    font-size: clamp(1rem, 1.8vw, 1.125rem);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.005em;
+  }
+
+  /* PROJECT DESCRIPTIONS - Regular (400) */
+  .project-description {
+    font-family: "Geist", sans-serif;
+    font-size: clamp(0.875rem, 1.6vw, 1rem);
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.005em;
+  }
+
+  /* CONTACT TEXT - Medium (500) */
+  .contact-text {
+    font-family: "Geist", sans-serif;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+
+  /* CONTACT LABELS - Light (300) */
+  .contact-label {
+    font-family: "Geist", sans-serif;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+
+  /* META TEXT - Light (300) */
+  .meta-text {
+    font-family: "Geist", sans-serif;
+    font-size: clamp(0.75rem, 1.4vw, 0.875rem);
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  /* MOBILE MENU ITEMS - Medium (500) */
+  .mobile-nav-text {
+    font-family: "Geist", sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  /* BUTTON TEXT - Medium (500) */
+  .button-text {
+    font-family: "Geist", sans-serif;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+  }
+
+  /* Layout */
   .container-xl {
     width: 100%;
     max-width: 1600px;

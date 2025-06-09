@@ -72,11 +72,11 @@ export function ContactSection() {
           <div className="space-y-8">
             <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
               <div className="flex items-center justify-between">
-                <span className="text-foreground/60">Email</span>
+                <span className="contact-label text-foreground/60">Email</span>
                 <div className="flex items-center gap-2">
                   <a
                     href="mailto:dosofisan7@gmail.com"
-                    className="text-foreground hover:text-foreground/80 transition-colors duration-300"
+                    className="contact-text text-foreground hover:text-foreground/80 transition-colors duration-300"
                     onClick={(e) => {
                       if (window.innerWidth < 768) {
                         e.preventDefault()
@@ -94,19 +94,19 @@ export function ContactSection() {
                     <Copy className="h-3.5 w-3.5" />
                     <span className="sr-only">Copy</span>
                   </button>
-                  {emailCopied && <span className="text-xs text-foreground/60 ml-1">Copied</span>}
+                  {emailCopied && <span className="meta-text text-foreground/60 ml-1">Copied</span>}
                 </div>
               </div>
             </motion.div>
 
             <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
               <div className="flex items-center justify-between">
-                <span className="text-foreground/60">LinkedIn</span>
+                <span className="contact-label text-foreground/60">LinkedIn</span>
                 <a
                   href="https://linkedin.com/in/damilareoo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
+                  className="contact-text text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
                 >
                   linkedin.com/in/damilareoo
                   <ExternalLink className="h-3.5 w-3.5 opacity-50" />
@@ -116,12 +116,12 @@ export function ContactSection() {
 
             <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
               <div className="flex items-center justify-between">
-                <span className="text-foreground/60">GitHub</span>
+                <span className="contact-label text-foreground/60">GitHub</span>
                 <a
                   href="https://github.com/damilareoo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
+                  className="contact-text text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
                 >
                   github.com/damilareoo
                   <ExternalLink className="h-3.5 w-3.5 opacity-50" />
@@ -131,12 +131,12 @@ export function ContactSection() {
 
             <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
               <div className="flex items-center justify-between">
-                <span className="text-foreground/60">Dribbble</span>
+                <span className="contact-label text-foreground/60">Dribbble</span>
                 <a
                   href="https://dribbble.com/damilareoo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
+                  className="contact-text text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
                 >
                   dribbble.com/damilareoo
                   <ExternalLink className="h-3.5 w-3.5 opacity-50" />
@@ -148,12 +148,12 @@ export function ContactSection() {
           <div className="space-y-8">
             <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
               <div className="flex items-center justify-between">
-                <span className="text-foreground/60">Layers</span>
+                <span className="contact-label text-foreground/60">Layers</span>
                 <a
                   href="https://layers.to/damilareoo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
+                  className="contact-text text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
                 >
                   layers.to/damilareoo
                   <ExternalLink className="h-3.5 w-3.5 opacity-50" />
@@ -163,12 +163,12 @@ export function ContactSection() {
 
             <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
               <div className="flex items-center justify-between">
-                <span className="text-foreground/60">Pinterest</span>
+                <span className="contact-label text-foreground/60">Pinterest</span>
                 <a
                   href="https://pinterest.com/damilareoo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
+                  className="contact-text text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
                 >
                   pinterest.com/damilareoo
                   <ExternalLink className="h-3.5 w-3.5 opacity-50" />
@@ -178,12 +178,12 @@ export function ContactSection() {
 
             <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
               <div className="flex items-center justify-between">
-                <span className="text-foreground/60">Contra</span>
+                <span className="contact-label text-foreground/60">Contra</span>
                 <a
                   href="https://contra.com/damilareoo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
+                  className="contact-text text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
                 >
                   contra.com/damilareoo
                   <ExternalLink className="h-3.5 w-3.5 opacity-50" />
@@ -193,12 +193,12 @@ export function ContactSection() {
 
             <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
               <div className="flex items-center justify-between">
-                <span className="text-foreground/60">Cosmos</span>
+                <span className="contact-label text-foreground/60">Cosmos</span>
                 <a
                   href="https://cosmos.so/damilareoo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
+                  className="contact-text text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
                 >
                   cosmos.so/damilareoo
                   <ExternalLink className="h-3.5 w-3.5 opacity-50" />

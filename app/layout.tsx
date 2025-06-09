@@ -1,16 +1,8 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist as Geist_Sans } from "next/font/google"
 import "./globals.css"
 import { Analytics } from "@vercel/analytics/react"
 import { Suspense } from "react"
-
-// Load Geist Sans
-const geistSans = Geist_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-geist-sans",
-})
 
 // Current timestamp to force cache refresh
 const timestamp = new Date().getTime()
@@ -82,7 +74,7 @@ export default function RootLayout({
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
       </head>
-      <body className={`${geistSans.variable} font-sans antialiased`}>
+      <body className="font-sans antialiased">
         <Suspense fallback={<div>Loading...</div>}>
           {children}
           <Analytics />

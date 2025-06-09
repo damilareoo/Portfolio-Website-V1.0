@@ -49,7 +49,7 @@ export function Navbar() {
         }`}
       >
         <div className="container-xl flex items-center justify-between">
-          <a href="#" className="meta-text font-medium">
+          <a href="#" className="nav-text font-medium">
             DO
           </a>
 
@@ -59,7 +59,7 @@ export function Navbar() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className={`meta-text transition-colors duration-500 ${
+                  className={`nav-text transition-colors duration-500 ${
                     currentSection === item.id ? "text-foreground" : "text-foreground-secondary hover:text-foreground"
                   }`}
                 >
