@@ -57,23 +57,23 @@ export function AboutSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32"
+          className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24"
         >
-          <motion.div variants={itemVariants} className="flex flex-col justify-between h-full">
-            <div className="space-y-8">
+          <motion.div variants={itemVariants} className="flex flex-col space-y-16">
+            <div>
               <p className="body-text text-foreground-secondary">
-                Designer and developer shaping fluid, engaging digital experiences across platforms and products.
+                Designer and builder shaping fluid, engaging digital experiences across platforms and products.
               </p>
             </div>
 
-            <div className="space-y-8 mt-16 md:mt-32">
+            <div>
               <p className="body-text text-foreground-secondary">
                 Currently at{" "}
                 <a
                   href="https://hex.inc"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-foreground hover:underline transition-colors duration-300"
+                  className="text-green-400 hover:text-green-300 font-medium transition-colors duration-300"
                 >
                   HEX
                 </a>{" "}
@@ -82,7 +82,7 @@ export function AboutSection() {
                   href="https://smallchess.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-foreground hover:underline transition-colors duration-300"
+                  className="text-green-400 hover:text-green-300 font-medium transition-colors duration-300"
                 >
                   SMALLCHESS
                 </a>
@@ -91,18 +91,18 @@ export function AboutSection() {
             </div>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="flex flex-col justify-between h-full">
-            <div className="space-y-8">
+          <motion.div variants={itemVariants} className="flex flex-col space-y-16">
+            <div>
               <p className="body-text text-foreground-secondary">
                 I believe in creating work that not only looks good but also solves real problems and delivers
                 exceptional user experiences.
               </p>
             </div>
 
-            <div className="space-y-8 mt-16 md:mt-32">
+            <div>
               <p className="body-text text-foreground-secondary">
-                When I'm not designing or vibe-coding, I enjoy DJ'ing, listening to music, and playing around with fun
-                side projects.
+                When I'm not designing or vibe-coding, I enjoy playing basketball, DJ'ing, and creating fun side
+                projects.
               </p>
             </div>
           </motion.div>

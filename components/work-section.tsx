@@ -4,12 +4,21 @@ import { motion } from "framer-motion"
 
 const projects = [
   {
+    id: 0,
+    title: "Interactive Quotes",
+    category: "Web Design",
+    year: "2025",
+    description:
+      "A visually captivating quotes platform featuring dynamic color palettes and refined typography. Users can highlight passages, share personalized quote cards, and explore curated collections through intuitive interactions.",
+    link: "https://reveriee.vercel.app",
+  },
+  {
     id: 1,
     title: "cAI",
     category: "AI/ML",
     year: "2025",
     description:
-      "A smart contract analysis platform that helps developers audit and secure blockchain code with automated vulnerability detection and optimization recommendations.",
+      "An intelligent contract analysis tool that leverages machine learning to identify vulnerabilities in blockchain code. Helps developers build more secure and efficient smart contracts.",
     link: "https://smartcai.framer.website",
   },
   {
@@ -18,43 +27,34 @@ const projects = [
     category: "Web App",
     year: "2025",
     description:
-      "An engaging puzzle game that challenges players to solve brain teasers and riddles to free a trapped bird, featuring progressive difficulty and charming visual storytelling.",
+      "A narrative puzzle experience with minimalist aesthetics and challenging gameplay. Players solve increasingly complex riddles to progress through a touching story of freedom.",
     link: "https://cagedbird.vercel.app",
   },
   {
     id: 3,
-    title: "Interactive Quotes App",
-    category: "Web App",
-    year: "2025",
-    description:
-      "A thoughtfully designed application that presents inspirational quotes with interactive elements, allowing users to explore, save, and share their favorites.",
-    link: "https://v0-interactive-quote-app.vercel.app/",
-  },
-  {
-    id: 4,
     title: "WordLadderWar",
     category: "Game Development",
     year: "2025",
     description:
-      "A competitive word game that challenges players to transform words one letter at a time, featuring engaging gameplay mechanics and striking visual design.",
+      "A fast-paced word transformation game that challenges linguistic creativity. Features real-time multiplayer, custom dictionaries, and an elegant interface that makes wordplay addictive.",
     link: "https://word-ladder-war.vercel.app/",
   },
   {
-    id: 5,
+    id: 4,
     title: "Enhanced Mobile Experience for Volvo",
     category: "UX/UI Design",
     year: "2024",
     description:
-      "A comprehensive redesign of Volvo's mobile interface, focusing on intuitive navigation, personalized features, and seamless integration with vehicle systems.",
+      "A comprehensive mobile interface redesign that connects drivers with their vehicles. Focuses on contextual awareness, personalized settings, and seamless integration with Volvo's ecosystem.",
     link: "https://dribbble.com/shots/24589230-Enhanced-Mobile-Experience-for-Volvo",
   },
   {
-    id: 6,
+    id: 5,
     title: "Weather App",
     category: "Web App",
     year: "2024",
     description:
-      "A beautifully designed weather application that provides real-time forecasts, location-based weather data, and intuitive visualizations of atmospheric conditions.",
+      "A visually striking weather application with location-based forecasting and atmospheric data visualization. Features animated transitions and a responsive design that adapts to all devices.",
     link: "https://weather-app-opal-nine-24.vercel.app",
   },
 ]
