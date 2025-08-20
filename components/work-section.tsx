@@ -14,12 +14,12 @@ const projects = [
   },
   {
     id: 1,
-    title: "cAI",
-    category: "AI/ML",
+    title: "Pixel Soccer",
+    category: "Game Development",
     year: "2025",
     description:
-      "An intelligent contract analysis tool that leverages machine learning to identify vulnerabilities in blockchain code. Helps developers build more secure and efficient smart contracts.",
-    link: "https://smartcai.framer.website",
+      "A nostalgic pixel-art soccer game that captures the essence of classic arcade sports. Features intuitive controls, dynamic gameplay mechanics, and charming retro aesthetics that bring back the golden age of gaming.",
+    link: "https://pixel-soccer.vercel.app",
   },
   {
     id: 2,
@@ -38,24 +38,6 @@ const projects = [
     description:
       "A fast-paced word transformation game that challenges linguistic creativity. Features real-time multiplayer, custom dictionaries, and an elegant interface that makes wordplay addictive.",
     link: "https://word-ladder-war.vercel.app/",
-  },
-  {
-    id: 4,
-    title: "Enhanced Mobile Experience for Volvo",
-    category: "UX/UI Design",
-    year: "2024",
-    description:
-      "A comprehensive mobile interface redesign that connects drivers with their vehicles. Focuses on contextual awareness, personalized settings, and seamless integration with Volvo's ecosystem.",
-    link: "https://dribbble.com/shots/24589230-Enhanced-Mobile-Experience-for-Volvo",
-  },
-  {
-    id: 5,
-    title: "Weather App",
-    category: "Web App",
-    year: "2024",
-    description:
-      "A visually striking weather application with location-based forecasting and atmospheric data visualization. Features animated transitions and a responsive design that adapts to all devices.",
-    link: "https://weather-app-opal-nine-24.vercel.app",
   },
 ]
 
@@ -139,7 +121,6 @@ export function WorkSection() {
               </a>
             </motion.div>
           ))}
-          <motion.div variants={itemVariants} className="border-t border-foreground/10 mt-0"></motion.div>
         </motion.div>
       </div>
     </section>

@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     images: [`/images/og-image.png?v=${timestamp}`],
     creator: "@damilare_oo",
   },
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
