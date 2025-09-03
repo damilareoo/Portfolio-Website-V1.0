@@ -131,14 +131,14 @@ export function ContactSection() {
 
             <motion.div variants={itemVariants} className="border-b border-foreground/10 pb-4">
               <div className="flex items-center justify-between">
-                <span className="contact-label text-foreground/60">Dribbble</span>
+                <span className="contact-label text-foreground/60">v0</span>
                 <a
-                  href="https://dribbble.com/damilareoo"
+                  href="https://v0.app/@damilareoo"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="contact-text text-foreground hover:text-foreground/80 transition-colors duration-300 flex items-center gap-2"
                 >
-                  dribbble.com/damilareoo
+                  v0.app/@damilareoo
                   <ExternalLink className="h-3.5 w-3.5 opacity-50" />
                 </a>
               </div>

@@ -9,20 +9,29 @@ const projects = [
     category: "Web Design",
     year: "2025",
     description:
-      "A visually captivating quotes platform featuring dynamic color palettes and refined typography. Users can highlight passages, share personalized quote cards, and explore curated collections through intuitive interactions.",
+      "A visually captivating quotes platform with dynamic colors and refined typography. Users explore curated collections through intuitive interactions.",
     link: "https://reveriee.vercel.app",
   },
   {
     id: 1,
+    title: "mini v0 - with tabs",
+    category: "Web Development",
+    year: "2025",
+    description:
+      "An experimental reimagining of v0's interface with tabbed navigation. Explores cleaner workflows for seamless project switching and organization.",
+    link: "https://v0-mini-v0-with-tabs.vercel.app/",
+  },
+  {
+    id: 2,
     title: "Pixel Soccer",
     category: "Game Development",
     year: "2025",
     description:
-      "A nostalgic pixel-art soccer game that captures the essence of classic arcade sports. Features intuitive controls, dynamic gameplay mechanics, and charming retro aesthetics that bring back the golden age of gaming.",
+      "A nostalgic pixel-art soccer game with intuitive controls and dynamic gameplay. Features charming retro aesthetics from the golden age of gaming.",
     link: "https://pixel-soccer.vercel.app",
   },
   {
-    id: 2,
+    id: 3,
     title: "Caged Bird",
     category: "Web App",
     year: "2025",
@@ -31,12 +40,12 @@ const projects = [
     link: "https://cagedbird.vercel.app",
   },
   {
-    id: 3,
+    id: 4,
     title: "WordLadderWar",
     category: "Game Development",
     year: "2025",
     description:
-      "A fast-paced word transformation game that challenges linguistic creativity. Features real-time multiplayer, custom dictionaries, and an elegant interface that makes wordplay addictive.",
+      "A fast-paced word transformation game with real-time multiplayer and custom dictionaries. Features an elegant interface that makes wordplay addictive.",
     link: "https://word-ladder-war.vercel.app/",
   },
 ]
