@@ -91,7 +91,7 @@ export function AboutSection() {
             </div>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="flex flex-col space-y-16">
+          <motion.div variants={itemVariants} className="flex flex-col space-y-6 justify-start">
             <div>
               <p className="body-text text-foreground-secondary">
                 I believe in creating work that not only looks good but also solves real problems and delivers
