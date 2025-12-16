@@ -37,7 +37,7 @@ const projects = [
   {
     id: 5,
     title: "Image to ASCII",
-    description: "Multi-format downloads",
+    description: "Fork of",
     link: "https://v0-test-mu-eight-72.vercel.app/",
     credit: { name: "Rauch", url: "https://x.com/rauchg" },
   },
@@ -153,19 +153,19 @@ export function WorkSection() {
                         {project.description}
                       </span>
                       {project.credit && (
-                        <>
-                          <span className="text-base text-[#525252]">/</span>
+                        <span className="text-base">
                           <span
                             onClick={(e) => {
                               e.preventDefault()
                               e.stopPropagation()
                               window.open(project.credit.url, "_blank")
                             }}
-                            className="text-base text-[#525252] hover:text-[#fafafa] transition-colors cursor-pointer"
+                            className="text-[#737373] hover:text-[#fafafa] underline underline-offset-2 decoration-[#525252] hover:decoration-[#fafafa] transition-colors cursor-pointer"
                           >
                             {project.credit.name}
                           </span>
-                        </>
+                          <span className="text-[#737373]">'s original</span>
+                        </span>
                       )}
                     </div>
                   </a>
