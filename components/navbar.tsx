@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { Menu } from "lucide-react"
 import { useScrollContext } from "./smooth-scroll-provider"
 import { MobileMenu } from "./mobile-menu"
+import Image from "next/image"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,9 +13,8 @@ export function Navbar() {
   const { currentSection } = useScrollContext()
 
   const navItems = [
-    { name: "Work", href: "#work", id: "work" },
-    { name: "About", href: "#about", id: "about" },
-    { name: "Across the Web", href: "#across-the-web", id: "across-the-web" },
+    { name: "Experiments", href: "#work", id: "work" },
+    { name: "Elsewhere", href: "#across-the-web", id: "across-the-web" },
   ]
 
   useEffect(() => {
@@ -26,7 +26,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Lock body scroll when menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden"
@@ -41,56 +40,61 @@ export function Navbar() {
   return (
     <>
       <motion.header
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0], delay: 0.2 }}
-        className={`fixed top-0 left-0 right-0 z-50 py-8 md:py-12 transition-all duration-500 ${
-          scrolled ? "backdrop-blur-sm bg-background/70" : ""
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1.0] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled ? "bg-black/90 backdrop-blur-sm" : ""
         }`}
       >
-        <div className="container-xl flex items-center justify-between">
-          <a href="#" className="nav-text font-medium">
-            DO
-          </a>
+        <div className="h-px bg-[#222]" />
 
-          <div className="hidden md:flex items-center space-x-16">
-            <nav className="flex space-x-16">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={`nav-text transition-colors duration-500 ${
-                    currentSection === item.id ? "text-foreground" : "text-foreground-secondary hover:text-foreground"
-                  }`}
-                >
-                  {item.name}
-                  {currentSection === item.id && (
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className="h-px bg-foreground mt-1"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5 }}
-                    />
-                  )}
-                </a>
+        <div className="grid-container">
+          <div className="flex items-center justify-between py-3 md:py-4 px-4 md:px-8">
+            <a href="#" className="flex items-center gap-2 md:gap-3 group">
+              <div className="w-1.5 md:w-2 h-px bg-[#333] group-hover:w-3 md:group-hover:w-4 group-hover:bg-[#666] transition-all duration-300" />
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full overflow-hidden border border-[#333] group-hover:border-[#666] transition-colors duration-300">
+                <Image
+                  src="/images/avatar.png"
+                  alt="Damilare Oyedeji"
+                  width={32}
+                  height={32}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </a>
+
+            <div className="hidden md:flex items-center gap-1">
+              {navItems.map((item, index) => (
+                <div key={item.name} className="flex items-center">
+                  {index > 0 && <div className="w-4 h-px bg-[#222] mx-2" />}
+                  <a
+                    href={item.href}
+                    className={`text-mono px-3 py-1 transition-colors duration-300 ${
+                      currentSection === item.id ? "text-[#ededed]" : "text-[#666] hover:text-[#ededed]"
+                    }`}
+                  >
+                    {item.name}
+                  </a>
+                </div>
               ))}
-            </nav>
-          </div>
+            </div>
 
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(true)}
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-foreground/5 hover:bg-foreground/10 transition-all duration-300 text-foreground"
-              aria-label="Open menu"
-            >
-              <Menu className="h-5 w-5" />
-            </button>
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsOpen(true)}
+                className="flex items-center justify-center w-8 h-8 md:w-9 md:h-9 border border-[#222] hover:border-[#333] transition-colors duration-300 text-[#ededed]"
+                aria-label="Open menu"
+              >
+                <Menu className="h-3.5 w-3.5 md:h-4 md:w-4" />
+              </button>
+            </div>
           </div>
         </div>
+
+        <div className="h-px bg-[#222]" />
       </motion.header>
 
-      {/* Mobile menu as a separate component */}
       <MobileMenu isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
   )

@@ -1,52 +1,72 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { ArrowUpRight } from "lucide-react"
 
 const projects = [
   {
     id: 0,
-    title: "Interactive Quotes",
-    category: "Web Design",
-    year: "2025",
-    description:
-      "A visually captivating quotes platform with dynamic colors and refined typography. Users explore curated collections through intuitive interactions.",
-    link: "https://reveriee.vercel.app",
+    title: "SmallChess",
+    description: "Mini AI web design",
+    link: "https://small-chess.vercel.app/",
   },
   {
     id: 1,
-    title: "mini v0 - with tabs",
-    category: "Web Development",
-    year: "2025",
-    description:
-      "An experimental reimagining of v0's interface with tabbed navigation. Explores cleaner workflows for seamless project switching and organization.",
-    link: "https://v0-mini-v0-with-tabs.vercel.app/",
+    title: "Abstract",
+    description: "Team page exploration",
+    link: "https://abstract-team-page.vercel.app/",
   },
   {
     id: 2,
-    title: "Pixel Soccer",
-    category: "Game Development",
-    year: "2025",
-    description:
-      "A nostalgic pixel-art soccer game with intuitive controls and dynamic gameplay. Features charming retro aesthetics from the golden age of gaming.",
-    link: "https://pixel-soccer.vercel.app",
+    title: "Dithering Background",
+    description: "Made with paper + v0",
+    link: "https://v0-shader-component-generation.vercel.app/",
   },
   {
     id: 3,
-    title: "Caged Bird",
-    category: "Web App",
-    year: "2025",
-    description:
-      "A narrative puzzle experience with minimalist aesthetics and challenging gameplay. Players solve increasingly complex riddles to progress through a touching story of freedom.",
-    link: "https://cagedbird.vercel.app",
+    title: "mini v0",
+    description: "v0 interface with tabs",
+    link: "https://v0-mini-v0-with-tabs.vercel.app/",
   },
   {
     id: 4,
+    title: "Kinetic Typography",
+    description: "Motion type loops",
+    link: "https://kinetictypographyloop.vercel.app/",
+  },
+  {
+    id: 5,
+    title: "Image to ASCII",
+    description: "Multi-format downloads",
+    link: "https://v0-test-mu-eight-72.vercel.app/",
+    credit: { name: "Rauch", url: "https://x.com/rauchg" },
+  },
+  {
+    id: 6,
+    title: "Pixel Soccer",
+    description: "Retro pixel-art game",
+    link: "https://pixel-soccer.vercel.app",
+    tag: "game",
+  },
+  {
+    id: 7,
+    title: "Caged Bird",
+    description: "Minimalist escape game",
+    link: "https://cagedbird.vercel.app",
+    tag: "game",
+  },
+  {
+    id: 8,
     title: "WordLadderWar",
-    category: "Game Development",
-    year: "2025",
-    description:
-      "A fast-paced word transformation game with real-time multiplayer and custom dictionaries. Features an elegant interface that makes wordplay addictive.",
+    description: "Word transformation game",
     link: "https://word-ladder-war.vercel.app/",
+    tag: "game",
+  },
+  {
+    id: 9,
+    title: "Reveriee",
+    description: "Quotes with dynamic colors",
+    link: "https://reveriee.vercel.app",
   },
 ]
 
@@ -56,80 +76,114 @@ export function WorkSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-        ease: [0.25, 0.1, 0.25, 1.0],
-      },
-    },
-  }
-
-  const titleVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.1, 0.25, 1.0],
+        staggerChildren: 0.06,
+        delayChildren: 0.1,
       },
     },
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.4,
         ease: [0.25, 0.1, 0.25, 1.0],
       },
     },
   }
 
   return (
-    <section id="work" className="section-spacing">
-      <div className="container-xl">
-        <motion.h2
-          variants={titleVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="section-title mb-24"
+    <section id="work" className="py-8 md:py-12 relative">
+      <div className="px-4 md:px-8">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="relative mb-6 md:mb-10"
         >
-          Selected Work
-        </motion.h2>
+          <div className="h-px bg-[#2a2a2a] mb-4 md:mb-6" />
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 md:gap-3">
+              <div className="w-4 md:w-6 h-px bg-[#404040]" />
+              <span className="text-mono text-[#737373]">experiments</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-[#404040] rounded-full" />
+              <div className="w-6 md:w-8 h-px bg-[#2a2a2a]" />
+            </div>
+          </div>
+        </motion.div>
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-50px" }}
+          className="relative"
         >
-          {projects.map((project) => (
-            <motion.div key={project.id} variants={itemVariants}>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block py-8 border-t border-foreground/10 transition-all duration-500 ease-out"
-              >
-                <div className="flex items-center justify-between">
-                  <h3 className="project-title text-foreground/80 group-hover:text-foreground transition-colors duration-500 ease-out">
-                    {project.title}
-                  </h3>
-                  <div className="meta-text text-foreground-secondary">{project.year}</div>
-                </div>
+          <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-[#404040] via-[#2a2a2a] to-transparent hidden md:block" />
 
-                {/* Project description that appears on hover */}
-                <div className="max-h-0 overflow-hidden group-hover:max-h-20 transition-all duration-500 ease-out">
-                  <p className="project-description text-foreground-secondary max-w-2xl pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 ease-out">
-                    {project.description}
-                  </p>
+          <div className="md:pl-6">
+            {projects.map((project) => (
+              <motion.div key={project.id} variants={itemVariants}>
+                <div className="group relative py-3 md:py-4 border-b border-[#1a1a1a] hover:border-[#404040] transition-all duration-300">
+                  {/* Hover indicator line */}
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0 group-hover:w-3 h-px bg-[#525252] transition-all duration-300 hidden md:block" />
+
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between md:pl-4"
+                  >
+                    <div className="flex items-center gap-2 md:gap-4">
+                      <span className="text-large font-normal text-[#fafafa] group-hover:text-white transition-colors duration-300">
+                        {project.title}
+                      </span>
+                      {project.tag && <span className="text-mono text-[#525252]">[{project.tag}]</span>}
+                      <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <span className="text-base text-[#737373] group-hover:text-[#a1a1a1] transition-colors duration-300">
+                        {project.description}
+                      </span>
+                      {project.credit && (
+                        <>
+                          <span className="text-base text-[#525252]">/</span>
+                          <span
+                            onClick={(e) => {
+                              e.preventDefault()
+                              e.stopPropagation()
+                              window.open(project.credit.url, "_blank")
+                            }}
+                            className="text-base text-[#525252] hover:text-[#fafafa] transition-colors cursor-pointer"
+                          >
+                            {project.credit.name}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </a>
                 </div>
-              </a>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-6 md:mt-10 flex items-center gap-2 md:gap-3"
+        >
+          <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-[#404040] rounded-full" />
+          <div className="w-12 md:w-16 h-px bg-[#2a2a2a]" />
+          <div className="w-0.5 h-0.5 md:w-1 md:h-1 bg-[#2a2a2a] rounded-full" />
         </motion.div>
       </div>
     </section>

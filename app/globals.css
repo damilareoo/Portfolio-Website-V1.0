@@ -43,14 +43,49 @@
   font-display: swap;
 }
 
+/* Geist Mono Font */
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/fonts/GeistMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/fonts/GeistMono-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #1a1a1c;
-  --foreground: rgba(255, 255, 255, 0.9);
-  --foreground-secondary: rgba(255, 255, 255, 0.6);
-  --foreground-tertiary: rgba(255, 255, 255, 0.4);
-  --accent: rgba(255, 255, 255, 0.1);
-  --border: rgba(255, 255, 255, 0.1);
+  /* Pure black background */
+  --background: #000000;
+  --foreground: #fafafa;
+  /* Improved muted text contrast */
+  --foreground-muted: #a1a1a1;
+  --foreground-subtle: #737373;
+
+  /* Clearer line colors */
+  --line: #2a2a2a;
+  --line-hover: #404040;
+  --line-accent: #525252;
+
   --transition-bezier: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+
+  /* Two font sizes: 20px large, 14px base for mobile-first */
+  --text-large: 20px;
+  --text-base: 14px;
+}
+
+/* Scale up to 24px/16px on desktop */
+@media (min-width: 768px) {
+  :root {
+    --text-large: 24px;
+    --text-base: 16px;
+  }
 }
 
 html {
@@ -60,224 +95,123 @@ html {
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-family: "Geist", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-size: var(--text-base);
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  cursor: none;
 }
 
-/* Ensure proper stacking context for all sections */
-section {
-  position: relative;
-  z-index: 1;
+/* Added cursor styles for custom cursor */
+@media (min-width: 768px) {
+  * {
+    cursor: none !important;
+  }
+}
+
+.cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--foreground);
+  border-radius: 50%;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+.cursor-outline {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--foreground);
+  border-radius: 50%;
+  z-index: 9998;
+  opacity: 0.5;
+  mix-blend-mode: difference;
 }
 
 @layer components {
-  /* Geist Typography System with Weight-Based Hierarchy */
-
-  /* HERO TITLE - Bold (700) */
-  .hero-title {
+  /* Two-size typography using CSS variables for responsive sizing */
+  .text-large {
     font-family: "Geist", sans-serif;
-    font-size: clamp(2rem, 8vw, 4rem);
-    font-weight: 700;
-    line-height: 1.1;
+    font-size: var(--text-large);
+    line-height: 1.3;
     letter-spacing: -0.02em;
   }
 
-  /* HERO SUBTITLE - Light (300) */
-  .hero-subtitle {
+  .text-base {
     font-family: "Geist", sans-serif;
-    font-size: clamp(1.25rem, 3vw, 2rem);
-    font-weight: 300;
-    line-height: 1.3;
+    font-size: var(--text-base);
+    line-height: 1.5;
     letter-spacing: -0.01em;
   }
 
-  /* SECTION TITLES - SemiBold (600) */
-  .section-title {
-    font-family: "Geist", sans-serif;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    font-weight: 600;
-    line-height: 1.4;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  /* PROJECT TITLES - SemiBold (600) */
-  .project-title {
-    font-family: "Geist", sans-serif;
-    font-size: clamp(1.25rem, 2.8vw, 2rem);
-    font-weight: 600;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-  }
-
-  /* NAVIGATION - Medium (500) */
-  .nav-text {
-    font-family: "Geist", sans-serif;
-    font-size: clamp(0.875rem, 1.5vw, 1rem);
-    font-weight: 500;
+  .text-mono {
+    font-family: "Geist Mono", monospace;
+    font-size: var(--text-base);
     line-height: 1.5;
-    letter-spacing: 0.01em;
+    letter-spacing: 0;
   }
 
-  /* BODY TEXT - Regular (400) */
-  .body-text {
-    font-family: "Geist", sans-serif;
-    font-size: clamp(1rem, 1.8vw, 1.125rem);
-    font-weight: 400;
-    line-height: 1.6;
-    letter-spacing: 0.005em;
-  }
-
-  /* PROJECT DESCRIPTIONS - Regular (400) */
-  .project-description {
-    font-family: "Geist", sans-serif;
-    font-size: clamp(0.875rem, 1.6vw, 1rem);
-    font-weight: 400;
-    line-height: 1.6;
-    letter-spacing: 0.005em;
-  }
-
-  /* CONTACT TEXT - Medium (500) */
-  .contact-text {
-    font-family: "Geist", sans-serif;
-    font-size: clamp(0.875rem, 1.5vw, 1rem);
-    font-weight: 500;
-    line-height: 1.5;
-    letter-spacing: 0.01em;
-  }
-
-  /* CONTACT LABELS - Light (300) */
-  .contact-label {
-    font-family: "Geist", sans-serif;
-    font-size: clamp(0.875rem, 1.5vw, 1rem);
-    font-weight: 300;
-    line-height: 1.5;
-    letter-spacing: 0.01em;
-  }
-
-  /* META TEXT - Light (300) */
-  .meta-text {
-    font-family: "Geist", sans-serif;
-    font-size: clamp(0.75rem, 1.4vw, 0.875rem);
-    font-weight: 300;
-    line-height: 1.5;
-    letter-spacing: 0.02em;
-  }
-
-  /* MOBILE MENU ITEMS - Medium (500) */
-  .mobile-nav-text {
-    font-family: "Geist", sans-serif;
-    font-size: clamp(1.5rem, 4vw, 2rem);
-    font-weight: 500;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-  }
-
-  /* BUTTON TEXT - Medium (500) */
-  .button-text {
-    font-family: "Geist", sans-serif;
-    font-size: clamp(0.875rem, 1.5vw, 1rem);
-    font-weight: 500;
-    line-height: 1.4;
-    letter-spacing: 0.01em;
-  }
-
-  /* Layout */
-  .container-xl {
+  /* Grid container - the "box" */
+  .grid-container {
     width: 100%;
-    max-width: 1600px;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: relative;
   }
 
   @media (min-width: 768px) {
-    .container-xl {
-      padding-left: 4rem;
-      padding-right: 4rem;
+    .grid-container {
+      padding-left: 3rem;
+      padding-right: 3rem;
     }
   }
 
-  @media (min-width: 1280px) {
-    .container-xl {
-      padding-left: 8rem;
-      padding-right: 8rem;
-    }
+  /* Enhanced line utilities with better visibility */
+  .line-h {
+    height: 1px;
+    background: var(--line);
+    width: 100%;
   }
 
-  .section-spacing {
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+  .line-v {
+    width: 1px;
+    background: var(--line);
+    height: 100%;
   }
 
-  @media (min-width: 768px) {
-    .section-spacing {
-      padding-top: 15rem;
-      padding-bottom: 15rem;
-    }
+  .line-gradient {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--line) 15%, var(--line) 85%, transparent 100%);
+    width: 100%;
   }
 
-  /* Custom cursor styles */
-  .cursor-dot {
-    position: fixed;
-    width: 0.75rem;
-    height: 0.75rem;
-    background-color: white;
-    border-radius: 9999px;
-    pointer-events: none;
-    z-index: 50;
-    transition-property: transform;
-    transition-duration: 100ms;
-    transition-timing-function: ease-out;
-    mix-blend-mode: difference;
-  }
-
-  .cursor-outline {
-    position: fixed;
-    width: 2rem;
-    height: 2rem;
-    border: 1px solid white;
-    border-radius: 9999px;
-    pointer-events: none;
-    z-index: 50;
-    transition-property: all;
-    transition-duration: 300ms;
-    transition-timing-function: ease-out;
-    mix-blend-mode: difference;
-  }
-
-  /* Contact item styles */
-  .contact-item {
-    margin-bottom: 2rem;
-  }
-
-  .contact-item .contact-value {
-    color: var(--foreground);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--border);
+  .line-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--line-accent);
+    border-radius: 50%;
   }
 }
 
-/* Enhanced smooth scrolling */
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
   }
 }
 
-/* Section transitions */
-section {
-  position: relative;
-  will-change: opacity;
-}
-
-/* Ensure mobile menu is always on top */
 .fixed {
   isolation: isolate;
 }
