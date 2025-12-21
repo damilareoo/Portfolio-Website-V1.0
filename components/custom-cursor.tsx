@@ -8,6 +8,7 @@ export function CustomCursor() {
   const [clicked, setClicked] = useState(false)
   const [linkHovered, setLinkHovered] = useState(false)
   const [hidden, setHidden] = useState(false)
+  const [overIframe, setOverIframe] = useState(false)
   const [isMobile, setIsMobile] = useState(true)
 
   const onMouseMove = useCallback((e: MouseEvent) => {
@@ -52,7 +53,6 @@ export function CustomCursor() {
     document.addEventListener("mousedown", onMouseDown)
     document.addEventListener("mouseup", onMouseUp)
 
-    // Also listen on window for iframe edge cases
     window.addEventListener("mousemove", onMouseMove, true)
 
     const handleLinkHoverEvents = () => {
@@ -62,11 +62,19 @@ export function CustomCursor() {
       })
     }
 
-    handleLinkHoverEvents()
+    const handleIframeHoverEvents = () => {
+      document.querySelectorAll(".spotify-popup, iframe").forEach((el) => {
+        el.addEventListener("mouseenter", () => setOverIframe(true))
+        el.addEventListener("mouseleave", () => setOverIframe(false))
+      })
+    }
 
-    // Re-attach hover events when DOM changes (for dynamic content)
+    handleLinkHoverEvents()
+    handleIframeHoverEvents()
+
     const observer = new MutationObserver(() => {
       handleLinkHoverEvents()
+      handleIframeHoverEvents()
     })
     observer.observe(document.body, { childList: true, subtree: true })
 
@@ -91,7 +99,7 @@ export function CustomCursor() {
           x: position.x - 4,
           y: position.y - 4,
           scale: clicked ? 0.5 : linkHovered ? 2 : 1,
-          opacity: hidden ? 0 : 1,
+          opacity: hidden || overIframe ? 0 : 1,
         }}
         transition={{
           type: "spring",
@@ -106,7 +114,7 @@ export function CustomCursor() {
           x: position.x - 16,
           y: position.y - 16,
           scale: clicked ? 0.5 : linkHovered ? 1.5 : 1,
-          opacity: hidden ? 0 : 1,
+          opacity: hidden || overIframe ? 0 : 1,
         }}
         transition={{
           type: "spring",

@@ -83,43 +83,40 @@ export function ContactSection() {
 
           <div className="md:pl-6 grid grid-cols-1 md:grid-cols-2 gap-x-12">
             {links.map((link) => (
-              <motion.div key={link.label} variants={itemVariants}>
+              <motion.div
+                key={link.label}
+                className="group flex items-center justify-between py-2.5 md:py-3 border-b border-[#1a1a1a] hover:border-[#404040] transition-colors duration-300 md:pl-4"
+              >
                 {link.copyable ? (
-                  <div className="group flex items-center justify-between py-2.5 md:py-3 border-b border-[#1a1a1a] hover:border-[#404040] transition-colors duration-300 md:pl-4">
+                  <div className="flex items-center gap-2 md:gap-3">
                     <span className="text-mono text-[#737373]">{link.label}</span>
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <span className="text-base text-[#a1a1a1] truncate max-w-[140px] md:max-w-none">
-                        {link.value}
-                      </span>
-                      <button
-                        onClick={copyEmail}
-                        className="text-[#525252] hover:text-[#fafafa] transition-colors duration-300 flex-shrink-0"
-                        aria-label="Copy email"
-                      >
-                        {copied ? (
-                          <Check className="w-3.5 h-3.5 md:w-4 md:h-4 text-green-500" />
-                        ) : (
-                          <Copy className="w-3.5 h-3.5 md:w-4 md:h-4" />
-                        )}
-                      </button>
-                    </div>
+                    <span className="text-base text-[#a1a1a1] truncate max-w-[140px] md:max-w-none">{link.value}</span>
+                    <button
+                      onClick={copyEmail}
+                      className="text-[#525252] hover:text-[#fafafa] transition-colors duration-300 flex-shrink-0"
+                      aria-label="Copy email"
+                    >
+                      {copied ? (
+                        <Check className="w-3.5 h-3.5 md:w-4 md:h-4 text-green-500" />
+                      ) : (
+                        <Copy className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                      )}
+                    </button>
                   </div>
                 ) : (
                   <a
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between py-2.5 md:py-3 border-b border-[#1a1a1a] hover:border-[#404040] transition-colors duration-300 md:pl-4"
+                    className="flex items-center gap-2 md:gap-3"
                   >
                     <span className="text-mono text-[#737373] group-hover:text-[#a1a1a1] transition-colors">
                       {link.label}
                     </span>
-                    <div className="flex items-center gap-2 md:gap-3">
-                      <span className="text-base text-[#a1a1a1] group-hover:text-[#fafafa] transition-colors duration-300">
-                        {link.value}
-                      </span>
-                      <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-                    </div>
+                    <span className="text-base text-[#a1a1a1] group-hover:text-[#fafafa] transition-colors duration-300">
+                      {link.value}
+                    </span>
+                    <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
                   </a>
                 )}
               </motion.div>
@@ -195,16 +192,7 @@ export function ContactSection() {
                           damping: 30,
                         },
                       }}
-                      className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-4 z-50 bg-[#121212] rounded-lg shadow-2xl border border-[#2a2a2a] overflow-hidden pointer-events-auto"
-                      style={{ cursor: "default" }}
-                      onMouseMove={(e) => {
-                        const event = new MouseEvent("mousemove", {
-                          clientX: e.clientX,
-                          clientY: e.clientY,
-                          bubbles: true,
-                        })
-                        document.dispatchEvent(event)
-                      }}
+                      className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-4 z-50 bg-[#121212] rounded-lg shadow-2xl border border-[#2a2a2a] overflow-hidden spotify-popup"
                     >
                       <motion.div
                         className="w-72 md:w-80"
@@ -212,33 +200,17 @@ export function ContactSection() {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.1, duration: 0.2 }}
                       >
-                        <div className="relative">
-                          <iframe
-                            src="https://open.spotify.com/embed/playlist/2WqAscMqGj6fGkjaYN9jsY?utm_source=generator&theme=0"
-                            width="100%"
-                            height="352"
-                            frameBorder="0"
-                            allowFullScreen
-                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                            loading="lazy"
-                            className="rounded-lg"
-                          />
-                          {/* Transparent overlay that captures mouse movement but allows clicks through */}
-                          <div
-                            className="absolute inset-0 z-10"
-                            style={{ pointerEvents: "none" }}
-                            onMouseMove={(e) => {
-                              const event = new MouseEvent("mousemove", {
-                                clientX: e.clientX,
-                                clientY: e.clientY,
-                                bubbles: true,
-                              })
-                              document.dispatchEvent(event)
-                            }}
-                          />
-                        </div>
+                        <iframe
+                          src="https://open.spotify.com/embed/playlist/2WqAscMqGj6fGkjaYN9jsY?utm_source=generator&theme=0"
+                          width="100%"
+                          height="352"
+                          frameBorder="0"
+                          allowFullScreen
+                          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                          loading="lazy"
+                          className="rounded-lg"
+                        />
                       </motion.div>
-                      {/* Arrow pointing down */}
                       <motion.div
                         initial={{ opacity: 0, y: -5 }}
                         animate={{ opacity: 1, y: 0 }}

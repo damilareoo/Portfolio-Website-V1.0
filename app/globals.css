@@ -301,6 +301,13 @@ body {
   mix-blend-mode: difference;
 }
 
+/* Show native cursor on Spotify popup and iframes */
+.spotify-popup,
+.spotify-popup *,
+.spotify-popup iframe {
+  cursor: auto !important;
+}
+
 @layer components {
   /* Two-size typography using CSS variables for responsive sizing */
   .text-large {
