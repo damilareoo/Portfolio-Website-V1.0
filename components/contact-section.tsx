@@ -165,7 +165,6 @@ export function ContactSection() {
                   </svg>
                 </a>
 
-                {/* Spotify Embed Card */}
                 <AnimatePresence>
                   {showSpotifyEmbed && (
                     <motion.div
@@ -196,24 +195,48 @@ export function ContactSection() {
                           damping: 30,
                         },
                       }}
-                      className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-4 z-50 bg-[#121212] rounded-lg shadow-2xl border border-[#2a2a2a] overflow-hidden"
+                      className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-4 z-50 bg-[#121212] rounded-lg shadow-2xl border border-[#2a2a2a] overflow-hidden pointer-events-auto"
+                      style={{ cursor: "default" }}
+                      onMouseMove={(e) => {
+                        const event = new MouseEvent("mousemove", {
+                          clientX: e.clientX,
+                          clientY: e.clientY,
+                          bubbles: true,
+                        })
+                        document.dispatchEvent(event)
+                      }}
                     >
                       <motion.div
-                        className="w-64 h-64 md:w-80 md:h-80"
+                        className="w-72 md:w-80"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.1, duration: 0.2 }}
                       >
-                        <iframe
-                          src="https://open.spotify.com/embed/playlist/2WqAscMqGj6fGkjaYN9jsY?utm_source=generator&theme=0"
-                          width="100%"
-                          height="100%"
-                          frameBorder="0"
-                          allowFullScreen
-                          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                          loading="lazy"
-                          className="rounded-lg"
-                        />
+                        <div className="relative">
+                          <iframe
+                            src="https://open.spotify.com/embed/playlist/2WqAscMqGj6fGkjaYN9jsY?utm_source=generator&theme=0"
+                            width="100%"
+                            height="352"
+                            frameBorder="0"
+                            allowFullScreen
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"
+                            className="rounded-lg"
+                          />
+                          {/* Transparent overlay that captures mouse movement but allows clicks through */}
+                          <div
+                            className="absolute inset-0 z-10"
+                            style={{ pointerEvents: "none" }}
+                            onMouseMove={(e) => {
+                              const event = new MouseEvent("mousemove", {
+                                clientX: e.clientX,
+                                clientY: e.clientY,
+                                bubbles: true,
+                              })
+                              document.dispatchEvent(event)
+                            }}
+                          />
+                        </div>
                       </motion.div>
                       {/* Arrow pointing down */}
                       <motion.div

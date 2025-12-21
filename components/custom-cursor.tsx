@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { motion } from "framer-motion"
 
 export function CustomCursor() {
@@ -8,74 +8,78 @@ export function CustomCursor() {
   const [clicked, setClicked] = useState(false)
   const [linkHovered, setLinkHovered] = useState(false)
   const [hidden, setHidden] = useState(false)
-  const [isMobile, setIsMobile] = useState(true) // Default to true to prevent flash on mobile
+  const [isMobile, setIsMobile] = useState(true)
+
+  const onMouseMove = useCallback((e: MouseEvent) => {
+    setPosition({ x: e.clientX, y: e.clientY })
+  }, [])
+
+  const onMouseEnter = useCallback(() => {
+    setHidden(false)
+  }, [])
+
+  const onMouseLeave = useCallback(() => {
+    setHidden(true)
+  }, [])
+
+  const onMouseDown = useCallback(() => {
+    setClicked(true)
+  }, [])
+
+  const onMouseUp = useCallback(() => {
+    setClicked(false)
+  }, [])
 
   useEffect(() => {
-    // Check if we're on mobile
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768)
     }
 
-    // Initial check
     checkIfMobile()
-
-    // Add resize listener
     window.addEventListener("resize", checkIfMobile)
 
-    const addEventListeners = () => {
-      document.addEventListener("mousemove", onMouseMove)
-      document.addEventListener("mouseenter", onMouseEnter)
-      document.addEventListener("mouseleave", onMouseLeave)
-      document.addEventListener("mousedown", onMouseDown)
-      document.addEventListener("mouseup", onMouseUp)
+    return () => {
+      window.removeEventListener("resize", checkIfMobile)
     }
+  }, [])
 
-    const removeEventListeners = () => {
-      document.removeEventListener("mousemove", onMouseMove)
-      document.removeEventListener("mouseenter", onMouseEnter)
-      document.removeEventListener("mouseleave", onMouseLeave)
-      document.removeEventListener("mousedown", onMouseDown)
-      document.removeEventListener("mouseup", onMouseUp)
-    }
+  useEffect(() => {
+    if (isMobile) return
 
-    const onMouseMove = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY })
-    }
+    document.addEventListener("mousemove", onMouseMove, true)
+    document.addEventListener("mouseenter", onMouseEnter)
+    document.addEventListener("mouseleave", onMouseLeave)
+    document.addEventListener("mousedown", onMouseDown)
+    document.addEventListener("mouseup", onMouseUp)
 
-    const onMouseEnter = () => {
-      setHidden(false)
-    }
-
-    const onMouseLeave = () => {
-      setHidden(true)
-    }
-
-    const onMouseDown = () => {
-      setClicked(true)
-    }
-
-    const onMouseUp = () => {
-      setClicked(false)
-    }
+    // Also listen on window for iframe edge cases
+    window.addEventListener("mousemove", onMouseMove, true)
 
     const handleLinkHoverEvents = () => {
-      document.querySelectorAll("a, button, input, textarea").forEach((el) => {
+      document.querySelectorAll("a, button, input, textarea, [role='button']").forEach((el) => {
         el.addEventListener("mouseenter", () => setLinkHovered(true))
         el.addEventListener("mouseleave", () => setLinkHovered(false))
       })
     }
 
-    // Only add event listeners if not on mobile
-    if (!isMobile) {
-      addEventListeners()
+    handleLinkHoverEvents()
+
+    // Re-attach hover events when DOM changes (for dynamic content)
+    const observer = new MutationObserver(() => {
       handleLinkHoverEvents()
-    }
+    })
+    observer.observe(document.body, { childList: true, subtree: true })
 
     return () => {
-      removeEventListeners()
-      window.removeEventListener("resize", checkIfMobile)
+      document.removeEventListener("mousemove", onMouseMove, true)
+      document.removeEventListener("mouseenter", onMouseEnter)
+      document.removeEventListener("mouseleave", onMouseLeave)
+      document.removeEventListener("mousedown", onMouseDown)
+      document.removeEventListener("mouseup", onMouseUp)
+      window.removeEventListener("mousemove", onMouseMove, true)
+      observer.disconnect()
     }
-  }, [isMobile])
+  }, [isMobile, onMouseMove, onMouseEnter, onMouseLeave, onMouseDown, onMouseUp])
 
   if (isMobile) return null
 
