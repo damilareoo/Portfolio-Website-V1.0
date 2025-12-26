@@ -12,9 +12,9 @@ const projects = [
   },
   {
     id: 1,
-    title: "Wellbeing Dashboard",
+    title: "ClearMind Dashboard",
     description: "Admin wellness overview",
-    link: "https://v0-wellbeing-buddy-dashboard.vercel.app/admin/overview",
+    link: "https://v0-clearmind-dashboard.vercel.app/admin/overview",
   },
   {
     id: 2,
