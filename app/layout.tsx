@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   description: "Designer and builder.",
   metadataBase: new URL("https://damilareoo.xyz"),
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: "/images/avatar.png",
+    shortcut: "/images/avatar.png",
+    apple: "/images/avatar.png",
   },
   openGraph: {
     title: "Damilare Osofisan | Designer & Builder",
@@ -47,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/images/avatar.png" sizes="any" />
 
         <meta property="og:image" content="https://damilareoo.xyz/images/og-image.png" />
         <meta property="og:image:width" content="1200" />
