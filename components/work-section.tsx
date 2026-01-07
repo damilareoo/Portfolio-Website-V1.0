@@ -6,79 +6,85 @@ import { ArrowUpRight } from "lucide-react"
 const projects = [
   {
     id: 0,
-    title: "ChessEver",
-    description: "Chess tournament landing",
-    link: "https://chessever.com",
+    title: "WorkBench",
+    description: "Design explorations",
+    link: "https://nacre-quake-50137672.figma.site",
   },
   {
     id: 1,
-    title: "ClearMind Dashboard",
-    description: "Admin wellness overview",
-    link: "https://v0-clearmind-dashboard.vercel.app/admin/overview",
+    title: "Sylvan",
+    description: "Brand, web design and dev",
+    link: "https://sylvanlabs.com",
   },
   {
     id: 2,
+    title: "ChessEver",
+    description: "0-1 product experience",
+    link: "https://chessever.com",
+  },
+  {
+    id: 3,
+    title: "SmallChess",
+    description: "Chess ecosystem",
+    link: "https://small-chess.vercel.app/",
+  },
+  {
+    id: 4,
+    title: "Trieuth Capital",
+    description: "Brand, web design and dev",
+    link: "https://trieuthcapital.com",
+  },
+  {
+    id: 5,
+    title: "ClearMind Dashboard",
+    description: "Admin interface design",
+    link: "https://v0-clearmind-dashboard.vercel.app/admin/overview",
+  },
+  {
+    id: 6,
     title: "Abstract",
     description: "Team page exploration",
     link: "https://abstract-team-page.vercel.app/",
   },
   {
-    id: 3,
-    title: "SmallChess",
-    description: "Mini AI web design",
-    link: "https://small-chess.vercel.app/",
+    id: 7,
+    title: "Reveriee",
+    description: "Interactive quotes",
+    link: "https://chord-gig-63118351.figma.site",
   },
   {
-    id: 4,
+    id: 8,
     title: "Dithering Background",
-    description: "Made with paper + v0",
+    description: "Generative shader design",
     link: "https://v0-shader-component-generation.vercel.app/",
   },
   {
-    id: 5,
-    title: "mini v0",
-    description: "v0 interface with tabs",
-    link: "https://v0-mini-v0-with-tabs.vercel.app/",
-  },
-  {
-    id: 6,
-    title: "Kinetic Typography",
-    description: "Motion type loops",
-    link: "https://kinetictypographyloop.vercel.app/",
-  },
-  {
-    id: 7,
+    id: 9,
     title: "Image to ASCII",
     description: "Fork of",
     link: "https://v0-test-mu-eight-72.vercel.app/",
     credit: { name: "Rauch", url: "https://x.com/rauchg" },
   },
   {
-    id: 8,
+    id: 10,
     title: "Pixel Soccer",
-    description: "Retro pixel-art game",
+    description: "Interactive pixel art game",
     link: "https://pixel-soccer.vercel.app",
     tag: "game",
   },
   {
-    id: 9,
+    id: 11,
     title: "Caged Bird",
-    description: "Minimalist escape game",
+    description: "Puzzle game experience",
     link: "https://cagedbird.vercel.app",
     tag: "game",
   },
   {
-    id: 10,
+    id: 12,
     title: "WordLadderWar",
     description: "Word transformation game",
     link: "https://word-ladder-war.vercel.app/",
     tag: "game",
-  },
-  {
-    id: 11,
-    title: "Reveriee",
-    description: "Quotes with dynamic colors",
-    link: "https://reveriee.vercel.app",
   },
 ]
 
@@ -150,22 +156,26 @@ export function WorkSection() {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between md:pl-4"
+                    className="flex flex-col md:flex-row md:items-center md:justify-between md:pl-4"
                   >
-                    <div className="flex items-center gap-2 md:gap-4">
+                    <div className="flex items-start gap-2 md:items-center md:gap-4">
                       <span className="text-large font-normal text-[#fafafa] group-hover:text-white transition-colors duration-300">
                         {project.title}
                       </span>
-                      {project.tag && <span className="text-mono text-[#525252]">[{project.tag}]</span>}
-                      <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+                      {project.tag && (
+                        <span className="text-mono text-[#525252] text-xs md:text-sm flex-shrink-0">
+                          [{project.tag}]
+                        </span>
+                      )}
+                      <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0" />
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 mt-1.5 md:mt-0">
                       <span className="text-base text-[#737373] group-hover:text-[#a1a1a1] transition-colors duration-300">
                         {project.description}
                       </span>
                       {project.credit && (
-                        <span className="text-base">
+                        <span className="text-base text-xs md:text-sm">
                           <span
                             onClick={(e) => {
                               e.preventDefault()

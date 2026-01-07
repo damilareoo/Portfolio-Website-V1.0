@@ -30,13 +30,14 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
           if (entry.isIntersecting) {
             const id = entry.target.id
             if (sections.includes(id)) {
+              console.log("[v0] Section detected:", id)
               setCurrentSection(id)
             }
           }
         })
       },
       {
-        rootMargin: "-40% 0px -40% 0px", // Adjust the margins to control when sections become active
+        rootMargin: "-30% 0px -50% 0px",
         threshold: 0.1,
       },
     )

@@ -81,7 +81,7 @@ export function ContactSection() {
         >
           <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-[#404040] via-[#2a2a2a] to-transparent hidden md:block" />
 
-          <div className="md:pl-6 grid grid-cols-1 md:grid-cols-2 gap-x-12">
+          <div className="md:pl-6 space-y-2.5 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-12">
             {links.map((link) => (
               <motion.div
                 key={link.label}
@@ -89,8 +89,10 @@ export function ContactSection() {
               >
                 {link.copyable ? (
                   <div className="flex items-center gap-2 md:gap-3">
-                    <span className="text-mono text-[#737373]">{link.label}</span>
-                    <span className="text-base text-[#a1a1a1] truncate max-w-[140px] md:max-w-none">{link.value}</span>
+                    <span className="text-mono text-[#737373] text-xs md:text-sm flex-shrink-0">{link.label}</span>
+                    <span className="text-base text-[#a1a1a1] truncate max-w-[120px] md:max-w-none text-xs md:text-sm">
+                      {link.value}
+                    </span>
                     <button
                       onClick={copyEmail}
                       className="text-[#525252] hover:text-[#fafafa] transition-colors duration-300 flex-shrink-0"
@@ -108,15 +110,15 @@ export function ContactSection() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 md:gap-3"
+                    className="flex items-center gap-2 md:gap-3 w-full"
                   >
-                    <span className="text-mono text-[#737373] group-hover:text-[#a1a1a1] transition-colors">
+                    <span className="text-mono text-[#737373] group-hover:text-[#a1a1a1] transition-colors text-xs md:text-sm flex-shrink-0">
                       {link.label}
                     </span>
-                    <span className="text-base text-[#a1a1a1] group-hover:text-[#fafafa] transition-colors duration-300">
+                    <span className="text-base text-[#a1a1a1] group-hover:text-[#fafafa] transition-colors duration-300 truncate text-xs md:text-sm">
                       {link.value}
                     </span>
-                    <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+                    <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0" />
                   </a>
                 )}
               </motion.div>
@@ -127,8 +129,8 @@ export function ContactSection() {
         <footer className="mt-12 md:mt-16 relative">
           <div className="h-px bg-[#2a2a2a] mb-4 md:mb-6" />
 
-          <div className="flex items-center justify-center">
-            <p className="text-base text-[#737373] flex items-center gap-1.5 md:gap-2 flex-wrap justify-center">
+          <div className="flex items-center justify-center flex-wrap gap-1">
+            <p className="text-base text-[#737373] text-xs md:text-sm flex items-center gap-1 md:gap-1.5 flex-wrap justify-center">
               <span>Built with love and music by</span>
               <a
                 href="https://x.com/damilare_oo"

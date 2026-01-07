@@ -9,7 +9,8 @@ export function CustomCursor() {
   const [linkHovered, setLinkHovered] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [overIframe, setOverIframe] = useState(false)
-  const [isMobile, setIsMobile] = useState(true)
+  const [isMobile, setIsMobile] = useState(false)
+  const [isHydrated, setIsHydrated] = useState(false)
 
   const onMouseMove = useCallback((e: MouseEvent) => {
     setPosition({ x: e.clientX, y: e.clientY })
@@ -32,6 +33,7 @@ export function CustomCursor() {
   }, [])
 
   useEffect(() => {
+    setIsHydrated(true)
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768)
     }
@@ -45,7 +47,7 @@ export function CustomCursor() {
   }, [])
 
   useEffect(() => {
-    if (isMobile) return
+    if (isMobile || !isHydrated) return
 
     document.addEventListener("mousemove", onMouseMove, true)
     document.addEventListener("mouseenter", onMouseEnter)
@@ -87,9 +89,9 @@ export function CustomCursor() {
       window.removeEventListener("mousemove", onMouseMove, true)
       observer.disconnect()
     }
-  }, [isMobile, onMouseMove, onMouseEnter, onMouseLeave, onMouseDown, onMouseUp])
+  }, [isMobile, isHydrated, onMouseMove, onMouseEnter, onMouseLeave, onMouseDown, onMouseUp])
 
-  if (isMobile) return null
+  if (!isHydrated || isMobile) return null
 
   return (
     <>
