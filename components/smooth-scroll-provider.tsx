@@ -19,26 +19,33 @@ export function useScrollContext() {
 
 export function SmoothScrollProvider({ children }: { children: ReactNode }) {
   const [currentSection, setCurrentSection] = useState("hero")
+  const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
-    const sections = ["hero", "work", "about", "across-the-web"]
+    const sections = ["hero", "work", "across-the-web"]
 
-    // Create IntersectionObserver
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const id = entry.target.id
             if (sections.includes(id)) {
-              console.log("[v0] Section detected:", id)
-              setCurrentSection(id)
+              // Debounce rapid state changes
+              if (debounceTimerRef.current) {
+                clearTimeout(debounceTimerRef.current)
+              }
+
+              debounceTimerRef.current = setTimeout(() => {
+                setCurrentSection(id)
+                console.log("[v0] Section changed to:", id)
+              }, 100)
             }
           }
         })
       },
       {
-        rootMargin: "-30% 0px -50% 0px",
-        threshold: 0.1,
+        rootMargin: "-35% 0px -35% 0px",
+        threshold: [0.1, 0.5],
       },
     )
 
@@ -49,6 +56,9 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
     })
 
     return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current)
+      }
       sections.forEach((sectionId) => {
         const element = document.getElementById(sectionId)
         if (element) observer.unobserve(element)

@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { Menu } from "lucide-react"
 import { useScrollContext } from "./smooth-scroll-provider"
 import { MobileMenu } from "./mobile-menu"
-import Image from "next/image"
+import { Logo } from "./logo"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -53,15 +53,7 @@ export function Navbar() {
           <div className="flex items-center justify-between py-3 md:py-4 px-4 md:px-8">
             <a href="#" className="flex items-center gap-2 md:gap-3 group">
               <div className="w-1.5 md:w-2 h-px bg-[#333] group-hover:w-3 md:group-hover:w-4 group-hover:bg-[#666] transition-all duration-300" />
-              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full overflow-hidden border border-[#333] group-hover:border-[#666] transition-colors duration-300">
-                <Image
-                  src="/images/avatar.png"
-                  alt="Damilare Osofisan"
-                  width={32}
-                  height={32}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <Logo />
             </a>
 
             <div className="hidden md:flex items-center gap-1">
@@ -70,7 +62,7 @@ export function Navbar() {
                   {index > 0 && <div className="w-4 h-px bg-[#222] mx-2" />}
                   <a
                     href={item.href}
-                    className={`text-mono px-3 py-1 transition-all duration-300 ${
+                    className={`text-mono px-3 py-1 transition-all duration-300 ease-out ${
                       currentSection === item.id
                         ? "text-[#fafafa] font-semibold"
                         : "text-[#737373] hover:text-[#a1a1a1]"
