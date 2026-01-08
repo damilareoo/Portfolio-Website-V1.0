@@ -6,7 +6,7 @@ import { Suspense } from "react"
 
 export const metadata: Metadata = {
   title: "Damilare Osofisan | Designer & Builder",
-  description: "Designer and builder.",
+  description: "Designer and builder creating 0–1 experiences.",
   metadataBase: new URL("https://damilareoo.xyz"),
   icons: {
     icon: "/images/avatar.png",
@@ -15,15 +15,16 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Damilare Osofisan | Designer & Builder",
-    description: "Designer and builder.",
+    description: "Designer and builder creating 0–1 experiences.",
     url: "https://damilareoo.xyz",
     siteName: "Damilare Osofisan",
     images: [
       {
-        url: "/images/og-image.png",
+        url: "https://damilareoo.xyz/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "Damilare Osofisan - Designer and builder",
+        type: "image/png",
       },
     ],
     locale: "en_US",
@@ -32,9 +33,13 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Damilare Osofisan | Designer & Builder",
-    description: "Designer and builder.",
-    images: ["/images/og-image.png"],
+    description: "Designer and builder creating 0–1 experiences.",
+    images: ["https://damilareoo.xyz/images/og-image.png"],
     creator: "@damilareoo",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
   },
     generator: 'v0.app'
 }
@@ -50,6 +55,8 @@ export default function RootLayout({
         <link rel="icon" href="/images/avatar.png" sizes="any" />
 
         <meta property="og:image" content="https://damilareoo.xyz/images/og-image.png" />
+        <meta property="og:image:url" content="https://damilareoo.xyz/images/og-image.png" />
+        <meta property="og:image:secure_url" content="https://damilareoo.xyz/images/og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Damilare Osofisan - Designer and builder" />
@@ -59,12 +66,16 @@ export default function RootLayout({
         <meta name="twitter:image:alt" content="Damilare Osofisan - Designer and builder" />
         <meta name="twitter:card" content="summary_large_image" />
 
-        <meta property="og:image:secure_url" content="https://damilareoo.xyz/images/og-image.png" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://damilareoo.xyz" />
         <meta property="og:title" content="Damilare Osofisan | Designer & Builder" />
-        <meta property="og:description" content="Designer and builder." />
+        <meta property="og:description" content="Designer and builder creating 0–1 experiences." />
         <meta property="og:site_name" content="Damilare Osofisan" />
+
+        {/* Apple-specific meta tags for iMessage/Messages app preview */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Damilare" />
       </head>
       <body className="font-sans antialiased">
         <Suspense fallback={<div>Loading...</div>}>
