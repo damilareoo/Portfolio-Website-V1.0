@@ -8,13 +8,13 @@ export function Footer() {
 
   return (
     <motion.footer
-      className="px-4 md:px-8 py-6 md:py-8 relative"
+      className="px-4 md:px-8 pt-4 md:pt-6 pb-6 md:pb-8 relative"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }}
     >
-      <div className="h-px bg-[#2a2a2a] mb-8 md:mb-12" />
+      <div className="h-px bg-[#2a2a2a] mb-6 md:mb-8" />
 
       <div className="flex flex-col items-center justify-center gap-8">
         {/* Spotify embed popup section */}
