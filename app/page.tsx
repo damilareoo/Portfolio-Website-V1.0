@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { HeroSection } from "@/components/hero-section"
 import { WorkSection } from "@/components/work-section"
 import { ContactSection } from "@/components/contact-section"
+import { WorkbenchEmbed } from "@/components/workbench-embed"
 import { Navbar } from "@/components/navbar"
 import { CustomCursor } from "@/components/custom-cursor"
 import { SmoothScrollProvider, SectionTransition } from "@/components/smooth-scroll-provider"
@@ -41,6 +42,12 @@ export default function Home() {
           <section id="across-the-web">
             <SectionTransition id="across-the-web">
               <ContactSection />
+            </SectionTransition>
+          </section>
+
+          <section id="workbench">
+            <SectionTransition id="workbench">
+              <WorkbenchEmbed />
             </SectionTransition>
           </section>
         </div>
