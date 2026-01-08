@@ -130,7 +130,7 @@ export function WorkSection() {
               <span className="text-mono text-[#737373]">experiments</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-[#404040] rounded-full" />
+              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
               <div className="w-6 md:w-8 h-px bg-[#2a2a2a]" />
             </div>
           </div>
@@ -203,9 +203,9 @@ export function WorkSection() {
           viewport={{ once: true }}
           className="mt-6 md:mt-10 flex items-center gap-2 md:gap-3"
         >
-          <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-[#404040] rounded-full" />
+          <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
           <div className="w-12 md:w-16 h-px bg-[#2a2a2a]" />
-          <div className="w-0.5 h-0.5 md:w-1 md:h-1 bg-[#2a2a2a] rounded-full" />
+          <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-[#363636] rounded-full" />
         </motion.div>
       </div>
     </section>

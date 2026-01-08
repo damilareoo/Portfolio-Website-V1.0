@@ -42,7 +42,7 @@ export const HeroSection = () => {
                 href="https://chessever.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#a1a1a1] underline underline-offset-2 decoration-[#404040] hover:decoration-[#fafafa] hover:text-[#fafafa] transition-colors duration-300"
+                className="text-[#fafafa] underline decoration-[#525252] hover:decoration-[#fafafa] transition-colors duration-300"
               >
                 ChessEver
               </a>{" "}
@@ -51,7 +51,7 @@ export const HeroSection = () => {
                 href="https://hex.inc"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#a1a1a1] underline underline-offset-2 decoration-[#404040] hover:decoration-[#fafafa] hover:text-[#fafafa] transition-colors duration-300"
+                className="text-[#fafafa] underline decoration-[#525252] hover:decoration-[#fafafa] transition-colors duration-300"
               >
                 Hex
               </a>{" "}
@@ -66,9 +66,9 @@ export const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-8 md:mt-12 flex items-center gap-2 md:gap-3"
         >
-          <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-[#404040] rounded-full" />
-          <div className="w-12 md:w-16 h-px bg-[#2a2a2a]" />
-          <div className="w-0.5 h-0.5 md:w-1 md:h-1 bg-[#2a2a2a] rounded-full" />
+          <div className="w-2 h-2 md:w-2.5 md:h-2.5 bg-[#636363] rounded-full" />
+          <div className="w-16 md:w-20 h-px bg-[#333333]" />
+          <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#4a4a4a] rounded-full" />
         </motion.div>
       </div>
     </section>
