@@ -5,6 +5,7 @@ import { HeroSection } from "@/components/hero-section"
 import { WorkSection } from "@/components/work-section"
 import { ContactSection } from "@/components/contact-section"
 import { WorkbenchEmbed } from "@/components/workbench-embed"
+import { Footer } from "@/components/footer"
 import { Navbar } from "@/components/navbar"
 import { CustomCursor } from "@/components/custom-cursor"
 import { SmoothScrollProvider, SectionTransition } from "@/components/smooth-scroll-provider"
@@ -50,6 +51,8 @@ export default function Home() {
               <WorkbenchEmbed />
             </SectionTransition>
           </section>
+
+          <Footer />
         </div>
       </motion.main>
     </SmoothScrollProvider>

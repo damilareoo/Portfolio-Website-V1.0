@@ -20,36 +20,41 @@ export function useScrollContext() {
 export function SmoothScrollProvider({ children }: { children: ReactNode }) {
   const [currentSection, setCurrentSection] = useState("hero")
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
+  const lastSectionRef = useRef("hero")
 
   useEffect(() => {
     const sections = ["hero", "work", "across-the-web"]
 
     const observer = new IntersectionObserver(
       (entries) => {
+        let newSection = lastSectionRef.current
+
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
             const id = entry.target.id
             if (sections.includes(id)) {
-              // Debounce rapid state changes
-              if (debounceTimerRef.current) {
-                clearTimeout(debounceTimerRef.current)
-              }
-
-              debounceTimerRef.current = setTimeout(() => {
-                setCurrentSection(id)
-                console.log("[v0] Section changed to:", id)
-              }, 100)
+              newSection = id
             }
           }
         })
+
+        if (newSection !== lastSectionRef.current) {
+          if (debounceTimerRef.current) {
+            clearTimeout(debounceTimerRef.current)
+          }
+
+          debounceTimerRef.current = setTimeout(() => {
+            lastSectionRef.current = newSection
+            setCurrentSection(newSection)
+          }, 150)
+        }
       },
       {
-        rootMargin: "-35% 0px -35% 0px",
-        threshold: [0.1, 0.5],
+        rootMargin: "-50% 0px -50% 0px",
+        threshold: [0.1, 0.2, 0.5],
       },
     )
 
-    // Observe all sections
     sections.forEach((sectionId) => {
       const element = document.getElementById(sectionId)
       if (element) observer.observe(element)
