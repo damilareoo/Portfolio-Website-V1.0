@@ -17,23 +17,24 @@ export function Logo() {
   }
 
   return (
-    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full overflow-hidden border border-[#333] cursor-pointer">
+    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full overflow-hidden cursor-pointer">
       <Heatmap
-        speed={1}
-        contour={0.5}
-        angle={0}
+        speed={2.02}
+        contour={0.396}
+        angle={23}
         noise={0}
-        innerGlow={0.5}
-        outerGlow={0.5}
-        scale={0.75}
+        innerGlow={0.54}
+        outerGlow={0.78}
+        scale={1.46}
         image="https://workers.paper.design/file-assets/01KAZS6TK900909JA4ZNEHW44Q/01KEEBFKDM1N4042R8JDM7FRKB.png"
         colors={["#11206A", "#1F3BA2", "#2F63E7", "#6BD7FF", "#FFE679", "#FF991E", "#FF4C00"]}
         colorBack="#00000000"
         style={{
           backgroundColor: "#000000",
-          borderRadius: "10px",
+          borderRadius: "calc(infinity * 1px)",
           height: "100%",
           width: "100%",
+          outline: "2px solid #FFFFFF",
         }}
       />
     </div>

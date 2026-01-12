@@ -1,18 +1,42 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export function WorkbenchEmbed() {
   const [isLoading, setIsLoading] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
+  const [eagerLoad, setEagerLoad] = useState(false)
+
+  useEffect(() => {
+    const link = document.createElement("link")
+    link.rel = "preconnect"
+    link.href = "https://nacre-quake-50137672.figma.site"
+    document.head.appendChild(link)
+
+    setEagerLoad(true)
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { rootMargin: "0px" },
+    )
+
+    const element = document.getElementById("workbench-embed")
+    if (element) observer.observe(element)
+    return () => observer.disconnect()
+  }, [])
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.5,
-        ease: [0.25, 0.1, 0.25, 1.0],
+        duration: 0.3,
+        ease: "easeOut",
       },
     },
   }
@@ -24,10 +48,9 @@ export function WorkbenchEmbed() {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: "-50px" }}
     >
       <div className="px-4 md:px-8">
-        {/* Section header with line */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -43,7 +66,6 @@ export function WorkbenchEmbed() {
                 <div className="w-4 md:w-6 h-px bg-[#404040]" />
                 <span className="text-mono text-[#737373] text-xs md:text-sm">workbench</span>
               </div>
-              <span className="text-mono text-[#525252] text-xs md:text-sm hidden md:inline">← explore the canvas</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-[#636363] rounded-full" />
@@ -53,29 +75,29 @@ export function WorkbenchEmbed() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.3, delay: 0 }}
           className="relative group"
         >
-          <div className="relative w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg overflow-hidden md:h-[1000px] h-[600px] group-hover:border-[#404040] transition-colors duration-300">
-            {/* Loading skeleton with smoother animation */}
+          <div className="relative w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg overflow-hidden md:h-[1000px] h-[600px] group-hover:border-[#404040] transition-colors duration-200">
             {isLoading && (
-              <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a1a] via-[#0f0f0f] to-[#0a0a0a] animate-pulse z-10" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a1a] via-[#0f0f0f] to-[#0a0a0a] z-10" />
             )}
 
-            <iframe
-              src="https://nacre-quake-50137672.figma.site"
-              title="WorkBench - Interactive Design Canvas"
-              className="w-full h-full border-0"
-              onLoad={() => setIsLoading(false)}
-              allow="fullscreen"
-            />
+            {eagerLoad && (
+              <iframe
+                src="https://nacre-quake-50137672.figma.site"
+                title="WorkBench - Interactive Design Canvas"
+                className="w-full h-full border-0"
+                onLoad={() => setIsLoading(false)}
+                allow="fullscreen"
+                loading="lazy"
+                style={{ contain: "layout style paint" }}
+              />
+            )}
           </div>
-
-          {/* Subtle glow effect on hover - uses GPU acceleration */}
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a] rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10 will-change-opacity" />
         </motion.div>
       </div>
     </motion.section>

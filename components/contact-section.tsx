@@ -63,7 +63,7 @@ export function ContactSection() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 md:gap-3">
               <div className="w-4 md:w-6 h-px bg-[#404040]" />
-              <span className="text-mono text-[#737373]">elsewhere</span>
+              <span className="text-mono text-[#737373] text-xs md:text-sm">elsewhere</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-[#404040] rounded-full" />

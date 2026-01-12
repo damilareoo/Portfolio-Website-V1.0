@@ -116,13 +116,13 @@ export function Footer() {
         {/* Bottom decorative elements */}
         <div className="flex items-center justify-center gap-2 md:gap-3">
           <div className="w-6 md:w-8 h-px bg-[#2a2a2a]" />
-          <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-[#404040] rounded-full" />
+          <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-[#404040] rounded-full flex-shrink-0" />
           <div className="w-6 md:w-8 h-px bg-[#2a2a2a]" />
         </div>
 
         {/* Corner accents */}
-        <div className="absolute bottom-0 left-3 md:left-4 w-3 h-3 md:w-4 md:h-4 border-l border-b border-[#333]" />
-        <div className="absolute bottom-0 right-3 md:right-4 w-3 h-3 md:w-4 md:h-4 border-r border-b border-[#333]" />
+        <div className="absolute bottom-2 md:bottom-3 left-3 md:left-4 w-3 h-3 md:w-4 md:h-4 border-l border-b border-[#333]" />
+        <div className="absolute bottom-2 md:bottom-3 right-3 md:right-4 w-3 h-3 md:w-4 md:h-4 border-r border-b border-[#333]" />
       </div>
     </motion.footer>
   )

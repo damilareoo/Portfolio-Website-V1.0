@@ -108,7 +108,7 @@ export function WorkSection() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 md:gap-3">
               <div className="w-4 md:w-6 h-px bg-[#404040]" />
-              <span className="text-mono text-[#737373]">experiments</span>
+              <span className="text-mono text-[#737373] text-xs md:text-sm">experiments</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />

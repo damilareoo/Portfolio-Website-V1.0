@@ -67,8 +67,8 @@ export const HeroSection = () => {
           className="mt-8 md:mt-12 flex items-center gap-2 md:gap-3"
         >
           <div className="w-2 h-2 md:w-2.5 md:h-2.5 bg-[#636363] rounded-full" />
-          <div className="w-16 md:w-20 h-px bg-[#333333]" />
-          <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#4a4a4a] rounded-full" />
+          <div className="w-16 md:w-20 h-px bg-[#333]" />
+          <div className="w-2 h-2 md:w-2.5 md:h-2.5 bg-[#4a4a4a] rounded-full" />
         </motion.div>
       </div>
     </section>
