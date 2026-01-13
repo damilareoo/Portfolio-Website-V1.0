@@ -1,30 +1,83 @@
-# Portfolio v0.2
+# Portfolio Website (Built with v0)
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+This is my personal portfolio website, built as a space to share experiments, ideas, and things I’m actively exploring. It’s less about being "finished" and more about showing how I think, build, and iterate.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/damilares-projects-fc682e5f/v0-portfolio-v0-2)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/BEBWGuprerw)
+The site was created primarily using **v0** by Vercel, with minimal manual design intervention. Most decisions came from prompting, refining, and shaping outputs until they felt right.
 
-## Overview
+---
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+## About the Project
+
+This portfolio is intentionally lightweight and flexible. It’s designed to:
+
+* Showcase selected projects and experiments
+* Share in-progress ideas and explorations
+* Act as a sandbox for testing layouts, interactions, and patterns
+
+Iteration is a core part of the project. The site will continue to evolve over time.
+
+---
+
+## Built With
+
+* **v0** – Primary tool used to generate and iterate on the UI and structure
+* **Next.js** – Application framework
+* **React** – Component-based UI
+* **Tailwind CSS** – Styling and layout
+* **Vercel** – Deployment and hosting
+
+Special credit to **v0 by Vercel** for enabling fast exploration and lowering the barrier between ideas and working interfaces.
+
+---
+
+## How v0 Was Used
+
+* Generating page layouts and components
+* Rapidly iterating on structure and visual hierarchy
+* Exploring multiple directions quickly
+* Refining prompts instead of writing everything from scratch
+
+Design input was added only when the generated output didn’t match what I had in mind.
+
+---
+
+## Project Structure
+
+The codebase follows a standard Next.js structure, keeping things simple and easy to extend:
+
+* `/app` – Pages and routing
+* `/components` – Reusable UI components
+* `/styles` – Global styles and Tailwind configuration
+* `/public` – Static assets
+
+---
+
+## Getting Started
+
+Clone the repository:
+
+```
+git clone https://github.com/damilareoo/Portfolio-Website-V1.0.git
+```
+
+Install dependencies:
+
+```
+npm install
+```
+
+Run the development server:
+
+```
+npm run dev
+```
+
+Open `http://localhost:3000` to view it in the browser.
+
+---
 
 ## Deployment
 
-Your project is live at:
+The project is deployed using **Vercel**. Any updates pushed to the main branch can be deployed instantly.
 
-**[https://vercel.com/damilares-projects-fc682e5f/v0-portfolio-v0-2](https://vercel.com/damilares-projects-fc682e5f/v0-portfolio-v0-2)**
-
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.dev/chat/projects/BEBWGuprerw](https://v0.dev/chat/projects/BEBWGuprerw)**
-
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+---
