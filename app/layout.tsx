@@ -21,8 +21,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://damilareoo.xyz/images/og-image.png",
-        width: 1200,
-        height: 630,
+        width: 1280,
+        height: 672,
         alt: "Damilare Osofisan - Designer and builder",
         type: "image/png",
       },
@@ -57,8 +57,8 @@ export default function RootLayout({
         <meta property="og:image" content="https://damilareoo.xyz/images/og-image.png" />
         <meta property="og:image:url" content="https://damilareoo.xyz/images/og-image.png" />
         <meta property="og:image:secure_url" content="https://damilareoo.xyz/images/og-image.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        <meta property="og:image:width" content="1280" />
+        <meta property="og:image:height" content="672" />
         <meta property="og:image:alt" content="Damilare Osofisan - Designer and builder" />
         <meta property="og:image:type" content="image/png" />
 

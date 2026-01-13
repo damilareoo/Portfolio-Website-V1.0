@@ -7,7 +7,6 @@ import { ContactSection } from "@/components/contact-section"
 import { WorkbenchEmbed } from "@/components/workbench-embed"
 import { Footer } from "@/components/footer"
 import { Navbar } from "@/components/navbar"
-import { CustomCursor } from "@/components/custom-cursor"
 import { SmoothScrollProvider, SectionTransition } from "@/components/smooth-scroll-provider"
 
 export default function Home() {
@@ -19,7 +18,6 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }}
       >
-        <CustomCursor />
         <Navbar />
 
         <div className="grid-container relative">
