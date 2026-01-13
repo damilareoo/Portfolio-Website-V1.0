@@ -21,8 +21,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://damilareoo.xyz/images/og-image.png",
-        width: 1280,
-        height: 672,
+        width: 1200,
+        height: 630,
         alt: "Damilare Osofisan - Designer and builder",
         type: "image/png",
       },
@@ -57,8 +57,8 @@ export default function RootLayout({
         <meta property="og:image" content="https://damilareoo.xyz/images/og-image.png" />
         <meta property="og:image:url" content="https://damilareoo.xyz/images/og-image.png" />
         <meta property="og:image:secure_url" content="https://damilareoo.xyz/images/og-image.png" />
-        <meta property="og:image:width" content="1280" />
-        <meta property="og:image:height" content="672" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Damilare Osofisan - Designer and builder" />
         <meta property="og:image:type" content="image/png" />
 
@@ -72,7 +72,6 @@ export default function RootLayout({
         <meta property="og:description" content="Designer and builder creating 0–1 experiences." />
         <meta property="og:site_name" content="Damilare Osofisan" />
 
-        {/* Apple-specific meta tags for iMessage/Messages app preview */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Damilare" />
