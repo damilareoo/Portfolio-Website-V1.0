@@ -46,7 +46,7 @@ export const HeroSection = () => {
               >
                 ChessEver
               </a>{" "}
-              as Founding Designer and{" "}
+              as Founding Product Designer and{" "}
               <a
                 href="https://hex.inc"
                 target="_blank"
