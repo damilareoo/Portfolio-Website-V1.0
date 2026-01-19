@@ -22,29 +22,29 @@ export default function Home() {
 
         <div className="grid-container relative">
           {/* Left border line */}
-          <div className="absolute left-0 top-0 bottom-0 w-px bg-[#222] hidden md:block" />
+          <div className="absolute left-0 top-0 bottom-0 w-px bg-[#2a2a2a] hidden md:block" aria-hidden="true" />
           {/* Right border line */}
-          <div className="absolute right-0 top-0 bottom-0 w-px bg-[#222] hidden md:block" />
+          <div className="absolute right-0 top-0 bottom-0 w-px bg-[#2a2a2a] hidden md:block" aria-hidden="true" />
 
-          <section id="hero">
+          <section id="hero" aria-label="Hero section">
             <SectionTransition id="hero">
               <HeroSection />
             </SectionTransition>
           </section>
 
-          <section id="work">
+          <section id="work" aria-label="Work and experiments">
             <SectionTransition id="work">
               <WorkSection />
             </SectionTransition>
           </section>
 
-          <section id="across-the-web">
+          <section id="across-the-web" aria-label="Elsewhere and contact">
             <SectionTransition id="across-the-web">
               <ContactSection />
             </SectionTransition>
           </section>
 
-          <section id="workbench">
+          <section id="workbench" aria-label="WorkBench design tool">
             <SectionTransition id="workbench">
               <WorkbenchEmbed />
             </SectionTransition>

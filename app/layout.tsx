@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   description: "Designer and builder creating 0–1 experiences.",
   metadataBase: new URL("https://damilareoo.xyz"),
   icons: {
-    icon: "/images/favicon.jpeg",
-    shortcut: "/images/favicon.jpeg",
-    apple: "/images/favicon.jpeg",
+    icon: "/images/image.jpeg",
+    shortcut: "/images/image.jpeg",
+    apple: "/images/image.jpeg",
   },
   openGraph: {
     title: "Damilare Osofisan | Designer & Builder",
@@ -50,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/images/favicon.jpeg" sizes="any" />
 
