@@ -56,21 +56,21 @@ The codebase follows a standard Next.js structure, keeping things simple and eas
 
 Clone the repository:
 
-```
+\`\`\`
 git clone https://github.com/damilareoo/Portfolio-Website-V1.0.git
-```
+\`\`\`
 
 Install dependencies:
 
-```
+\`\`\`
 npm install
-```
+\`\`\`
 
 Run the development server:
 
-```
+\`\`\`
 npm run dev
-```
+\`\`\`
 
 Open `http://localhost:3000` to view it in the browser.
 
