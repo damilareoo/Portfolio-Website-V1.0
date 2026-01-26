@@ -16,7 +16,7 @@ export function WorkbenchEmbed() {
 
   return (
     <motion.section
-      className="py-8 md:py-12 relative"
+      className="py-8 md:py-16 relative"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -29,7 +29,7 @@ export function WorkbenchEmbed() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.3 }}
-          className="relative mb-8 md:mb-10"
+          className="relative mb-8 md:mb-12"
         >
           <div className="h-px bg-[#2a2a2a] mb-4 md:mb-6" />
           <div className="flex items-center justify-between">
@@ -44,6 +44,17 @@ export function WorkbenchEmbed() {
           </div>
         </motion.div>
 
+        {/* Description text - helps set context before the embed */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="text-sm md:text-base text-[#a1a1a1] mb-8 md:mb-12 leading-relaxed"
+        >
+          Interactive design explorations and experiments. Explore the canvas to see interactive prototypes and design iterations.
+        </motion.p>
+
         {/* Canvas Container */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -52,7 +63,7 @@ export function WorkbenchEmbed() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="relative group"
         >
-          <div className="relative w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg overflow-hidden md:h-[1000px] h-[600px] group-hover:border-[#404040] transition-colors duration-200">
+          <div className="relative w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg overflow-hidden h-[500px] md:h-[800px] group-hover:border-[#404040] transition-colors duration-200">
             <iframe
               src="https://nacre-quake-50137672.figma.site"
               title="WorkBench - Interactive Design Canvas"
@@ -61,11 +72,33 @@ export function WorkbenchEmbed() {
               allow="fullscreen"
               style={{
                 backgroundColor: "#000000",
-                opacity: isLoaded ? 1 : 0.7,
+                opacity: isLoaded ? 1 : 0.3,
                 transition: "opacity 0.3s ease-out",
               }}
             />
           </div>
+          
+          {/* Bottom hint for scrolling */}
+          <motion.div
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.4 }}
+            className="mt-4 text-center"
+          >
+            <p className="text-xs text-[#525252]">Scroll to explore more</p>
+          </motion.div>
+        </motion.div>
+
+        {/* Decorative separator after embed */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-8 md:mt-12 flex items-center gap-2 md:gap-3"
+        >
+          <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
+          <div className="w-12 md:w-16 h-px bg-[#2a2a2a]" />
+          <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-[#363636] rounded-full" />
         </motion.div>
       </div>
     </motion.section>
