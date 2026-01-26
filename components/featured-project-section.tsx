@@ -42,7 +42,7 @@ export function FeaturedProject() {
             <div className="group relative mb-8 md:mb-12 rounded-lg overflow-hidden bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#404040] transition-all duration-300">
               <div className="relative w-full aspect-video md:aspect-[16/9]">
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sylvan%3Afeatured-PDCM3YaDjWpG0ZPqNswIXbSEtOGQTP.gif"
+                  src="/images/sylvan-3afeatured.gif"
                   alt="Sylvan - Revenue intelligence platform"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -88,7 +88,7 @@ export function FeaturedProject() {
 
                     <div className="pt-2">
                       <p className="text-sm text-[#737373]">
-                        <span className="text-[#fafafa] font-medium">Role:</span> Brand Design, Logo Design, Web Design, Visual System, Framer Development
+                        <span className="text-[#fafafa] font-medium">Role:</span> Brand Design, Logo Design, Web Design, Visual System
                       </p>
                     </div>
                   </div>
