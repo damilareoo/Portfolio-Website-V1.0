@@ -45,15 +45,7 @@ export function WorkbenchEmbed() {
         </motion.div>
 
         {/* Description text - helps set context before the embed */}
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="text-sm md:text-base text-[#a1a1a1] mb-8 md:mb-12 leading-relaxed"
-        >
-          Interactive design explorations and experiments. Explore the canvas to see interactive prototypes and design iterations.
-        </motion.p>
+        
 
         {/* Canvas Container */}
         <motion.div
