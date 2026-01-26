@@ -42,7 +42,7 @@ export function FeaturedProject() {
             <div className="group relative mb-8 md:mb-12 rounded-lg overflow-hidden bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#404040] transition-all duration-300">
               <div className="relative w-full aspect-video md:aspect-[16/9]">
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cursorful-video-1769333397898_converted.gif-mMXzyT3E0gL9jFQ1jhtiaNmzXuOB3c.jpeg"
+                  src="/images/cursorful-video-1769333397898-converted.jpeg"
                   alt="Sylvan - Revenue intelligence platform"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -95,7 +95,7 @@ export function FeaturedProject() {
                 </div>
               </motion.div>
 
-              {/* CTA Links */}
+              {/* CTA Link */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -107,10 +107,10 @@ export function FeaturedProject() {
                   href="https://sylvanlabs.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/link inline-flex items-center gap-2 px-4 py-2.5 border border-[#2a2a2a] hover:border-[#404040] rounded transition-all duration-300 text-sm font-medium text-[#fafafa] hover:text-white hover:bg-[#0a0a0a]"
+                  className="group/link inline-flex items-center gap-2 text-sm font-medium text-[#fafafa] hover:text-white transition-colors duration-300"
                 >
                   View Live Website
-                  <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all" />
+                  <ExternalLink className="w-4 h-4 group-hover/link:text-white group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all duration-300" />
                 </a>
               </motion.div>
             </div>
