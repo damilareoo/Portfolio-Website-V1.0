@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <SmoothScrollProvider>
       <motion.main
-        className="min-h-screen relative w-full"
+        className="min-h-screen relative w-full overflow-x-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }}
@@ -23,23 +23,17 @@ export default function Home() {
 
         {/* Full-width container with centered content and side lines */}
         <div className="relative w-full">
-          {/* Left border line - full height */}
+          {/* Left border line */}
           <div 
-            className="fixed left-1/2 top-0 bottom-0 w-px bg-[#2a2a2a] hidden md:block transform -translate-x-[450px] pointer-events-none"
+            className="fixed left-[calc(50%-450px)] top-0 w-px bg-[#2a2a2a] hidden md:block pointer-events-none"
             aria-hidden="true"
-            style={{ 
-              height: '100vh',
-              transform: 'translateX(calc(-50vw + 450px))'
-            }}
+            style={{ height: '100%' }}
           />
-          {/* Right border line - full height */}
+          {/* Right border line */}
           <div 
-            className="fixed left-1/2 top-0 bottom-0 w-px bg-[#2a2a2a] hidden md:block transform translate-x-[450px] pointer-events-none"
+            className="fixed left-[calc(50%+450px)] top-0 w-px bg-[#2a2a2a] hidden md:block pointer-events-none"
             aria-hidden="true"
-            style={{ 
-              height: '100vh',
-              transform: 'translateX(calc(-50vw + 450px + 900px))'
-            }}
+            style={{ height: '100%' }}
           />
 
           {/* Centered content container */}
