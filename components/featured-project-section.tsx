@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowUpRight, ExternalLink } from "lucide-react"
+import { ExternalLink } from "lucide-react"
 import Image from "next/image"
 
 export function FeaturedProject() {
@@ -87,10 +87,7 @@ export function FeaturedProject() {
 
                     <div className="pt-2">
                       <p className="text-sm text-[#737373]">
-                        <span className="text-[#fafafa] font-medium">Role:</span> Experimental Designer at Hex
-                      </p>
-                      <p className="text-sm text-[#737373] mt-1">
-                        <span className="text-[#fafafa] font-medium">Work:</span> Brand design, logo design, web design, visual system, Framer development
+                        <span className="text-[#fafafa] font-medium">Role:</span> Brand Design, Logo Design, Web Design, Visual System, Framer Development
                       </p>
                     </div>
                   </div>
@@ -103,7 +100,7 @@ export function FeaturedProject() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4"
+                className="pt-4"
               >
                 <a
                   href="https://sylvanlabs.com"
@@ -113,14 +110,6 @@ export function FeaturedProject() {
                 >
                   View Live Website
                   <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all" />
-                </a>
-
-                <a
-                  href="#case-study-sylvan"
-                  className="group/link inline-flex items-center gap-2 px-4 py-2.5 border border-[#404040] hover:border-[#525252] rounded bg-[#0a0a0a] transition-all duration-300 text-sm font-medium text-[#fafafa] hover:text-white"
-                >
-                  Read Case Study
-                  <ArrowUpRight className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all" />
                 </a>
               </motion.div>
             </div>
