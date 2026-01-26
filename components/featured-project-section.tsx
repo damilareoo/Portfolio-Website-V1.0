@@ -60,8 +60,8 @@ export function FeaturedProject() {
       role: "0-1 Product Experience",
       links: [
         { text: "Website", url: "https://chessever.com" },
-        { text: "iOS", url: "https://apps.apple.com/app/chessever" },
-        { text: "Android", url: "https://play.google.com/store/apps/details?id=com.chessever" },
+        { text: "iOS", url: "https://apps.apple.com/us/app/chessever/id6752567269" },
+        { text: "Android", url: "https://play.google.com/store/apps/details?id=com.chessEver.app" },
       ],
     },
   ]
