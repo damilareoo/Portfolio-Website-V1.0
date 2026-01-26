@@ -48,7 +48,7 @@ export function FeaturedProject() {
         },
         {
           title: "The Approach",
-          content: "Built for devotion, not casual fans. Every feature had to earn its place. We focused on the core experience first. Watching games unfold with precision, following your favorite players, curating your own feed. The app had to feel effortless.",
+          content: "Every feature had to earn its place. We focused on getting the core experience right. Watching games unfold with precision, following your favorite players, curating your own feed. Simple to use, built for people who actually care about chess.",
         },
         {
           title: "The Impact",
