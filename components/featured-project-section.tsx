@@ -28,7 +28,9 @@ export function FeaturedProject() {
         },
       ],
       role: "Brand Design, Logo Design, Web Design, Visual System",
-      link: "https://sylvanlabs.com",
+      links: [
+        { text: "Website", url: "https://sylvanlabs.com" },
+      ],
     },
     {
       id: "chessever",
@@ -56,7 +58,11 @@ export function FeaturedProject() {
         },
       ],
       role: "0-1 Product Experience",
-      link: "https://chessever.com",
+      links: [
+        { text: "Website", url: "https://chessever.com" },
+        { text: "iOS", url: "https://apps.apple.com/app/chessever" },
+        { text: "Android", url: "https://play.google.com/store/apps/details?id=com.chessever" },
+      ],
     },
   ]
 
@@ -156,30 +162,18 @@ export function FeaturedProject() {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="pt-4 flex items-center gap-4"
                   >
-                    {project.links ? (
-                      project.links.map((link, idx) => (
-                        <a
-                          key={idx}
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group/link inline-flex items-center gap-2 text-sm font-medium text-[#fafafa] hover:text-white transition-colors duration-300"
-                        >
-                          {link.text}
-                          <ExternalLink className="w-4 h-4 group-hover/link:text-white group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all duration-300" />
-                        </a>
-                      ))
-                    ) : (
+                    {project.links.map((link, idx) => (
                       <a
-                        href={project.link}
+                        key={idx}
+                        href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group/link inline-flex items-center gap-2 text-sm font-medium text-[#fafafa] hover:text-white transition-colors duration-300"
                       >
-                        View Live Website
+                        {link.text}
                         <ExternalLink className="w-4 h-4 group-hover/link:text-white group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all duration-300" />
                       </a>
-                    )}
+                    ))}
                   </motion.div>
                 </div>
               </div>
