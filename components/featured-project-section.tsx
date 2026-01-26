@@ -42,7 +42,7 @@ export function FeaturedProject() {
             <div className="group relative mb-8 md:mb-12 rounded-lg overflow-hidden bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#404040] transition-all duration-300">
               <div className="relative w-full aspect-video md:aspect-[16/9]">
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sylvan%3Afeatured-PDCM3YaDjWpG0ZPqNswIXbSEtOGQTP.gif"
+                  src="/images/sylvan-3afeatured.gif"
                   alt="Sylvan - Revenue intelligence platform"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -63,7 +63,7 @@ export function FeaturedProject() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="space-y-4"
               >
-                <h3 className="text-2xl md:text-3xl font-normal text-[#fafafa]">Sylvan</h3>
+                <h3 className="text-2xl md:text-3xl font-normal text-[#fafafa]">Sylvan <span className="text-[#737373]">($2M Pre Seed)</span></h3>
 
                 <div className="space-y-4 text-base text-[#a1a1a1] leading-relaxed">
                   <p>
