@@ -42,7 +42,7 @@ export function FeaturedProject() {
             <div className="group relative mb-8 md:mb-12 rounded-lg overflow-hidden bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#404040] transition-all duration-300">
               <div className="relative w-full aspect-video md:aspect-[16/9]">
                 <img
-                  src="/images/sylvan-3afeatured.gif"
+                  src="/images/sylvan-featured.gif"
                   alt="Sylvan - Revenue intelligence platform"
                   className="w-full h-full object-cover"
                   loading="lazy"
