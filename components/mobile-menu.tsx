@@ -26,6 +26,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   }
 
   const navItems = [
+    { name: "Featured", href: "#featured", id: "featured" },
     { name: "Experiments", href: "#work", id: "work" },
     { name: "Elsewhere", href: "#across-the-web", id: "across-the-web" },
   ]
