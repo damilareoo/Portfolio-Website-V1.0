@@ -76,21 +76,23 @@ export function FeaturedProject() {
             transition={{ duration: 0.5 }}
             className={`${index > 0 ? "mt-16 md:mt-20" : ""}`}
           >
-            {/* Section Header */}
-            <div className="relative mb-6 md:mb-10">
-              <div className="h-px bg-[#2a2a2a] mb-4 md:mb-6" />
+            {/* Section Header - Only show for first project */}
+            {index === 0 && (
+              <div className="relative mb-6 md:mb-10">
+                <div className="h-px bg-[#2a2a2a] mb-4 md:mb-6" />
 
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 md:gap-3">
-                  <div className="w-4 md:w-6 h-px bg-[#404040]" />
-                  <span className="font-mono text-[#737373] text-xs md:text-sm font-medium">featured project</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
-                  <div className="w-6 md:w-8 h-px bg-[#2a2a2a]" />
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <div className="w-4 md:w-6 h-px bg-[#404040]" />
+                    <span className="font-mono text-[#737373] text-xs md:text-sm font-medium">featured projects</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
+                    <div className="w-6 md:w-8 h-px bg-[#2a2a2a]" />
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             {/* Project Content */}
             <motion.div
