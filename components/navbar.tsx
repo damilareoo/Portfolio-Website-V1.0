@@ -13,6 +13,7 @@ export function Navbar() {
   const { currentSection } = useScrollContext()
 
   const navItems = [
+    { name: "Featured", href: "#featured", id: "featured" },
     { name: "Experiments", href: "#work", id: "work" },
     { name: "Elsewhere", href: "#across-the-web", id: "across-the-web" },
   ]
@@ -62,13 +63,13 @@ export function Navbar() {
               <Logo />
             </a>
 
-            <nav className="hidden md:flex items-center gap-1" aria-label="Main links">
+            <nav className="hidden md:flex items-center gap-1.5 lg:gap-2" aria-label="Main links">
               {navItems.map((item, index) => (
                 <div key={item.name} className="flex items-center">
-                  {index > 0 && <div className="w-4 h-px bg-[#2a2a2a] mx-2" />}
+                  {index > 0 && <div className="w-3 md:w-3.5 lg:w-4 h-px bg-[#2a2a2a] mx-1.5 md:mx-2 lg:mx-2.5" />}
                   <a
                     href={item.href}
-                    className={`text-mono px-3 py-1 transition-all duration-300 ease-out nav-link ${
+                    className={`text-xs md:text-sm lg:text-base px-2 md:px-3 lg:px-4 py-1.5 md:py-2 transition-all duration-300 ease-out nav-link rounded ${
                       currentSection === item.id
                         ? "active text-[#fafafa] font-semibold"
                         : "text-[#a9a9a9] hover:text-[#d1d1d1]"

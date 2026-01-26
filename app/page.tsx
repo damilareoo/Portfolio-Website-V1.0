@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { HeroSection } from "@/components/hero-section"
+import { FeaturedProject } from "@/components/featured-project-section"
 import { WorkSection } from "@/components/work-section"
 import { ContactSection } from "@/components/contact-section"
 import { WorkbenchEmbed } from "@/components/workbench-embed"
@@ -29,6 +30,12 @@ export default function Home() {
           <section id="hero" aria-label="Hero section">
             <SectionTransition id="hero">
               <HeroSection />
+            </SectionTransition>
+          </section>
+
+          <section id="featured" aria-label="Featured project">
+            <SectionTransition id="featured">
+              <FeaturedProject />
             </SectionTransition>
           </section>
 
