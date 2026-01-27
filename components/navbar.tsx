@@ -53,7 +53,7 @@ export function Navbar() {
         <div className="h-px bg-[#2a2a2a]" />
 
         <div className="grid-container">
-          <div className="flex items-center justify-between py-3 md:py-4 px-4 md:px-8">
+          <div className="flex items-center justify-between py-3 md:py-4 px-6 md:px-8">
             <a 
               href="#" 
               className="flex items-center gap-2 md:gap-3 group focus-visible:outline-2 outline-offset-2 outline-[#525252]"
@@ -85,11 +85,11 @@ export function Navbar() {
             <div className="md:hidden">
               <button
                 onClick={() => setIsOpen(true)}
-                className="flex items-center justify-center w-8 h-8 md:w-9 md:h-9 border border-[#2a2a2a] hover:border-[#3a3a3a] hover:bg-[#0a0a0a] transition-colors duration-300 text-[#ededed] focus-visible:outline-2 outline-offset-2 outline-[#525252]"
+                className="flex items-center justify-center w-10 h-10 border border-[#2a2a2a] hover:border-[#3a3a3a] hover:bg-[#0a0a0a] transition-colors duration-300 text-[#ededed] focus-visible:outline-2 outline-offset-2 outline-[#525252]"
                 aria-label="Open menu"
                 aria-expanded={isOpen}
               >
-                <Menu className="h-3.5 w-3.5 md:h-4 md:w-4" />
+                <Menu className="h-5 w-5" />
               </button>
             </div>
           </div>

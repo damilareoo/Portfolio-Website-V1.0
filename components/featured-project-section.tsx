@@ -68,7 +68,7 @@ export function FeaturedProject() {
 
   return (
     <section id="featured" className="py-12 md:py-16 relative">
-      <div className="px-4 md:px-8">
+      <div className="px-6 md:px-8">
         {projects.map((project, index) => (
           <motion.div
             key={project.id}
@@ -80,8 +80,8 @@ export function FeaturedProject() {
           >
             {/* Section Header - Only show for first project */}
             {index === 0 && (
-              <div className="relative mb-6 md:mb-10">
-                <div className="h-px bg-[#2a2a2a] mb-4 md:mb-6" />
+              <div className="relative mb-8 md:mb-10">
+                <div className="h-px bg-[#2a2a2a] mb-6 md:mb-6" />
 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 md:gap-3">
@@ -129,19 +129,19 @@ export function FeaturedProject() {
                     transition={{ duration: 0.5, delay: 0.1 }}
                     className="space-y-4"
                   >
-                    <h3 className="text-2xl md:text-3xl font-normal text-[#fafafa]">
+                    <h3 className="text-lg md:text-xl lg:text-2xl font-normal text-[#fafafa] text-pretty">
                       {project.title}
                       {project.funding && <span className="text-[#737373]"> ({project.funding})</span>}
                     </h3>
 
-                    <div className="space-y-4 text-base text-[#a1a1a1] leading-relaxed">
+                    <div className="space-y-4 text-base md:text-lg text-[#a1a1a1] leading-relaxed">
                       <p>{project.description}</p>
 
                       <div className="space-y-3 pt-2">
                         {project.sections.map((section, idx) => (
                           <div key={idx}>
                             <h4 className="text-[#fafafa] font-medium mb-2">{section.title}</h4>
-                            <p>{section.content}</p>
+                            <p className="text-sm md:text-base">{section.content}</p>
                           </div>
                         ))}
 
@@ -160,7 +160,7 @@ export function FeaturedProject() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="pt-4 flex items-center gap-4"
+                    className="pt-4 flex items-center gap-4 flex-wrap"
                   >
                     {project.links.map((link, idx) => (
                       <a
@@ -185,7 +185,7 @@ export function FeaturedProject() {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                className="mt-12 md:mt-16 flex items-center gap-2 md:gap-3"
+                className="mt-12 md:mt-16 flex items-center gap-3"
               >
                 <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
                 <div className="w-12 md:w-16 h-px bg-[#2a2a2a]" />
@@ -200,7 +200,7 @@ export function FeaturedProject() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-12 md:mt-16 flex items-center gap-2 md:gap-3"
+          className="mt-12 md:mt-16 flex items-center gap-3"
         >
           <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
           <div className="w-12 md:w-16 h-px bg-[#2a2a2a]" />

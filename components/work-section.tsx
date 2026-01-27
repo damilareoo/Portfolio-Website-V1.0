@@ -16,12 +16,7 @@ const projects = [
     description: "Brand, web design and dev",
     link: "https://trieuthcapital.com",
   },
-  {
-    id: 2,
-    title: "Abstract",
-    description: "Team page exploration",
-    link: "https://abstract-team-page.vercel.app/",
-  },
+
   {
     id: 3,
     title: "Reveriee",
@@ -83,15 +78,15 @@ export function WorkSection() {
 
   return (
     <section id="work" className="py-8 md:py-12 relative">
-      <div className="px-4 md:px-8">
+      <div className="px-6 md:px-8">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative mb-6 md:mb-10"
+          className="relative mb-8 md:mb-10"
         >
-          <div className="h-px bg-[#2a2a2a] mb-4 md:mb-6" />
+          <div className="h-px bg-[#2a2a2a] mb-6 md:mb-6" />
 
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 md:gap-3">
@@ -117,7 +112,7 @@ export function WorkSection() {
           <div className="md:pl-6">
             {projects.map((project) => (
               <motion.div key={project.id} variants={itemVariants}>
-                <div className="group relative py-3 md:py-4 border-b border-[#1a1a1a] hover:border-[#404040] transition-all duration-300">
+                <div className="group relative py-4 md:py-4 border-b border-[#1a1a1a] hover:border-[#404040] transition-all duration-300">
                   {/* Hover indicator line */}
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0 group-hover:w-3 h-px bg-[#525252] transition-all duration-300 hidden md:block" />
 
@@ -127,8 +122,8 @@ export function WorkSection() {
                     rel="noopener noreferrer"
                     className="flex flex-col md:flex-row md:items-center md:justify-between md:pl-4"
                   >
-                    <div className="flex items-start gap-2 md:items-center md:gap-4">
-                      <span className="text-large font-normal text-[#fafafa] group-hover:text-white transition-colors duration-300">
+                    <div className="flex items-start gap-2 md:items-center md:gap-4 flex-wrap">
+                      <span className="text-lg md:text-xl lg:text-2xl font-normal text-[#fafafa] group-hover:text-white transition-colors duration-300 flex-shrink-0">
                         {project.title}
                       </span>
                       {project.tag && (
@@ -136,15 +131,15 @@ export function WorkSection() {
                           [{project.tag}]
                         </span>
                       )}
-                      <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0" />
+                      <ArrowUpRight className="w-4 h-4 md:w-4 md:h-4 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0" />
                     </div>
 
-                    <div className="flex items-center gap-2 mt-1.5 md:mt-0">
-                      <span className="text-base text-[#737373] group-hover:text-[#a1a1a1] transition-colors duration-300">
+                    <div className="flex items-center gap-2 mt-2 md:mt-0 flex-wrap">
+                      <span className="text-sm md:text-base text-[#737373] group-hover:text-[#a1a1a1] transition-colors duration-300">
                         {project.description}
                       </span>
                       {project.credit && (
-                        <span className="text-base text-xs md:text-sm">
+                        <span className="text-xs md:text-sm">
                           <span
                             onClick={(e) => {
                               e.preventDefault()
@@ -170,7 +165,7 @@ export function WorkSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-6 md:mt-10 flex items-center gap-2 md:gap-3"
+          className="mt-8 md:mt-10 flex items-center gap-3"
         >
           <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
           <div className="w-12 md:w-16 h-px bg-[#2a2a2a]" />

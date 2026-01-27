@@ -27,15 +27,15 @@ export const HeroSection = () => {
   }
 
   return (
-    <section id="hero" className="pt-20 md:pt-32 pb-12 md:pb-20 relative">
-      <div className="px-4 md:px-8">
+    <section id="hero" className="pt-20 pb-12 md:pt-32 md:pb-20 relative">
+      <div className="px-6 md:px-8">
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="relative">
-          <motion.div variants={itemVariants} className="mb-4 md:mb-6">
-            <h1 className="text-large font-normal text-[#fafafa]">Damilare Osofisan</h1>
+          <motion.div variants={itemVariants} className="mb-6 md:mb-8">
+            <h1 className="text-xl md:text-2xl lg:text-4xl font-normal text-[#fafafa] text-pretty">Damilare Osofisan</h1>
           </motion.div>
 
           <motion.div variants={itemVariants} className="relative">
-            <p className="text-base text-[#a1a1a1] max-w-2xl leading-relaxed text-balance">
+            <p className="text-base md:text-lg text-[#a1a1a1] max-w-2xl leading-relaxed text-balance">
               Designer and builder creating 0–1 experiences. I design products, build what makes them work, and ship
               them. Currently at{" "}
               <a
@@ -64,7 +64,7 @@ export const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-8 md:mt-12 flex items-center gap-2 md:gap-3"
+          className="mt-8 md:mt-12 flex items-center gap-3"
         >
           <div className="w-2 h-2 md:w-2.5 md:h-2.5 bg-[#636363] rounded-full" />
           <div className="w-16 md:w-20 h-px bg-[#333]" />
