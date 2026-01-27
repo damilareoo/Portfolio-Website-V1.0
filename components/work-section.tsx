@@ -16,12 +16,7 @@ const projects = [
     description: "Brand, web design and dev",
     link: "https://trieuthcapital.com",
   },
-  {
-    id: 2,
-    title: "Abstract",
-    description: "Team page exploration",
-    link: "https://abstract-team-page.vercel.app/",
-  },
+
   {
     id: 3,
     title: "Reveriee",
