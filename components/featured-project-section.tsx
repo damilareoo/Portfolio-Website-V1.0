@@ -67,8 +67,8 @@ export function FeaturedProject() {
   ]
 
   return (
-    <section id="featured" className="py-12 md:py-16 relative">
-      <div className="px-4 md:px-8">
+    <section id="featured" className="py-8 sm:py-12 md:py-16 relative">
+      <div className="px-4 sm:px-6 md:px-8">
         {projects.map((project, index) => (
           <motion.div
             key={project.id}
@@ -76,21 +76,21 @@ export function FeaturedProject() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className={`${index > 0 ? "mt-16 md:mt-20" : ""}`}
+            className={`${index > 0 ? "mt-12 sm:mt-16 md:mt-20" : ""}`}
           >
             {/* Section Header - Only show for first project */}
             {index === 0 && (
-              <div className="relative mb-6 md:mb-10">
-                <div className="h-px bg-[#2a2a2a] mb-4 md:mb-6" />
+              <div className="relative mb-4 sm:mb-6 md:mb-10">
+                <div className="h-px bg-[#2a2a2a] mb-3 sm:mb-4 md:mb-6" />
 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 md:gap-3">
-                    <div className="w-4 md:w-6 h-px bg-[#404040]" />
+                    <div className="w-3 sm:w-4 md:w-6 h-px bg-[#404040]" />
                     <span className="font-mono text-[#737373] text-xs md:text-sm font-medium">featured projects</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
-                    <div className="w-6 md:w-8 h-px bg-[#2a2a2a]" />
+                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
+                    <div className="w-6 sm:w-7 md:w-8 h-px bg-[#2a2a2a]" />
                   </div>
                 </div>
               </div>
@@ -106,7 +106,7 @@ export function FeaturedProject() {
             >
               <div className="md:pl-6">
                 {/* Featured Image */}
-                <div className="group relative mb-8 md:mb-12 rounded-lg overflow-hidden bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#404040] transition-all duration-300">
+                <div className="group relative mb-6 sm:mb-8 md:mb-12 rounded-lg overflow-hidden bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#404040] transition-all duration-300">
                   <div className="relative w-full aspect-video md:aspect-[16/9]">
                     <img
                       src={project.image || "/placeholder.svg"}
@@ -120,33 +120,33 @@ export function FeaturedProject() {
                 </div>
 
                 {/* Content Section */}
-                <div className="space-y-6 md:pl-4">
+                <div className="space-y-4 sm:space-y-6 md:pl-4">
                   {/* Title and Description */}
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.1 }}
-                    className="space-y-4"
+                    className="space-y-3 sm:space-y-4"
                   >
-                    <h3 className="text-2xl md:text-3xl font-normal text-[#fafafa]">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-normal text-[#fafafa] text-pretty">
                       {project.title}
                       {project.funding && <span className="text-[#737373]"> ({project.funding})</span>}
                     </h3>
 
-                    <div className="space-y-4 text-base text-[#a1a1a1] leading-relaxed">
+                    <div className="space-y-3 sm:space-y-4 text-sm sm:text-base md:text-lg text-[#a1a1a1] leading-relaxed">
                       <p>{project.description}</p>
 
-                      <div className="space-y-3 pt-2">
+                      <div className="space-y-2 sm:space-y-3 pt-1 sm:pt-2">
                         {project.sections.map((section, idx) => (
                           <div key={idx}>
-                            <h4 className="text-[#fafafa] font-medium mb-2">{section.title}</h4>
-                            <p>{section.content}</p>
+                            <h4 className="text-[#fafafa] font-medium mb-1 sm:mb-2">{section.title}</h4>
+                            <p className="text-xs sm:text-sm md:text-base">{section.content}</p>
                           </div>
                         ))}
 
-                        <div className="pt-2">
-                          <p className="text-sm text-[#737373]">
+                        <div className="pt-1 sm:pt-2">
+                          <p className="text-xs sm:text-sm text-[#737373]">
                             <span className="text-[#fafafa] font-medium">Role:</span> {project.role}
                           </p>
                         </div>
@@ -160,7 +160,7 @@ export function FeaturedProject() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="pt-4 flex items-center gap-4"
+                    className="pt-2 sm:pt-4 flex items-center gap-3 sm:gap-4 flex-wrap"
                   >
                     {project.links.map((link, idx) => (
                       <a
@@ -168,10 +168,10 @@ export function FeaturedProject() {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group/link inline-flex items-center gap-2 text-sm font-medium text-[#fafafa] hover:text-white transition-colors duration-300"
+                        className="group/link inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium text-[#fafafa] hover:text-white transition-colors duration-300"
                       >
                         {link.text}
-                        <ExternalLink className="w-4 h-4 group-hover/link:text-white group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all duration-300" />
+                        <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 group-hover/link:text-white group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all duration-300" />
                       </a>
                     ))}
                   </motion.div>
@@ -185,11 +185,11 @@ export function FeaturedProject() {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                className="mt-12 md:mt-16 flex items-center gap-2 md:gap-3"
+                className="mt-8 sm:mt-12 md:mt-16 flex items-center gap-2 md:gap-3"
               >
-                <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
-                <div className="w-12 md:w-16 h-px bg-[#2a2a2a]" />
-                <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-[#363636] rounded-full" />
+                <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
+                <div className="w-10 sm:w-12 md:w-16 h-px bg-[#2a2a2a]" />
+                <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-1.5 md:h-1.5 bg-[#363636] rounded-full" />
               </motion.div>
             )}
           </motion.div>
@@ -200,11 +200,11 @@ export function FeaturedProject() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-12 md:mt-16 flex items-center gap-2 md:gap-3"
+          className="mt-8 sm:mt-12 md:mt-16 flex items-center gap-2 md:gap-3"
         >
-          <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
-          <div className="w-12 md:w-16 h-px bg-[#2a2a2a]" />
-          <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-[#363636] rounded-full" />
+          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
+          <div className="w-10 sm:w-12 md:w-16 h-px bg-[#2a2a2a]" />
+          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-1.5 md:h-1.5 bg-[#363636] rounded-full" />
         </motion.div>
       </div>
     </section>

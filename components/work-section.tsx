@@ -82,25 +82,25 @@ export function WorkSection() {
   }
 
   return (
-    <section id="work" className="py-8 md:py-12 relative">
-      <div className="px-4 md:px-8">
+    <section id="work" className="py-6 sm:py-8 md:py-12 relative">
+      <div className="px-4 sm:px-6 md:px-8">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative mb-6 md:mb-10"
+          className="relative mb-4 sm:mb-6 md:mb-10"
         >
-          <div className="h-px bg-[#2a2a2a] mb-4 md:mb-6" />
+          <div className="h-px bg-[#2a2a2a] mb-3 sm:mb-4 md:mb-6" />
 
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 md:gap-3">
-              <div className="w-4 md:w-6 h-px bg-[#404040]" />
+              <div className="w-3 sm:w-4 md:w-6 h-px bg-[#404040]" />
               <span className="text-mono text-[#737373] text-xs md:text-sm">experiments</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
-              <div className="w-6 md:w-8 h-px bg-[#2a2a2a]" />
+              <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
+              <div className="w-6 sm:w-7 md:w-8 h-px bg-[#2a2a2a]" />
             </div>
           </div>
         </motion.div>
@@ -117,7 +117,7 @@ export function WorkSection() {
           <div className="md:pl-6">
             {projects.map((project) => (
               <motion.div key={project.id} variants={itemVariants}>
-                <div className="group relative py-3 md:py-4 border-b border-[#1a1a1a] hover:border-[#404040] transition-all duration-300">
+                <div className="group relative py-2.5 sm:py-3 md:py-4 border-b border-[#1a1a1a] hover:border-[#404040] transition-all duration-300">
                   {/* Hover indicator line */}
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0 group-hover:w-3 h-px bg-[#525252] transition-all duration-300 hidden md:block" />
 
@@ -127,24 +127,24 @@ export function WorkSection() {
                     rel="noopener noreferrer"
                     className="flex flex-col md:flex-row md:items-center md:justify-between md:pl-4"
                   >
-                    <div className="flex items-start gap-2 md:items-center md:gap-4">
-                      <span className="text-large font-normal text-[#fafafa] group-hover:text-white transition-colors duration-300">
+                    <div className="flex items-start gap-1.5 sm:gap-2 md:items-center md:gap-4 flex-wrap">
+                      <span className="text-lg sm:text-xl md:text-2xl font-normal text-[#fafafa] group-hover:text-white transition-colors duration-300 flex-shrink-0">
                         {project.title}
                       </span>
                       {project.tag && (
-                        <span className="text-mono text-[#525252] text-xs md:text-sm flex-shrink-0">
+                        <span className="text-mono text-[#525252] text-xs flex-shrink-0">
                           [{project.tag}]
                         </span>
                       )}
-                      <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0" />
+                      <ArrowUpRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0" />
                     </div>
 
-                    <div className="flex items-center gap-2 mt-1.5 md:mt-0">
-                      <span className="text-base text-[#737373] group-hover:text-[#a1a1a1] transition-colors duration-300">
+                    <div className="flex items-center gap-1.5 sm:gap-2 mt-1.5 md:mt-0 flex-wrap">
+                      <span className="text-xs sm:text-sm md:text-base text-[#737373] group-hover:text-[#a1a1a1] transition-colors duration-300">
                         {project.description}
                       </span>
                       {project.credit && (
-                        <span className="text-base text-xs md:text-sm">
+                        <span className="text-xs md:text-sm">
                           <span
                             onClick={(e) => {
                               e.preventDefault()
@@ -170,11 +170,11 @@ export function WorkSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-6 md:mt-10 flex items-center gap-2 md:gap-3"
+          className="mt-4 sm:mt-6 md:mt-10 flex items-center gap-2 md:gap-3"
         >
-          <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
-          <div className="w-12 md:w-16 h-px bg-[#2a2a2a]" />
-          <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-[#363636] rounded-full" />
+          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
+          <div className="w-10 sm:w-12 md:w-16 h-px bg-[#2a2a2a]" />
+          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 md:w-1.5 md:h-1.5 bg-[#363636] rounded-full" />
         </motion.div>
       </div>
     </section>

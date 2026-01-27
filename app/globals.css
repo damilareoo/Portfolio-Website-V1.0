@@ -135,6 +135,15 @@
   /* Content wrapper for proper padding */
   .grid-container > section,
   .grid-container > div:not([aria-hidden="true"]) {
-    @apply px-6 sm:px-8 md:px-12;
+    @apply px-4 sm:px-6 md:px-12;
+  }
+
+  /* Responsive text sizing utilities */
+  .text-large {
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  .text-mono {
+    font-family: monospace;
   }
 }
