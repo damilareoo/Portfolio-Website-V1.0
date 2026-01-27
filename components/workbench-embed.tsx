@@ -77,7 +77,7 @@ export function WorkbenchEmbed() {
             transition={{ delay: 0.5, duration: 0.4 }}
             className="mt-4 text-center"
           >
-            <p className="text-xs text-[#525252]">Scroll to explore more</p>
+            
           </motion.div>
         </motion.div>
 
