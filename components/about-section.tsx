@@ -40,72 +40,81 @@ export function AboutSection() {
   }
 
   return (
-    <section id="about" className="section-spacing">
-      <div className="container-xl">
-        <motion.h2
-          variants={titleVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="section-title mb-24"
+    <section id="about" className="py-8 md:py-12 relative">
+      <div className="px-6 md:px-8">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="relative mb-8 md:mb-10"
         >
-          About
-        </motion.h2>
+          <div className="h-px bg-[#2a2a2a] mb-6 md:mb-6" />
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 md:gap-3">
+              <div className="w-4 md:w-6 h-px bg-[#404040]" />
+              <span className="text-mono text-[#737373] text-xs md:text-sm">background</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
+              <div className="w-6 md:w-8 h-px bg-[#2a2a2a]" />
+            </div>
+          </div>
+        </motion.div>
 
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12"
         >
-          <motion.div variants={itemVariants} className="flex flex-col space-y-16">
+          <div className="space-y-8">
             <div>
-              <p className="body-text text-foreground-secondary">
-                Designer and builder shaping fluid, engaging digital experiences across platforms and products.
+              <p className="text-base md:text-lg text-[#a1a1a1] leading-relaxed">
+                Designer and builder creating 0–1 experiences. I design products, build what makes them work, and ship them. Most recently, I've been focused on designing brands, systems, and products that feel intuitive and delightful.
               </p>
             </div>
 
             <div>
-              <p className="body-text text-foreground-secondary">
+              <p className="text-base md:text-lg text-[#a1a1a1] leading-relaxed">
                 Currently at{" "}
+                <a
+                  href="https://chessever.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#fafafa] underline decoration-[#525252] hover:decoration-[#fafafa] transition-colors duration-300"
+                >
+                  ChessEver
+                </a>{" "}
+                as Product Designer and{" "}
                 <a
                   href="https://hex.inc"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-green-400 hover:text-green-300 font-medium transition-colors duration-300"
+                  className="text-[#fafafa] underline decoration-[#525252] hover:decoration-[#fafafa] transition-colors duration-300"
                 >
-                  HEX
+                  Hex
                 </a>{" "}
-                and building playful tools at{" "}
-                <a
-                  href="https://smallchess.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-green-400 hover:text-green-300 font-medium transition-colors duration-300"
-                >
-                  SMALLCHESS
-                </a>
-                . Open to work if you're building something cool.
+                as Experimental Designer.
               </p>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div variants={itemVariants} className="flex flex-col space-y-6 justify-start">
+          <div className="space-y-8">
             <div>
-              <p className="body-text text-foreground-secondary">
-                I believe in creating work that not only looks good but also solves real problems and delivers
-                exceptional user experiences.
+              <p className="text-base md:text-lg text-[#a1a1a1] leading-relaxed">
+                I believe in creating work that not only looks exceptional but actually solves real problems and delivers meaningful experiences. Every detail matters—from the initial spark to the final polish.
               </p>
             </div>
 
             <div>
-              <p className="body-text text-foreground-secondary">
-                When I'm not designing or vibe-coding, I enjoy playing basketball, DJ'ing, and creating fun side
-                projects.
+              <p className="text-base md:text-lg text-[#a1a1a1] leading-relaxed">
+                When I'm not designing or coding, you'll find me playing basketball, exploring new music, and experimenting with playful side projects.
               </p>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

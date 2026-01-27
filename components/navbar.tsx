@@ -53,13 +53,13 @@ export function Navbar() {
         <div className="h-px bg-[#2a2a2a]" />
 
         <div className="grid-container">
-          <div className="flex items-center justify-between py-2.5 sm:py-3 md:py-4 px-4 sm:px-6 md:px-8">
+          <div className="flex items-center justify-between py-3 md:py-4 px-6 md:px-8">
             <a 
               href="#" 
               className="flex items-center gap-2 md:gap-3 group focus-visible:outline-2 outline-offset-2 outline-[#525252]"
               aria-label="Portfolio home"
             >
-              <div className="w-1 sm:w-1.5 md:w-2 h-px bg-[#333] group-hover:w-2 sm:group-hover:w-3 md:group-hover:w-4 group-hover:bg-[#4a4a4a] transition-all duration-300" />
+              <div className="w-1.5 md:w-2 h-px bg-[#333] group-hover:w-3 md:group-hover:w-4 group-hover:bg-[#4a4a4a] transition-all duration-300" />
               <Logo />
             </a>
 
@@ -85,11 +85,11 @@ export function Navbar() {
             <div className="md:hidden">
               <button
                 onClick={() => setIsOpen(true)}
-                className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 border border-[#2a2a2a] hover:border-[#3a3a3a] hover:bg-[#0a0a0a] transition-colors duration-300 text-[#ededed] focus-visible:outline-2 outline-offset-2 outline-[#525252]"
+                className="flex items-center justify-center w-10 h-10 border border-[#2a2a2a] hover:border-[#3a3a3a] hover:bg-[#0a0a0a] transition-colors duration-300 text-[#ededed] focus-visible:outline-2 outline-offset-2 outline-[#525252]"
                 aria-label="Open menu"
                 aria-expanded={isOpen}
               >
-                <Menu className="h-4 w-4 sm:h-5 sm:w-5" />
+                <Menu className="h-5 w-5" />
               </button>
             </div>
           </div>
