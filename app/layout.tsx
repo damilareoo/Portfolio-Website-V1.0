@@ -5,25 +5,25 @@ import { Analytics } from "@vercel/analytics/react"
 import { Suspense } from "react"
 
 export const metadata: Metadata = {
-  title: "Damilare Osofisan | Designer & Builder",
-  description: "Designer and builder creating 0–1 experiences.",
+  title: "Damilare Osofisan – Designer & Product Builder",
+  description: "Crafting digital experiences and building products that matter. Designer and builder focused on creating 0–1 experiences with thoughtful design.",
   metadataBase: new URL("https://damilareoo.xyz"),
   icons: {
-    icon: "/images/image.jpeg",
-    shortcut: "/images/image.jpeg",
-    apple: "/images/image.jpeg",
+    icon: "/images/favicon.jpeg",
+    shortcut: "/images/favicon.jpeg",
+    apple: "/images/favicon.jpeg",
   },
   openGraph: {
-    title: "Damilare Osofisan | Designer & Builder",
-    description: "Designer and builder creating 0–1 experiences.",
+    title: "Damilare Osofisan – Designer & Product Builder",
+    description: "Crafting digital experiences and building products that matter. Designer and builder focused on creating 0–1 experiences with thoughtful design.",
     url: "https://damilareoo.xyz",
     siteName: "Damilare Osofisan",
     images: [
       {
-        url: "/images/000.png",
+        url: "https://damilareoo.xyz/images/000.png",
         width: 1200,
         height: 630,
-        alt: "Damilare Osofisan - Designer and builder",
+        alt: "Damilare Osofisan - Designer and Product Builder",
         type: "image/png",
       },
     ],
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Damilare Osofisan | Designer & Builder",
-    description: "Designer and builder creating 0–1 experiences.",
-    images: ["/images/000.png"],
+    title: "Damilare Osofisan – Designer & Product Builder",
+    description: "Crafting digital experiences and building products that matter. Designer and builder focused on creating 0–1 experiences with thoughtful design.",
+    images: ["https://damilareoo.xyz/images/000.png"],
     creator: "@damilareoo",
   },
   appleWebApp: {
@@ -54,22 +54,22 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/images/favicon.jpeg" sizes="any" />
 
-        <meta property="og:image" content="/images/000.png" />
-        <meta property="og:image:url" content="/images/000.png" />
-        <meta property="og:image:secure_url" content="/images/000.png" />
+        <meta property="og:image" content="https://damilareoo.xyz/images/000.png" />
+        <meta property="og:image:url" content="https://damilareoo.xyz/images/000.png" />
+        <meta property="og:image:secure_url" content="https://damilareoo.xyz/images/000.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Damilare Osofisan - Designer and builder" />
         <meta property="og:image:type" content="image/png" />
 
-        <meta name="twitter:image" content="/images/000.png" />
+        <meta name="twitter:image" content="https://damilareoo.xyz/images/000.png" />
         <meta name="twitter:image:alt" content="Damilare Osofisan - Designer and builder" />
         <meta name="twitter:card" content="summary_large_image" />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://damilareoo.xyz" />
-        <meta property="og:title" content="Damilare Osofisan | Designer & Builder" />
-        <meta property="og:description" content="Designer and builder creating 0–1 experiences." />
+        <meta property="og:title" content="Damilare Osofisan – Designer & Product Builder" />
+        <meta property="og:description" content="Crafting digital experiences and building products that matter. Designer and builder focused on creating 0–1 experiences with thoughtful design." />
         <meta property="og:site_name" content="Damilare Osofisan" />
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
