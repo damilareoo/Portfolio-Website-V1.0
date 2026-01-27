@@ -9,9 +9,9 @@ export const metadata: Metadata = {
   description: "Designer and builder creating 0–1 experiences.",
   metadataBase: new URL("https://damilareoo.xyz"),
   icons: {
-    icon: "/images/image.jpeg",
-    shortcut: "/images/image.jpeg",
-    apple: "/images/image.jpeg",
+    icon: "/images/favicon.jpeg",
+    shortcut: "/images/favicon.jpeg",
+    apple: "/images/favicon.jpeg",
   },
   openGraph: {
     title: "Damilare Osofisan | Designer & Builder",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Damilare Osofisan",
     images: [
       {
-        url: "/images/000.png",
+        url: "https://damilareoo.xyz/images/000.png",
         width: 1200,
         height: 630,
         alt: "Damilare Osofisan - Designer and builder",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Damilare Osofisan | Designer & Builder",
     description: "Designer and builder creating 0–1 experiences.",
-    images: ["/images/000.png"],
+    images: ["https://damilareoo.xyz/images/000.png"],
     creator: "@damilareoo",
   },
   appleWebApp: {
@@ -54,15 +54,15 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/images/favicon.jpeg" sizes="any" />
 
-        <meta property="og:image" content="/images/000.png" />
-        <meta property="og:image:url" content="/images/000.png" />
-        <meta property="og:image:secure_url" content="/images/000.png" />
+        <meta property="og:image" content="https://damilareoo.xyz/images/000.png" />
+        <meta property="og:image:url" content="https://damilareoo.xyz/images/000.png" />
+        <meta property="og:image:secure_url" content="https://damilareoo.xyz/images/000.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Damilare Osofisan - Designer and builder" />
         <meta property="og:image:type" content="image/png" />
 
-        <meta name="twitter:image" content="/images/000.png" />
+        <meta name="twitter:image" content="https://damilareoo.xyz/images/000.png" />
         <meta name="twitter:image:alt" content="Damilare Osofisan - Designer and builder" />
         <meta name="twitter:card" content="summary_large_image" />
 
