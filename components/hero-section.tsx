@@ -31,11 +31,11 @@ export const HeroSection = () => {
       <div className="px-6 md:px-8">
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="relative">
           <motion.div variants={itemVariants} className="mb-6 md:mb-8">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-[#fafafa] text-pretty">Damilare Osofisan</h1>
+            <h1 className="text-large font-normal text-[#fafafa] text-pretty">Damilare Osofisan</h1>
           </motion.div>
 
           <motion.div variants={itemVariants} className="relative">
-            <p className="text-base sm:text-lg md:text-lg text-[#a1a1a1] max-w-2xl leading-relaxed text-balance">
+            <p className="text-base md:text-lg text-[#a1a1a1] max-w-2xl leading-relaxed text-balance">
               Designer and builder creating 0–1 experiences. I design products, build what makes them work, and ship
               them. Currently at{" "}
               <a

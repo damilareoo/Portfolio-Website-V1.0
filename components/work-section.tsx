@@ -128,7 +128,7 @@ export function WorkSection() {
                     className="flex flex-col md:flex-row md:items-center md:justify-between md:pl-4"
                   >
                     <div className="flex items-start gap-2 md:items-center md:gap-4 flex-wrap">
-                      <span className="text-xl md:text-2xl font-normal text-[#fafafa] group-hover:text-white transition-colors duration-300 flex-shrink-0">
+                      <span className="text-large font-normal text-[#fafafa] group-hover:text-white transition-colors duration-300 flex-shrink-0">
                         {project.title}
                       </span>
                       {project.tag && (

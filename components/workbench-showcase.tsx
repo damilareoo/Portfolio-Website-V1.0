@@ -44,7 +44,7 @@ export function WorkbenchShowcase() {
 
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4 md:pl-4">
               <div className="flex items-center gap-3 md:gap-4">
-                <span className="text-xl md:text-2xl font-normal text-[#fafafa] group-hover:text-white transition-colors duration-300">
+                <span className="text-large font-normal text-[#fafafa] group-hover:text-white transition-colors duration-300">
                   WorkBench
                 </span>
                 <ArrowUpRight className="w-4 h-4 md:w-4 md:h-4 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
