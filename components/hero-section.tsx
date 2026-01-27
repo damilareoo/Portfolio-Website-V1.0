@@ -31,7 +31,7 @@ export const HeroSection = () => {
       <div className="px-6 md:px-8">
         <motion.div variants={containerVariants} initial="hidden" animate="visible" className="relative">
           <motion.div variants={itemVariants} className="mb-6 md:mb-8">
-            <h1 className="text-large font-normal text-[#fafafa] text-pretty">Damilare Osofisan</h1>
+            <h1 className="text-xl md:text-2xl lg:text-4xl font-normal text-[#fafafa] text-pretty">Damilare Osofisan</h1>
           </motion.div>
 
           <motion.div variants={itemVariants} className="relative">

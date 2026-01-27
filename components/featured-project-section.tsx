@@ -129,7 +129,7 @@ export function FeaturedProject() {
                     transition={{ duration: 0.5, delay: 0.1 }}
                     className="space-y-4"
                   >
-                    <h3 className="text-large font-normal text-[#fafafa] text-pretty">
+                    <h3 className="text-lg md:text-xl lg:text-2xl font-normal text-[#fafafa] text-pretty">
                       {project.title}
                       {project.funding && <span className="text-[#737373]"> ({project.funding})</span>}
                     </h3>
