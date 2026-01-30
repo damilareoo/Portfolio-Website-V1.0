@@ -2,9 +2,7 @@
 
 This is my personal portfolio website, built as a space to share experiments, ideas, and things I’m actively exploring. It’s less about being "finished" and more about showing how I think, build, and iterate.
 
-The site was created primarily using **v0** by Vercel, with minimal manual design intervention. Most decisions came from prompting, refining, and shaping outputs until they felt right.
-
----
+The site was built using **v0** by Vercel.
 
 ## About the Project
 
@@ -25,8 +23,6 @@ Iteration is a core part of the project. The site will continue to evolve over t
 * **React** – Component-based UI
 * **Tailwind CSS** – Styling and layout
 * **Vercel** – Deployment and hosting
-
-Special credit to **v0 by Vercel** for enabling fast exploration and lowering the barrier between ideas and working interfaces.
 
 ---
 
