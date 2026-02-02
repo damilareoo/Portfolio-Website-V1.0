@@ -9,7 +9,7 @@ export function FeaturedProject() {
     {
       id: "sylvan",
       title: "Sylvan",
-      funding: "$2M Pre Seed",
+      funding: null,
       image: "/images/sylvan-featured.gif",
       alt: "Sylvan - Revenue intelligence platform",
       description: "Sylvan helps teams understand what actually drives revenue by making customer data simple to read. Most analytics tools bury you in reports and slow dashboards. Sylvan cuts through that.",
