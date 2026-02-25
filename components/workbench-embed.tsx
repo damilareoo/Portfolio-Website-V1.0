@@ -21,6 +21,9 @@ export function WorkbenchEmbed() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.4, ease: "easeOut" }}
+      style={{
+        WebkitOverflowScrolling: "touch",
+      }}
     >
       <div className="px-4 md:px-8">
         {/* Section Header */}
@@ -66,9 +69,12 @@ export function WorkbenchEmbed() {
                 backgroundColor: "#000000",
                 opacity: isLoaded ? 1 : 0.3,
                 transition: "opacity 0.3s ease-out",
-                touchAction: "manipulation",
+                pointerEvents: "auto",
+                WebkitOverflowScrolling: "touch",
               }}
             />
+            {/* Non-interactive overlay for better page scrolling */}
+            <div className="absolute inset-0 pointer-events-none" />
           </div>
           
           {/* Bottom hint for scrolling */}
