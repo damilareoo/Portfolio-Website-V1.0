@@ -21,9 +21,6 @@ export function WorkbenchEmbed() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      style={{
-        WebkitOverflowScrolling: "touch",
-      }}
     >
       <div className="px-4 md:px-8">
         {/* Section Header */}
@@ -58,7 +55,7 @@ export function WorkbenchEmbed() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="relative group"
         >
-          <div className="relative w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg overflow-hidden h-[350px] sm:h-[450px] md:h-[800px] group-hover:border-[#404040] transition-colors duration-200">
+          <div className="relative w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg overflow-hidden h-[500px] md:h-[800px] group-hover:border-[#404040] transition-colors duration-200">
             <iframe
               src="https://nacre-quake-50137672.figma.site"
               title="WorkBench - Interactive Design Canvas"
@@ -69,12 +66,8 @@ export function WorkbenchEmbed() {
                 backgroundColor: "#000000",
                 opacity: isLoaded ? 1 : 0.3,
                 transition: "opacity 0.3s ease-out",
-                pointerEvents: "auto",
-                WebkitOverflowScrolling: "touch",
               }}
             />
-            {/* Non-interactive overlay for better page scrolling */}
-            <div className="absolute inset-0 pointer-events-none" />
           </div>
           
           {/* Bottom hint for scrolling */}
