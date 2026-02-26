@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { Analytics } from "@vercel/analytics/react"
 import { Suspense } from "react"
+import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
   title: "Damilare Osofisan – Designer & Product Builder",
@@ -77,10 +78,12 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Damilare" />
       </head>
       <body className="font-sans antialiased">
-        <Suspense fallback={<div>Loading...</div>}>
-          {children}
-          <Analytics />
-        </Suspense>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <Suspense fallback={<div>Loading...</div>}>
+            {children}
+            <Analytics />
+          </Suspense>
+        </ThemeProvider>
       </body>
     </html>
   )
