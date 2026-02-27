@@ -53,7 +53,20 @@ export function WorkbenchEmbed() {
         </motion.div>
 
         {/* Description and context */}
-        
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.4 }}
+          className="mb-8 md:mb-10 space-y-2"
+        >
+          <h3 className="text-lg md:text-xl font-normal text-[#fafafa]">
+            Explore design explorations
+          </h3>
+          <p className="text-sm md:text-base text-[#a1a1a1] max-w-2xl leading-relaxed">
+            An interactive space for experimenting with layout systems, component interactions, and design patterns. Use your mouse or touch to explore.
+          </p>
+        </motion.div>
 
         {/* Canvas Container - Optimized for mobile */}
         <motion.div
@@ -76,8 +89,9 @@ export function WorkbenchEmbed() {
           <div 
             className="relative w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg overflow-hidden group-hover:border-[#404040] transition-colors duration-200"
             style={{ 
-              height: isMobile ? "auto" : "100%",
-              aspectRatio: isMobile ? "16 / 12" : "16 / 9",
+              height: isMobile ? "600px" : "auto",
+              aspectRatio: isMobile ? undefined : "16 / 9",
+              minHeight: isMobile ? "600px" : undefined,
               WebkitOverflowScrolling: "touch",
             }}
           >
@@ -98,19 +112,6 @@ export function WorkbenchEmbed() {
 
           {/* Hover indicator for desktop */}
           <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0 group-hover:w-3 h-px bg-[#525252] transition-all duration-300 hidden md:block" />
-
-          {/* Mobile instruction hint */}
-          {isLoaded && isMobile && (
-            <motion.div
-              initial={{ opacity: 0, y: -5 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.4 }}
-              className="mt-4 flex items-center justify-center gap-2 text-xs text-[#737373]"
-            >
-              <div className="w-2 h-2 bg-[#525252] rounded-full" />
-              <span>Swipe to explore</span>
-            </motion.div>
-          )}
         </motion.div>
 
         {/* CTA and external link */}
