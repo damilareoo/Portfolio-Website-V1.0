@@ -76,13 +76,36 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
 
 export function SectionTransition({ children, id }: { children: ReactNode; id: string }) {
   const ref = useRef(null)
+  const [isMobile, setIsMobile] = useState(false)
+  
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
   const isInView = useInView(ref, {
     margin: "-10% 0px -10% 0px",
-    once: false,
+    once: true, // Changed to once: true to reduce animation recalculations
     amount: 0.2,
   })
 
-  // Use spring physics for buttery smooth transitions
+  // Disable spring animations on mobile for better scroll performance
+  if (isMobile) {
+    return (
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        {children}
+      </motion.div>
+    )
+  }
+
+  // Use spring physics only on desktop
   const springConfig = { stiffness: 70, damping: 20, mass: 0.5 }
   const opacity = useSpring(isInView ? 1 : 0.8, springConfig)
 
@@ -91,11 +114,7 @@ export function SectionTransition({ children, id }: { children: ReactNode; id: s
       ref={ref}
       style={{
         opacity,
-        willChange: "opacity, transform",
-      }}
-      transition={{
-        duration: 0.8,
-        ease: [0.25, 0.1, 0.25, 1.0],
+        willChange: "opacity",
       }}
     >
       {children}
