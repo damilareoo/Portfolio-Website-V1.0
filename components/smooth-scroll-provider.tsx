@@ -87,35 +87,22 @@ export function SectionTransition({ children, id }: { children: ReactNode; id: s
 
   const isInView = useInView(ref, {
     margin: "-10% 0px -10% 0px",
-    once: true, // Changed to once: true to reduce animation recalculations
+    once: true,
     amount: 0.2,
   })
 
-  // Disable spring animations on mobile for better scroll performance
-  if (isMobile) {
-    return (
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        {children}
-      </motion.div>
-    )
-  }
-
-  // Use spring physics only on desktop
+  // Always call useSpring - use spring physics only on desktop
   const springConfig = { stiffness: 70, damping: 20, mass: 0.5 }
   const opacity = useSpring(isInView ? 1 : 0.8, springConfig)
 
+  // Mobile uses lighter animations, desktop uses spring physics
   return (
     <motion.div
       ref={ref}
-      style={{
-        opacity,
-        willChange: "opacity",
-      }}
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      transition={isMobile ? { duration: 0.3 } : undefined}
+      style={!isMobile ? { opacity, willChange: "opacity" } : undefined}
     >
       {children}
     </motion.div>
