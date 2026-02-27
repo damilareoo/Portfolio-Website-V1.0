@@ -53,20 +53,7 @@ export function WorkbenchEmbed() {
         </motion.div>
 
         {/* Description and context */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4 }}
-          className="mb-8 md:mb-10 space-y-2"
-        >
-          <h3 className="text-lg md:text-xl font-normal text-[#fafafa]">
-            Explore design explorations
-          </h3>
-          <p className="text-sm md:text-base text-[#a1a1a1] max-w-2xl leading-relaxed">
-            An interactive space for experimenting with layout systems, component interactions, and design patterns. Use your mouse or touch to explore.
-          </p>
-        </motion.div>
+        
 
         {/* Canvas Container - Optimized for mobile */}
         <motion.div
