@@ -25,25 +25,26 @@ export function ContactSection() {
     setTimeout(() => setCopied(false), 2000)
   }
 
+  const easing = [0.2, 0, 0.38, 0.9]
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.04,
-        delayChildren: 0.1,
+        staggerChildren: 0.02,
+        delayChildren: 0.05,
       },
     },
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 8 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
-        duration: 0.3,
-        ease: [0.25, 0.1, 0.25, 1.0],
+        duration: 0.15,
+        ease: easing,
       },
     },
   }
@@ -55,7 +56,7 @@ export function ContactSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.15, ease: [0.2, 0, 0.38, 0.9] }}
           className="relative mb-8 md:mb-10"
         >
           <div className="h-px bg-[#2a2a2a] mb-6 md:mb-6" />

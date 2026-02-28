@@ -3,38 +3,37 @@
 import { motion } from "framer-motion"
 
 export function AboutSection() {
+  const easing = [0.2, 0, 0.38, 0.9]
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-        ease: [0.25, 0.1, 0.25, 1.0],
+        staggerChildren: 0.08,
+        delayChildren: 0.05,
       },
     },
   }
 
   const titleVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
-        duration: 0.6,
-        ease: [0.25, 0.1, 0.25, 1.0],
+        duration: 0.2,
+        ease: easing,
       },
     },
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
-        duration: 0.8,
-        ease: [0.25, 0.1, 0.25, 1.0],
+        duration: 0.25,
+        ease: easing,
       },
     },
   }
@@ -46,7 +45,7 @@ export function AboutSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.15, ease: [0.2, 0, 0.38, 0.9] }}
           className="relative mb-8 md:mb-10"
         >
           <div className="h-px bg-[#2a2a2a] mb-6 md:mb-6" />
@@ -64,10 +63,10 @@ export function AboutSection() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.2, ease: [0.2, 0, 0.38, 0.9] }}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12"
         >
           <div className="space-y-8">

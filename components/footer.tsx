@@ -9,10 +9,10 @@ export function Footer() {
   return (
     <motion.footer
       className="px-4 sm:px-6 md:px-8 pt-3 sm:pt-4 md:pt-6 pb-4 sm:pb-6 md:pb-8 relative"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }}
+      transition={{ duration: 0.2, ease: [0.2, 0, 0.38, 0.9] }}
     >
       <div className="h-px bg-[#2a2a2a] mb-4 sm:mb-6 md:mb-8" />
 
@@ -70,12 +70,12 @@ export function Footer() {
                       filter: "blur(2px)",
                     }}
                     transition={{
-                      duration: 0.3,
-                      ease: [0.25, 0.1, 0.25, 1.0],
+                      duration: 0.15,
+                      ease: [0.2, 0, 0.38, 0.9],
                       scale: {
                         type: "spring",
-                        stiffness: 300,
-                        damping: 30,
+                        stiffness: 500,
+                        damping: 35,
                       },
                     }}
                     className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 sm:mb-3 md:mb-4 z-50 bg-[#121212] rounded-lg shadow-2xl border border-[#2a2a2a] overflow-hidden spotify-popup"
@@ -84,7 +84,7 @@ export function Footer() {
                       className="w-64 sm:w-72 md:w-80"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ delay: 0.1, duration: 0.2 }}
+                      transition={{ delay: 0.05, duration: 0.1 }}
                     >
                       <iframe
                         src="https://open.spotify.com/embed/playlist/2WqAscMqGj6fGkjaYN9jsY?utm_source=generator&theme=0"

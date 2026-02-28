@@ -86,9 +86,9 @@ export function SectionTransition({ children, id }: { children: ReactNode; id: s
   }, [])
 
   const isInView = useInView(ref, {
-    margin: "-10% 0px -10% 0px",
+    margin: "-15% 0px -15% 0px",
     once: true,
-    amount: 0.2,
+    amount: 0.15,
   })
 
   // Snappy easing curve for buttery smooth feel
