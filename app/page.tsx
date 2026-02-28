@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useRef } from "react"
 import { HeroSection } from "@/components/hero-section"
 import { FeaturedProject } from "@/components/featured-project-section"
 import { WorkSection } from "@/components/work-section"
@@ -11,13 +12,18 @@ import { Navbar } from "@/components/navbar"
 import { SmoothScrollProvider, SectionTransition } from "@/components/smooth-scroll-provider"
 
 export default function Home() {
+  const featuredRef = useRef<HTMLElement>(null)
+  const workRef = useRef<HTMLElement>(null)
+  const contactRef = useRef<HTMLElement>(null)
+  const workbenchRef = useRef<HTMLElement>(null)
+  const footerRef = useRef<HTMLElement>(null)
   return (
     <SmoothScrollProvider>
       <motion.main
         className="min-h-screen relative w-full overflow-x-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1.0] }}
+        transition={{ duration: 0.2, ease: [0.2, 0, 0.38, 0.9] }}
       >
         <Navbar />
 
@@ -36,39 +42,41 @@ export default function Home() {
             style={{ height: '100%' }}
           />
 
-          {/* Centered content container */}
-          <div className="grid-container">
-            <section id="hero" aria-label="Hero section">
+          {/* Centered content container with scroll preview effect */}
+          <div className="grid-container scroll-preview-container">
+            <section id="hero" aria-label="Hero section" className="scroll-section">
               <SectionTransition id="hero">
                 <HeroSection />
               </SectionTransition>
             </section>
 
-            <section id="featured" aria-label="Featured project">
+            <section id="featured" ref={featuredRef} aria-label="Featured project" className="scroll-section">
               <SectionTransition id="featured">
                 <FeaturedProject />
               </SectionTransition>
             </section>
 
-            <section id="work" aria-label="Work and experiments">
+            <section id="work" ref={workRef} aria-label="Work and experiments" className="scroll-section">
               <SectionTransition id="work">
                 <WorkSection />
               </SectionTransition>
             </section>
 
-            <section id="across-the-web" aria-label="Elsewhere and contact">
+            <section id="across-the-web" ref={contactRef} aria-label="Elsewhere and contact" className="scroll-section">
               <SectionTransition id="across-the-web">
                 <ContactSection />
               </SectionTransition>
             </section>
 
-            <section id="workbench" aria-label="WorkBench design tool">
+            <section id="workbench" ref={workbenchRef} aria-label="WorkBench design tool" className="scroll-section">
               <SectionTransition id="workbench">
                 <WorkbenchEmbed />
               </SectionTransition>
             </section>
 
-            <Footer />
+            <footer ref={footerRef} className="scroll-section">
+              <Footer />
+            </footer>
           </div>
         </div>
       </motion.main>
