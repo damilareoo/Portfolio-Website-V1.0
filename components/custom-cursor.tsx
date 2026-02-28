@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState, useRef } from "react"
 import { motion } from "framer-motion"
 
 export function CustomCursor() {
@@ -11,26 +11,8 @@ export function CustomCursor() {
   const [overIframe, setOverIframe] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [isHydrated, setIsHydrated] = useState(false)
-
-  const onMouseMove = useCallback((e: MouseEvent) => {
-    setPosition({ x: e.clientX, y: e.clientY })
-  }, [])
-
-  const onMouseEnter = useCallback(() => {
-    setHidden(false)
-  }, [])
-
-  const onMouseLeave = useCallback(() => {
-    setHidden(true)
-  }, [])
-
-  const onMouseDown = useCallback(() => {
-    setClicked(true)
-  }, [])
-
-  const onMouseUp = useCallback(() => {
-    setClicked(false)
-  }, [])
+  const rafRef = useRef<number | null>(null)
+  const observerRef = useRef<MutationObserver | null>(null)
 
   useEffect(() => {
     setIsHydrated(true)
@@ -49,47 +31,57 @@ export function CustomCursor() {
   useEffect(() => {
     if (isMobile || !isHydrated) return
 
-    document.addEventListener("mousemove", onMouseMove, true)
-    document.addEventListener("mouseenter", onMouseEnter)
-    document.addEventListener("mouseleave", onMouseLeave)
-    document.addEventListener("mousedown", onMouseDown)
-    document.addEventListener("mouseup", onMouseUp)
+    const handleMouseMove = (e: MouseEvent) => {
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
+      rafRef.current = requestAnimationFrame(() => {
+        setPosition({ x: e.clientX, y: e.clientY })
+      })
+    }
 
-    window.addEventListener("mousemove", onMouseMove, true)
+    const handleMouseDown = () => setClicked(true)
+    const handleMouseUp = () => setClicked(false)
+    const handleMouseEnter = () => setHidden(false)
+    const handleMouseLeave = () => setHidden(true)
+
+    document.addEventListener("mousemove", handleMouseMove, { passive: true })
+    document.addEventListener("mousedown", handleMouseDown)
+    document.addEventListener("mouseup", handleMouseUp)
+    document.addEventListener("mouseenter", handleMouseEnter)
+    document.addEventListener("mouseleave", handleMouseLeave)
 
     const handleLinkHoverEvents = () => {
       document.querySelectorAll("a, button, input, textarea, [role='button']").forEach((el) => {
-        el.addEventListener("mouseenter", () => setLinkHovered(true))
-        el.addEventListener("mouseleave", () => setLinkHovered(false))
+        el.addEventListener("mouseenter", () => setLinkHovered(true), { once: false, passive: true })
+        el.addEventListener("mouseleave", () => setLinkHovered(false), { once: false, passive: true })
       })
     }
 
     const handleIframeHoverEvents = () => {
       document.querySelectorAll(".spotify-popup, iframe").forEach((el) => {
-        el.addEventListener("mouseenter", () => setOverIframe(true))
-        el.addEventListener("mouseleave", () => setOverIframe(false))
+        el.addEventListener("mouseenter", () => setOverIframe(true), { once: false, passive: true })
+        el.addEventListener("mouseleave", () => setOverIframe(false), { once: false, passive: true })
       })
     }
 
     handleLinkHoverEvents()
     handleIframeHoverEvents()
 
-    const observer = new MutationObserver(() => {
+    observerRef.current = new MutationObserver(() => {
       handleLinkHoverEvents()
       handleIframeHoverEvents()
     })
-    observer.observe(document.body, { childList: true, subtree: true })
+    observerRef.current.observe(document.body, { childList: true, subtree: true })
 
     return () => {
-      document.removeEventListener("mousemove", onMouseMove, true)
-      document.removeEventListener("mouseenter", onMouseEnter)
-      document.removeEventListener("mouseleave", onMouseLeave)
-      document.removeEventListener("mousedown", onMouseDown)
-      document.removeEventListener("mouseup", onMouseUp)
-      window.removeEventListener("mousemove", onMouseMove, true)
-      observer.disconnect()
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
+      document.removeEventListener("mousemove", handleMouseMove)
+      document.removeEventListener("mousedown", handleMouseDown)
+      document.removeEventListener("mouseup", handleMouseUp)
+      document.removeEventListener("mouseenter", handleMouseEnter)
+      document.removeEventListener("mouseleave", handleMouseLeave)
+      observerRef.current?.disconnect()
     }
-  }, [isMobile, isHydrated, onMouseMove, onMouseEnter, onMouseLeave, onMouseDown, onMouseUp])
+  }, [isMobile, isHydrated])
 
   if (!isHydrated || isMobile) return null
 

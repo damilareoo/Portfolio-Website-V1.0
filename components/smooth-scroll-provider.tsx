@@ -76,27 +76,36 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
 
 export function SectionTransition({ children, id }: { children: ReactNode; id: string }) {
   const ref = useRef(null)
+  const [isMobile, setIsMobile] = useState(false)
+  
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
   const isInView = useInView(ref, {
     margin: "-10% 0px -10% 0px",
-    once: false,
+    once: true,
     amount: 0.2,
   })
 
-  // Use spring physics for buttery smooth transitions
-  const springConfig = { stiffness: 70, damping: 20, mass: 0.5 }
+  // Snappy easing curve for buttery smooth feel
+  const easing = [0.25, 0.1, 0.25, 1]
+  
+  // Always call useSpring - use spring physics only on desktop for premium feel
+  const springConfig = { stiffness: 80, damping: 25, mass: 0.4 }
   const opacity = useSpring(isInView ? 1 : 0.8, springConfig)
 
+  // Mobile uses faster, lighter animations; desktop uses spring physics for that premium feel
   return (
     <motion.div
       ref={ref}
-      style={{
-        opacity,
-        willChange: "opacity, transform",
-      }}
-      transition={{
-        duration: 0.8,
-        ease: [0.25, 0.1, 0.25, 1.0],
-      }}
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      transition={isMobile ? { duration: 0.25, ease: easing } : undefined}
+      style={!isMobile ? { opacity, willChange: "opacity" } : { willChange: "opacity" }}
     >
       {children}
     </motion.div>
