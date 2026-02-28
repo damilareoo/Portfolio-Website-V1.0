@@ -6,20 +6,19 @@ import { ExternalLink } from "lucide-react"
 
 export function WorkbenchEmbed() {
   const [isLoaded, setIsLoaded] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768)
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
+    // DNS prefetch and preconnect for faster iframe loading
+    const prefetch = document.createElement("link")
+    prefetch.rel = "dns-prefetch"
+    prefetch.href = "https://nacre-quake-50137672.figma.site"
     
-    // Preconnect to Figma for faster loading
-    const link = document.createElement("link")
-    link.rel = "preconnect"
-    link.href = "https://nacre-quake-50137672.figma.site"
-    document.head.appendChild(link)
+    const preconnect = document.createElement("link")
+    preconnect.rel = "preconnect"
+    preconnect.href = "https://nacre-quake-50137672.figma.site"
     
-    return () => window.removeEventListener("resize", checkMobile)
+    document.head.appendChild(prefetch)
+    document.head.appendChild(preconnect)
   }, [])
 
   return (
@@ -28,18 +27,18 @@ export function WorkbenchEmbed() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
     >
       <div className="px-6 md:px-8">
-        {/* Section Header */}
+        {/* Section Header - Minimalist */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.3 }}
-          className="relative mb-8 md:mb-10"
+          transition={{ duration: 0.25 }}
+          className="relative mb-10 md:mb-12"
         >
-          <div className="h-px bg-[#2a2a2a] mb-6 md:mb-6" />
+          <div className="h-px bg-[#2a2a2a] mb-6" />
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 md:gap-3">
               <div className="w-4 md:w-6 h-px bg-[#404040]" />
@@ -52,33 +51,30 @@ export function WorkbenchEmbed() {
           </div>
         </motion.div>
 
-        {/* Description and context */}
-        
-
-        {/* Canvas Container - Optimized for mobile */}
+        {/* Canvas Container - Ultra-responsive */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           className="relative group"
         >
-          {/* Loading skeleton on mobile */}
-          {!isLoaded && isMobile && (
-            <div className="absolute inset-0 bg-[#0a0a0a] rounded-lg z-10 flex items-center justify-center">
-              <div className="flex flex-col items-center gap-3">
-                <div className="w-8 h-8 border-2 border-[#2a2a2a] border-t-[#525252] rounded-full animate-spin" />
-                <p className="text-xs text-[#737373]">Loading canvas...</p>
-              </div>
+          {/* Minimal loading indicator */}
+          {!isLoaded && (
+            <div className="absolute inset-0 bg-[#0a0a0a] rounded-lg z-20 flex items-center justify-center pointer-events-none">
+              <motion.div
+                initial={{ opacity: 0.5 }}
+                animate={{ opacity: 0.3 }}
+                transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+                className="w-2 h-2 bg-[#525252] rounded-full"
+              />
             </div>
           )}
 
           <div 
-            className="relative w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg overflow-hidden group-hover:border-[#404040] transition-colors duration-200"
+            className="relative w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg overflow-hidden group-hover:border-[#404040] transition-colors duration-300 will-change-colors"
             style={{ 
-              height: isMobile ? "600px" : "auto",
-              aspectRatio: isMobile ? undefined : "16 / 9",
-              minHeight: isMobile ? "600px" : undefined,
+              height: "600px",
               WebkitOverflowScrolling: "touch",
             }}
           >
@@ -88,43 +84,45 @@ export function WorkbenchEmbed() {
               className="w-full h-full border-0"
               onLoad={() => setIsLoaded(true)}
               allow="fullscreen"
+              loading="lazy"
               style={{
                 backgroundColor: "#000000",
-                opacity: isLoaded ? 1 : 0.2,
-                transition: "opacity 0.4s ease-out",
+                opacity: isLoaded ? 1 : 0,
+                transition: "opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1.0)",
                 pointerEvents: "auto",
               }}
             />
           </div>
 
-          {/* Hover indicator for desktop */}
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0 group-hover:w-3 h-px bg-[#525252] transition-all duration-300 hidden md:block" />
+          {/* Subtle hover indicator for desktop */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0 group-hover:w-2.5 h-px bg-[#525252] transition-all duration-300 ease-out hidden md:block will-change-transform" />
         </motion.div>
 
-        {/* CTA and external link */}
+        {/* Premium Fullscreen CTA - Primary interaction */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="mt-6 md:mt-8 flex items-center gap-3"
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="mt-6 md:mt-8"
         >
           <a
             href="https://nacre-quake-50137672.figma.site"
             target="_blank"
             rel="noopener noreferrer"
-            className="group/link inline-flex items-center gap-2 text-sm font-medium text-[#fafafa] hover:text-white transition-colors duration-300"
+            className="group/cta inline-flex items-center gap-2.5 px-4 py-2.5 text-sm font-medium text-[#fafafa] hover:text-white transition-all duration-300 ease-out hover:gap-3.5"
           >
-            Open in fullscreen
-            <ExternalLink className="w-4 h-4 group-hover/link:text-white group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all duration-300" />
+            <span>Explore fullscreen</span>
+            <ExternalLink className="w-4 h-4 text-[#737373] group-hover/cta:text-white group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 transition-all duration-300 ease-out will-change-transform" />
           </a>
         </motion.div>
 
-        {/* Decorative separator after embed */}
+        {/* Decorative separator - elegant spacing */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.25 }}
           className="mt-12 md:mt-16 flex items-center gap-3"
         >
           <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
