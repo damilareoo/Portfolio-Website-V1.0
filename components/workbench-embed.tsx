@@ -6,8 +6,13 @@ import { ExternalLink } from "lucide-react"
 
 export function WorkbenchEmbed() {
   const [isLoaded, setIsLoaded] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+
     // DNS prefetch and preconnect for faster iframe loading
     const prefetch = document.createElement("link")
     prefetch.rel = "dns-prefetch"
@@ -19,6 +24,8 @@ export function WorkbenchEmbed() {
     
     document.head.appendChild(prefetch)
     document.head.appendChild(preconnect)
+
+    return () => window.removeEventListener("resize", checkMobile)
   }, [])
 
   return (
@@ -28,10 +35,6 @@ export function WorkbenchEmbed() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.35, ease: "easeOut" }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      style={{
-        WebkitOverflowScrolling: "touch",
-      }}
     >
       <div className="px-6 md:px-8">
         {/* Section Header - Minimalist */}
@@ -55,7 +58,7 @@ export function WorkbenchEmbed() {
           </div>
         </motion.div>
 
-        {/* Canvas Container - Ultra-responsive */}
+        {/* Canvas Container - Optimized for all devices */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -78,11 +81,13 @@ export function WorkbenchEmbed() {
           <div 
             className="relative w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg overflow-hidden group-hover:border-[#404040] transition-colors duration-300 will-change-colors"
             style={{ 
-              height: "600px",
+              height: isMobile ? "auto" : "100%",
+              aspectRatio: isMobile ? "16 / 10" : "16 / 9",
+              minHeight: isMobile ? "400px" : undefined,
               WebkitOverflowScrolling: "touch",
+              touchAction: "manipulation",
             }}
           >
-          <div className="relative w-full bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg overflow-hidden h-[350px] sm:h-[450px] md:h-[800px] group-hover:border-[#404040] transition-colors duration-200">
             <iframe
               src="https://nacre-quake-50137672.figma.site"
               title="WorkBench - Interactive Design Canvas"
@@ -95,14 +100,9 @@ export function WorkbenchEmbed() {
                 opacity: isLoaded ? 1 : 0,
                 transition: "opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1.0)",
                 pointerEvents: "auto",
-                opacity: isLoaded ? 1 : 0.3,
-                transition: "opacity 0.3s ease-out",
-                pointerEvents: "auto",
                 WebkitOverflowScrolling: "touch",
               }}
             />
-            {/* Non-interactive overlay for better page scrolling */}
-            <div className="absolute inset-0 pointer-events-none" />
           </div>
 
           {/* Subtle hover indicator for desktop */}
@@ -121,7 +121,7 @@ export function WorkbenchEmbed() {
             href="https://nacre-quake-50137672.figma.site"
             target="_blank"
             rel="noopener noreferrer"
-            className="group/cta inline-flex items-center gap-2.5 px-4 py-2.5 text-sm font-medium text-[#fafafa] hover:text-white transition-all duration-300 ease-out hover:gap-3.5"
+            className="group/cta inline-flex items-center gap-2.5 px-4 py-2.5 text-sm font-medium text-[#fafafa] hover:text-white transition-all duration-300 ease-out hover:gap-3.5 active:scale-95 md:active:scale-100"
           >
             <span>Explore fullscreen</span>
             <ExternalLink className="w-4 h-4 text-[#737373] group-hover/cta:text-white group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 transition-all duration-300 ease-out will-change-transform" />
