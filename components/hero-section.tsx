@@ -8,20 +8,19 @@ export const HeroSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.1,
+        staggerChildren: 0.05,
+        delayChildren: 0.05,
       },
     },
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 8 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
-        duration: 0.4,
-        ease: [0.25, 0.1, 0.25, 1.0],
+        duration: 0.25,
+        ease: [0.2, 0, 0.38, 0.9],
       },
     },
   }
@@ -63,7 +62,7 @@ export const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.25, delay: 0.15, ease: [0.2, 0, 0.38, 0.9] }}
           className="mt-8 md:mt-12 flex items-center gap-3"
         >
           <div className="w-2 h-2 md:w-2.5 md:h-2.5 bg-[#636363] rounded-full" />

@@ -268,4 +268,46 @@
       opacity: 0.5;
     }
   }
+
+  /* Advanced performance optimizations */
+  main,
+  section,
+  article {
+    contain: layout style;
+  }
+
+  /* Optimize off-screen element rendering */
+  @supports (content-visibility: auto) {
+    section:not(:visible) {
+      content-visibility: auto;
+      contain-intrinsic-size: auto 500px;
+    }
+  }
+
+  /* Force GPU acceleration for motion elements */
+  [class*="motion"],
+  [class*="framer"] {
+    transform: translateZ(0);
+    will-change: auto;
+  }
+
+  /* Optimize button interactions */
+  button,
+  a {
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+
+  /* Optimize scroll performance */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+  }
+
+  /* Reduce repaints on hover */
+  :hover {
+    will-change: auto;
+  }
 }
