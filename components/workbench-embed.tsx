@@ -31,18 +31,16 @@ export function WorkbenchEmbed() {
   return (
     <motion.section
       className="py-12 md:py-16 relative"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.35, ease: "easeOut" }}
+      initial={{ opacity: 0.98 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.15, ease: [0.2, 0, 0.38, 0.9] }}
     >
       <div className="px-6 md:px-8">
         {/* Section Header - Minimalist */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.25 }}
+          initial={{ opacity: 0.98 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.1 }}
           className="relative mb-10 md:mb-12"
         >
           <div className="h-px bg-[#2a2a2a] mb-6" />
@@ -60,10 +58,9 @@ export function WorkbenchEmbed() {
 
         {/* Canvas Container - Optimized for all devices */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
+          initial={{ opacity: 0.98 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2, ease: [0.2, 0, 0.38, 0.9] }}
           className="relative group"
         >
           {/* Minimal loading indicator */}
@@ -111,10 +108,9 @@ export function WorkbenchEmbed() {
 
         {/* Premium Fullscreen CTA - Primary interaction */}
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          initial={{ opacity: 0.98 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.15, ease: [0.2, 0, 0.38, 0.9] }}
           className="mt-6 md:mt-8"
         >
           <a
@@ -130,10 +126,9 @@ export function WorkbenchEmbed() {
 
         {/* Decorative separator - elegant spacing */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.25 }}
+          initial={{ opacity: 0.98 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.1 }}
           className="mt-12 md:mt-16 flex items-center gap-3"
         >
           <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />

@@ -86,26 +86,26 @@ export function SectionTransition({ children, id }: { children: ReactNode; id: s
   }, [])
 
   const isInView = useInView(ref, {
-    margin: "-10% 0px -10% 0px",
+    margin: "0px 0px -20% 0px",
     once: true,
-    amount: 0.2,
+    amount: 0.05,
   })
 
   // Snappy easing curve for buttery smooth feel
-  const easing = [0.25, 0.1, 0.25, 1]
+  const easing = [0.2, 0, 0.38, 0.9]
   
-  // Always call useSpring - use spring physics only on desktop for premium feel
-  const springConfig = { stiffness: 80, damping: 25, mass: 0.4 }
-  const opacity = useSpring(isInView ? 1 : 0.8, springConfig)
+  // Desktop spring physics for premium feel
+  const springConfig = { stiffness: 100, damping: 30, mass: 0.3 }
+  const opacity = useSpring(isInView ? 1 : 0.95, springConfig)
 
-  // Mobile uses faster, lighter animations; desktop uses spring physics for that premium feel
+  // Always visible - sections appear immediately with subtle entrance
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-      transition={isMobile ? { duration: 0.25, ease: easing } : undefined}
-      style={!isMobile ? { opacity, willChange: "opacity" } : { willChange: "opacity" }}
+      initial={{ opacity: 0.98 }}
+      animate={{ opacity: 1 }}
+      transition={isMobile ? { duration: 0.15, ease: easing } : { duration: 0.2, ease: easing }}
+      style={{ opacity: !isMobile ? opacity : undefined, willChange: "opacity" }}
     >
       {children}
     </motion.div>

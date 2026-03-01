@@ -13,6 +13,7 @@ export function CustomCursor() {
   const [isHydrated, setIsHydrated] = useState(false)
   const rafRef = useRef<number | null>(null)
   const observerRef = useRef<MutationObserver | null>(null)
+  const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     setIsHydrated(true)
@@ -67,13 +68,17 @@ export function CustomCursor() {
     handleIframeHoverEvents()
 
     observerRef.current = new MutationObserver(() => {
-      handleLinkHoverEvents()
-      handleIframeHoverEvents()
+      if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current)
+      debounceTimerRef.current = setTimeout(() => {
+        handleLinkHoverEvents()
+        handleIframeHoverEvents()
+      }, 250)
     })
     observerRef.current.observe(document.body, { childList: true, subtree: true })
 
     return () => {
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
+      if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current)
       document.removeEventListener("mousemove", handleMouseMove)
       document.removeEventListener("mousedown", handleMouseDown)
       document.removeEventListener("mouseup", handleMouseUp)
@@ -97,9 +102,9 @@ export function CustomCursor() {
         }}
         transition={{
           type: "spring",
-          mass: 0.2,
-          stiffness: 800,
-          damping: 30,
+          mass: 0.15,
+          stiffness: 1000,
+          damping: 35,
         }}
       />
       <motion.div
@@ -112,8 +117,8 @@ export function CustomCursor() {
         }}
         transition={{
           type: "spring",
-          mass: 0.5,
-          stiffness: 200,
+          mass: 0.3,
+          stiffness: 300,
           damping: 30,
         }}
       />
