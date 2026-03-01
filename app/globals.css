@@ -278,7 +278,7 @@
 
   /* Optimize off-screen element rendering */
   @supports (content-visibility: auto) {
-    section:not(:visible) {
+    section {
       content-visibility: auto;
       contain-intrinsic-size: auto 500px;
     }
