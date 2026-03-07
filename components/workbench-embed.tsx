@@ -63,15 +63,10 @@ export function WorkbenchEmbed() {
           transition={{ duration: 0.2, ease: [0.2, 0, 0.38, 0.9] }}
           className="relative group"
         >
-          {/* Minimal loading indicator */}
+          {/* Minimal loading indicator - Static state only, no animation */}
           {!isLoaded && (
-            <div className="absolute inset-0 bg-[#0a0a0a] rounded-lg z-20 flex items-center justify-center pointer-events-none">
-              <motion.div
-                initial={{ opacity: 0.5 }}
-                animate={{ opacity: 0.3 }}
-                transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-                className="w-2 h-2 bg-[#525252] rounded-full"
-              />
+            <div className="absolute inset-0 bg-[#1a1a1a] rounded-lg z-20 flex items-center justify-center pointer-events-none">
+              <div className="w-2 h-2 bg-[#404040] rounded-full opacity-50" />
             </div>
           )}
 
@@ -91,11 +86,11 @@ export function WorkbenchEmbed() {
               className="w-full h-full border-0"
               onLoad={() => setIsLoaded(true)}
               allow="fullscreen"
-              loading="lazy"
+              loading="eager"
               style={{
-                backgroundColor: "#000000",
-                opacity: isLoaded ? 1 : 0,
-                transition: "opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1.0)",
+                backgroundColor: "#1a1a1a",
+                opacity: isLoaded ? 1 : 0.1,
+                transition: "opacity 0.2s ease-out",
                 pointerEvents: "auto",
                 WebkitOverflowScrolling: "touch",
               }}

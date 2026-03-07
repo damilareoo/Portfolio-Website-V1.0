@@ -50,17 +50,37 @@ export function CustomCursor() {
     document.addEventListener("mouseenter", handleMouseEnter)
     document.addEventListener("mouseleave", handleMouseLeave)
 
+    // Cache DOM queries - don't requery on every mutation
+    let cachedLinks: Set<Element> = new Set()
+    let cachedIframes: Set<Element> = new Set()
+
+    const attachLinkListeners = (el: Element) => {
+      el.addEventListener("mouseenter", () => setLinkHovered(true), { passive: true })
+      el.addEventListener("mouseleave", () => setLinkHovered(false), { passive: true })
+    }
+
+    const attachIframeListeners = (el: Element) => {
+      el.addEventListener("mouseenter", () => setOverIframe(true), { passive: true })
+      el.addEventListener("mouseleave", () => setOverIframe(false), { passive: true })
+    }
+
     const handleLinkHoverEvents = () => {
-      document.querySelectorAll("a, button, input, textarea, [role='button']").forEach((el) => {
-        el.addEventListener("mouseenter", () => setLinkHovered(true), { once: false, passive: true })
-        el.addEventListener("mouseleave", () => setLinkHovered(false), { once: false, passive: true })
+      const newLinks = document.querySelectorAll("a, button, input, textarea, [role='button']")
+      newLinks.forEach((el) => {
+        if (!cachedLinks.has(el)) {
+          attachLinkListeners(el)
+          cachedLinks.add(el)
+        }
       })
     }
 
     const handleIframeHoverEvents = () => {
-      document.querySelectorAll(".spotify-popup, iframe").forEach((el) => {
-        el.addEventListener("mouseenter", () => setOverIframe(true), { once: false, passive: true })
-        el.addEventListener("mouseleave", () => setOverIframe(false), { once: false, passive: true })
+      const newIframes = document.querySelectorAll(".spotify-popup, iframe")
+      newIframes.forEach((el) => {
+        if (!cachedIframes.has(el)) {
+          attachIframeListeners(el)
+          cachedIframes.add(el)
+        }
       })
     }
 
@@ -72,7 +92,7 @@ export function CustomCursor() {
       debounceTimerRef.current = setTimeout(() => {
         handleLinkHoverEvents()
         handleIframeHoverEvents()
-      }, 250)
+      }, 500)
     })
     observerRef.current.observe(document.body, { childList: true, subtree: true })
 

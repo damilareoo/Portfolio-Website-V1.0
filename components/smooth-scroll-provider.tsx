@@ -1,7 +1,7 @@
 "use client"
 
 import { createContext, useContext, useEffect, useState, useRef, type ReactNode } from "react"
-import { motion, useSpring, useInView } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 
 type ScrollContextType = {
   currentSection: string
@@ -77,12 +77,25 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
 export function SectionTransition({ children, id }: { children: ReactNode; id: string }) {
   const ref = useRef(null)
   const [isMobile, setIsMobile] = useState(false)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    const checkReducedMotion = () => {
+      setPrefersReducedMotion(window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+    }
+    
     checkMobile()
+    checkReducedMotion()
+    
     window.addEventListener("resize", checkMobile)
-    return () => window.removeEventListener("resize", checkMobile)
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
+    mediaQuery.addEventListener("change", checkReducedMotion)
+    
+    return () => {
+      window.removeEventListener("resize", checkMobile)
+      mediaQuery.removeEventListener("change", checkReducedMotion)
+    }
   }, [])
 
   const isInView = useInView(ref, {
@@ -91,21 +104,28 @@ export function SectionTransition({ children, id }: { children: ReactNode; id: s
     amount: 0.05,
   })
 
-  // Snappy easing curve for buttery smooth feel
+  // Snappy easing curve - unified approach, no competing animations
   const easing = [0.2, 0, 0.38, 0.9]
   
-  // Desktop spring physics for premium feel
-  const springConfig = { stiffness: 100, damping: 30, mass: 0.3 }
-  const opacity = useSpring(isInView ? 1 : 0.95, springConfig)
+  if (prefersReducedMotion) {
+    return (
+      <div ref={ref} style={{ opacity: 1 }}>
+        {children}
+      </div>
+    )
+  }
 
-  // Always visible - sections appear immediately with subtle entrance
+  // Simple, unified animation - no competing transitions or useSpring
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0.98 }}
       animate={{ opacity: 1 }}
-      transition={isMobile ? { duration: 0.15, ease: easing } : { duration: 0.2, ease: easing }}
-      style={{ opacity: !isMobile ? opacity : undefined, willChange: "opacity" }}
+      transition={{ 
+        duration: isMobile ? 0.12 : 0.15, 
+        ease: easing 
+      }}
+      style={{ willChange: "opacity" }}
     >
       {children}
     </motion.div>
