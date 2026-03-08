@@ -73,38 +73,41 @@ function ProjectCard({ project, variants }: { project: typeof projects[0]; varia
         rel="noopener noreferrer"
         className="group block h-full"
       >
-        <div className="relative h-full flex flex-col bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg overflow-hidden hover:border-[#404040] transition-all duration-300">
-          {/* Image Container */}
-          <div className="relative w-full h-48 md:h-56 overflow-hidden bg-[#1a1a1a]">
+        <div className="relative h-full flex flex-col">
+          {/* Image Container - No border, minimal styling */}
+          <div className="relative w-full aspect-video overflow-hidden mb-3 md:mb-4 bg-[#0a0a0a]">
             <Image
               src={project.image}
               alt={project.title}
               fill
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+              className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300 ease-out"
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
-            {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+            {/* Minimal overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a0a]/40" />
           </div>
 
-          {/* Content Container */}
-          <div className="flex-1 flex flex-col justify-between p-4 md:p-5">
-            {/* Title and Category */}
-            <div className="flex-1">
-              <div className="flex items-start justify-between gap-2 mb-2">
-                <h3 className="text-lg md:text-xl font-medium text-[#fafafa] group-hover:text-white transition-colors duration-300 line-clamp-2">
-                  {project.title}
-                </h3>
-                <ArrowUpRight className="w-4 h-4 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0 mt-0.5" />
-              </div>
-              <p className="text-sm text-[#737373] group-hover:text-[#a1a1a1] transition-colors duration-300 mb-3">
-                {project.description}
-              </p>
+          {/* Content - Minimal, linear layout */}
+          <div className="flex flex-col gap-2">
+            {/* Title with arrow */}
+            <div className="flex items-start justify-between gap-2">
+              <h3 className="text-base md:text-lg font-normal text-[#fafafa] group-hover:text-white transition-colors duration-300">
+                {project.title}
+              </h3>
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0 mt-0.5" />
             </div>
 
-            {/* Footer with Category and Credit */}
-            <div className="flex items-center justify-between pt-3 border-t border-[#1a1a1a]">
-              <span className="text-xs md:text-sm text-mono text-[#525252] group-hover:text-[#737373] transition-colors duration-300">
+            {/* Description */}
+            <p className="text-xs md:text-sm text-[#737373] group-hover:text-[#a1a1a1] transition-colors duration-300">
+              {project.description}
+            </p>
+
+            {/* Divider line */}
+            <div className="w-8 h-px bg-[#2a2a2a] my-1" />
+
+            {/* Category and Credit - Linear footer */}
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-mono text-[#525252] group-hover:text-[#737373] transition-colors duration-300">
                 {project.category}
               </span>
               {project.credit && (
@@ -177,13 +180,13 @@ export function WorkSection() {
           </div>
         </motion.div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid - Minimal spacing, linear feel */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16"
         >
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} variants={itemVariants} />
