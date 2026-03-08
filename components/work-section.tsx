@@ -10,7 +10,7 @@ const projects = [
     title: "SmallChess",
     description: "Chess ecosystem",
     link: "https://small-chess.vercel.app/",
-    image: "https://small-chess.vercel.app/og.png",
+    image: "https://small-chess.vercel.app/api/og",
     category: "Interactive",
   },
   {
@@ -18,7 +18,7 @@ const projects = [
     title: "Trieuth Capital",
     description: "Brand, web design and dev",
     link: "https://trieuthcapital.com",
-    image: "https://trieuthcapital.com/og.png",
+    image: "https://trieuthcapital.com/api/og",
     category: "Web Design",
   },
   {
@@ -26,7 +26,7 @@ const projects = [
     title: "Reveriee",
     description: "Interactive quotes",
     link: "https://chord-gig-63118351.figma.site",
-    image: "https://chord-gig-63118351.figma.site/og.png",
+    image: "https://chord-gig-63118351.figma.site/api/og",
     category: "Experience",
   },
   {
@@ -34,7 +34,7 @@ const projects = [
     title: "Dithering Background",
     description: "Generative shader design",
     link: "https://v0-shader-component-generation.vercel.app/",
-    image: "https://v0-shader-component-generation.vercel.app/og.png",
+    image: "https://v0-shader-component-generation.vercel.app/api/og",
     category: "Creative Code",
   },
   {
@@ -42,7 +42,7 @@ const projects = [
     title: "Image to ASCII",
     description: "Fork of",
     link: "https://v0-test-mu-eight-72.vercel.app/",
-    image: "https://v0-test-mu-eight-72.vercel.app/og.png",
+    image: "https://v0-test-mu-eight-72.vercel.app/api/og",
     category: "Tool",
     credit: { name: "Rauch", url: "https://x.com/rauchg" },
   },
@@ -51,7 +51,7 @@ const projects = [
     title: "Pixel Soccer",
     description: "Interactive pixel art game",
     link: "https://pixel-soccer.vercel.app",
-    image: "https://pixel-soccer.vercel.app/og.png",
+    image: "https://pixel-soccer.vercel.app/api/og",
     category: "Game",
   },
   {
@@ -59,7 +59,7 @@ const projects = [
     title: "Caged Bird",
     description: "Puzzle game experience",
     link: "https://cagedbird.vercel.app",
-    image: "https://cagedbird.vercel.app/og.png",
+    image: "https://cagedbird.vercel.app/api/og",
     category: "Game",
   },
 ]
