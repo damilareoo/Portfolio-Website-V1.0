@@ -74,15 +74,17 @@ function ProjectCard({ project, variants }: { project: typeof projects[0]; varia
         className="group block h-full"
       >
         <div className="relative h-full flex flex-col">
-          {/* Image Container - No border, minimal styling */}
-          <div className="relative w-full aspect-video overflow-hidden mb-3 md:mb-4 bg-[#0a0a0a]">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300 ease-out"
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
+          {/* Image Container - Matches featured project sizing and styling */}
+          <div className="relative mb-4 md:mb-6 rounded-lg overflow-hidden bg-[#0a0a0a] border border-[#1a1a1a] hover:border-[#404040] transition-all duration-300">
+            <div className="relative w-full aspect-video md:aspect-[16/9]">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300 ease-out"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+              />
+            </div>
             {/* Minimal overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a0a]/40" />
           </div>
