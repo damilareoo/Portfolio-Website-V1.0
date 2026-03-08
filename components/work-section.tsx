@@ -10,7 +10,7 @@ const projects = [
     title: "SmallChess",
     description: "Chess ecosystem",
     link: "https://small-chess.vercel.app/",
-    image: "/images/chessever-featured.png",
+    image: "/images/smallchess-preview.jpg",
     category: "Interactive",
   },
   {
@@ -18,7 +18,7 @@ const projects = [
     title: "Trieuth Capital",
     description: "Brand, web design and dev",
     link: "https://trieuthcapital.com",
-    image: "/images/wormhole.png",
+    image: "/images/trieuth-preview.jpg",
     category: "Web Design",
   },
   {
@@ -26,7 +26,7 @@ const projects = [
     title: "Reveriee",
     description: "Interactive quotes",
     link: "https://chord-gig-63118351.figma.site",
-    image: "/images/000.png",
+    image: "/images/reveriee-preview.jpg",
     category: "Experience",
   },
   {
@@ -34,7 +34,7 @@ const projects = [
     title: "Dithering Background",
     description: "Generative shader design",
     link: "https://v0-shader-component-generation.vercel.app/",
-    image: "/images/fact-checker.png",
+    image: "/images/dithering-preview.jpg",
     category: "Creative Code",
   },
   {
@@ -42,7 +42,7 @@ const projects = [
     title: "Image to ASCII",
     description: "Fork of",
     link: "https://v0-test-mu-eight-72.vercel.app/",
-    image: "/images/word-ladder.png",
+    image: "/images/ascii-preview.jpg",
     category: "Tool",
     credit: { name: "Rauch", url: "https://x.com/rauchg" },
   },
@@ -51,7 +51,7 @@ const projects = [
     title: "Pixel Soccer",
     description: "Interactive pixel art game",
     link: "https://pixel-soccer.vercel.app",
-    image: "/images/growth-spring.jpeg",
+    image: "/images/pixelsoccer-preview.jpg",
     category: "Game",
   },
   {
@@ -59,7 +59,7 @@ const projects = [
     title: "Caged Bird",
     description: "Puzzle game experience",
     link: "https://cagedbird.vercel.app",
-    image: "/images/car-climate.png",
+    image: "/images/cagedbird-preview.jpg",
     category: "Game",
   },
 ]
