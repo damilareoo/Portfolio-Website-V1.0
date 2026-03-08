@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import Image from "next/image"
+import { useState } from "react"
 
 const projects = [
   {
@@ -10,7 +11,8 @@ const projects = [
     title: "SmallChess",
     description: "Chess ecosystem",
     link: "https://small-chess.vercel.app/",
-    image: "/images/smallchess-preview.jpg",
+    image: "https://small-chess.vercel.app/og.png",
+    fallbackImage: "/images/smallchess-preview.jpg",
     category: "Interactive",
   },
   {
@@ -18,7 +20,8 @@ const projects = [
     title: "Trieuth Capital",
     description: "Brand, web design and dev",
     link: "https://trieuthcapital.com",
-    image: "/images/trieuth-preview.jpg",
+    image: "https://trieuthcapital.com/og.png",
+    fallbackImage: "/images/trieuth-preview.jpg",
     category: "Web Design",
   },
   {
@@ -26,7 +29,8 @@ const projects = [
     title: "Reveriee",
     description: "Interactive quotes",
     link: "https://chord-gig-63118351.figma.site",
-    image: "/images/reveriee-preview.jpg",
+    image: "https://chord-gig-63118351.figma.site/og.png",
+    fallbackImage: "/images/reveriee-preview.jpg",
     category: "Experience",
   },
   {
@@ -34,7 +38,8 @@ const projects = [
     title: "Dithering Background",
     description: "Generative shader design",
     link: "https://v0-shader-component-generation.vercel.app/",
-    image: "/images/dithering-preview.jpg",
+    image: "https://v0-shader-component-generation.vercel.app/og.png",
+    fallbackImage: "/images/dithering-preview.jpg",
     category: "Creative Code",
   },
   {
@@ -42,7 +47,8 @@ const projects = [
     title: "Image to ASCII",
     description: "Fork of",
     link: "https://v0-test-mu-eight-72.vercel.app/",
-    image: "/images/ascii-preview.jpg",
+    image: "https://v0-test-mu-eight-72.vercel.app/og.png",
+    fallbackImage: "/images/ascii-preview.jpg",
     category: "Tool",
     credit: { name: "Rauch", url: "https://x.com/rauchg" },
   },
@@ -51,7 +57,8 @@ const projects = [
     title: "Pixel Soccer",
     description: "Interactive pixel art game",
     link: "https://pixel-soccer.vercel.app",
-    image: "/images/pixelsoccer-preview.jpg",
+    image: "https://pixel-soccer.vercel.app/og.png",
+    fallbackImage: "/images/pixelsoccer-preview.jpg",
     category: "Game",
   },
   {
@@ -59,10 +66,85 @@ const projects = [
     title: "Caged Bird",
     description: "Puzzle game experience",
     link: "https://cagedbird.vercel.app",
-    image: "/images/cagedbird-preview.jpg",
+    image: "https://cagedbird.vercel.app/og.png",
+    fallbackImage: "/images/cagedbird-preview.jpg",
     category: "Game",
   },
 ]
+
+function ProjectCard({ project, variants }: { project: typeof projects[0]; variants: any }) {
+  const [imageSrc, setImageSrc] = useState(project.image)
+
+  const handleImageError = () => {
+    if (imageSrc === project.image && project.fallbackImage) {
+      setImageSrc(project.fallbackImage)
+    }
+  }
+
+  return (
+    <motion.div variants={variants}>
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group block h-full"
+      >
+        <div className="relative h-full flex flex-col bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg overflow-hidden hover:border-[#404040] transition-all duration-300">
+          {/* Image Container */}
+          <div className="relative w-full h-48 md:h-56 overflow-hidden bg-[#1a1a1a]">
+            <Image
+              src={imageSrc}
+              alt={project.title}
+              fill
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              onError={handleImageError}
+            />
+            {/* Overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+          </div>
+
+          {/* Content Container */}
+          <div className="flex-1 flex flex-col justify-between p-4 md:p-5">
+            {/* Title and Category */}
+            <div className="flex-1">
+              <div className="flex items-start justify-between gap-2 mb-2">
+                <h3 className="text-lg md:text-xl font-medium text-[#fafafa] group-hover:text-white transition-colors duration-300 line-clamp-2">
+                  {project.title}
+                </h3>
+                <ArrowUpRight className="w-4 h-4 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0 mt-0.5" />
+              </div>
+              <p className="text-sm text-[#737373] group-hover:text-[#a1a1a1] transition-colors duration-300 mb-3">
+                {project.description}
+              </p>
+            </div>
+
+            {/* Footer with Category and Credit */}
+            <div className="flex items-center justify-between pt-3 border-t border-[#1a1a1a]">
+              <span className="text-xs md:text-sm text-mono text-[#525252] group-hover:text-[#737373] transition-colors duration-300">
+                {project.category}
+              </span>
+              {project.credit && (
+                <span className="text-xs text-[#525252]">
+                  <span
+                    onClick={(e) => {
+                      e.preventDefault()
+                      e.stopPropagation()
+                      window.open(project.credit.url, "_blank")
+                    }}
+                    className="text-[#737373] hover:text-[#fafafa] underline underline-offset-2 cursor-pointer transition-colors"
+                  >
+                    {project.credit.name}
+                  </span>
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+      </a>
+    </motion.div>
+  )
+}
 
 export function WorkSection() {
   const containerVariants = {
@@ -121,66 +203,7 @@ export function WorkSection() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
         >
           {projects.map((project) => (
-            <motion.div key={project.id} variants={itemVariants}>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block h-full"
-              >
-                <div className="relative h-full flex flex-col bg-[#0a0a0a] border border-[#1a1a1a] rounded-lg overflow-hidden hover:border-[#404040] transition-all duration-300">
-                  {/* Image Container */}
-                  <div className="relative w-full h-48 md:h-56 overflow-hidden bg-[#1a1a1a]">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                    {/* Overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
-                  </div>
-
-                  {/* Content Container */}
-                  <div className="flex-1 flex flex-col justify-between p-4 md:p-5">
-                    {/* Title and Category */}
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between gap-2 mb-2">
-                        <h3 className="text-lg md:text-xl font-medium text-[#fafafa] group-hover:text-white transition-colors duration-300 line-clamp-2">
-                          {project.title}
-                        </h3>
-                        <ArrowUpRight className="w-4 h-4 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0 mt-0.5" />
-                      </div>
-                      <p className="text-sm text-[#737373] group-hover:text-[#a1a1a1] transition-colors duration-300 mb-3">
-                        {project.description}
-                      </p>
-                    </div>
-
-                    {/* Footer with Category and Credit */}
-                    <div className="flex items-center justify-between pt-3 border-t border-[#1a1a1a]">
-                      <span className="text-xs md:text-sm text-mono text-[#525252] group-hover:text-[#737373] transition-colors duration-300">
-                        {project.category}
-                      </span>
-                      {project.credit && (
-                        <span className="text-xs text-[#525252]">
-                          <span
-                            onClick={(e) => {
-                              e.preventDefault()
-                              e.stopPropagation()
-                              window.open(project.credit.url, "_blank")
-                            }}
-                            className="text-[#737373] hover:text-[#fafafa] underline underline-offset-2 cursor-pointer transition-colors"
-                          >
-                            {project.credit.name}
-                          </span>
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </motion.div>
+            <ProjectCard key={project.id} project={project} variants={itemVariants} />
           ))}
         </motion.div>
 
