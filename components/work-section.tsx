@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import Image from "next/image"
-import { useState } from "react"
 
 const projects = [
   {
@@ -12,7 +11,6 @@ const projects = [
     description: "Chess ecosystem",
     link: "https://small-chess.vercel.app/",
     image: "https://small-chess.vercel.app/og.png",
-    fallbackImage: "/images/smallchess-preview.jpg",
     category: "Interactive",
   },
   {
@@ -21,7 +19,6 @@ const projects = [
     description: "Brand, web design and dev",
     link: "https://trieuthcapital.com",
     image: "https://trieuthcapital.com/og.png",
-    fallbackImage: "/images/trieuth-preview.jpg",
     category: "Web Design",
   },
   {
@@ -30,7 +27,6 @@ const projects = [
     description: "Interactive quotes",
     link: "https://chord-gig-63118351.figma.site",
     image: "https://chord-gig-63118351.figma.site/og.png",
-    fallbackImage: "/images/reveriee-preview.jpg",
     category: "Experience",
   },
   {
@@ -39,7 +35,6 @@ const projects = [
     description: "Generative shader design",
     link: "https://v0-shader-component-generation.vercel.app/",
     image: "https://v0-shader-component-generation.vercel.app/og.png",
-    fallbackImage: "/images/dithering-preview.jpg",
     category: "Creative Code",
   },
   {
@@ -48,7 +43,6 @@ const projects = [
     description: "Fork of",
     link: "https://v0-test-mu-eight-72.vercel.app/",
     image: "https://v0-test-mu-eight-72.vercel.app/og.png",
-    fallbackImage: "/images/ascii-preview.jpg",
     category: "Tool",
     credit: { name: "Rauch", url: "https://x.com/rauchg" },
   },
@@ -58,7 +52,6 @@ const projects = [
     description: "Interactive pixel art game",
     link: "https://pixel-soccer.vercel.app",
     image: "https://pixel-soccer.vercel.app/og.png",
-    fallbackImage: "/images/pixelsoccer-preview.jpg",
     category: "Game",
   },
   {
@@ -67,20 +60,11 @@ const projects = [
     description: "Puzzle game experience",
     link: "https://cagedbird.vercel.app",
     image: "https://cagedbird.vercel.app/og.png",
-    fallbackImage: "/images/cagedbird-preview.jpg",
     category: "Game",
   },
 ]
 
 function ProjectCard({ project, variants }: { project: typeof projects[0]; variants: any }) {
-  const [imageSrc, setImageSrc] = useState(project.image)
-
-  const handleImageError = () => {
-    if (imageSrc === project.image && project.fallbackImage) {
-      setImageSrc(project.fallbackImage)
-    }
-  }
-
   return (
     <motion.div variants={variants}>
       <a
@@ -93,12 +77,11 @@ function ProjectCard({ project, variants }: { project: typeof projects[0]; varia
           {/* Image Container */}
           <div className="relative w-full h-48 md:h-56 overflow-hidden bg-[#1a1a1a]">
             <Image
-              src={imageSrc}
+              src={project.image}
               alt={project.title}
               fill
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              onError={handleImageError}
             />
             {/* Overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
