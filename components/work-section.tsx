@@ -81,6 +81,7 @@ function ProjectCard({ project, variants }: { project: typeof projects[0]; varia
                 src={project.image}
                 alt={project.title}
                 fill
+                unoptimized
                 className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300 ease-out"
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
               />
