@@ -5,6 +5,13 @@ import { ArrowUpRight } from "lucide-react"
 
 const projects = [
   {
+    id: 8,
+    title: "Hitman's Library",
+    description: "A collection of cool experiences across the web",
+    link: "https://mars-hitman-library.vercel.app/",
+    tag: "collection",
+  },
+  {
     id: 0,
     title: "SmallChess",
     description: "Chess ecosystem",
@@ -49,13 +56,6 @@ const projects = [
     description: "Puzzle game experience",
     link: "https://cagedbird.vercel.app",
     tag: "game",
-  },
-  {
-    id: 8,
-    title: "Hitman's Library",
-    description: "A collection of cool experiences across the web",
-    link: "https://mars-hitman-library.vercel.app/",
-    tag: "collection",
   },
 ]
 
