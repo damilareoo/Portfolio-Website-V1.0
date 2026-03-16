@@ -1,79 +1,55 @@
-# Portfolio Website (Built with v0)
+# Portfolio Website
 
-This is my personal portfolio website, built as a space to share experiments, ideas, and things I’m actively exploring. It’s less about being "finished" and more about showing how I think, build, and iterate.
+My personal portfolio — a space to share experiments, projects, and things I'm actively exploring.
 
-The site was built using **v0** by Vercel.
-
-## About the Project
-
-This portfolio is intentionally lightweight and flexible. It’s designed to:
-
-* Showcase selected projects and experiments
-* Share in-progress ideas and explorations
-* Act as a sandbox for testing layouts, interactions, and patterns
-
-Iteration is a core part of the project. The site will continue to evolve over time.
+🔗 **[Visit → damilareoo.xyz](https://www.damilareoo.xyz)**
 
 ---
 
-## Built With
+## About
 
-* **v0** – Primary tool used to generate and iterate on the UI and structure
-* **Next.js** – Application framework
-* **React** – Component-based UI
-* **Tailwind CSS** – Styling and layout
-* **Vercel** – Deployment and hosting
+This site is built to be lightweight, iterative, and honest about process — it's not "finished", it's evolving. The goal is to show how I think and build, not just the polished end results.
 
----
+## Tech Stack
 
-## How v0 Was Used
-
-* Generating page layouts and components
-* Rapidly iterating on structure and visual hierarchy
-* Exploring multiple directions quickly
-* Refining prompts instead of writing everything from scratch
-
-Design input was added only when the generated output didn’t match what I had in mind.
-
----
-
-## Project Structure
-
-The codebase follows a standard Next.js structure, keeping things simple and easy to extend:
-
-* `/app` – Pages and routing
-* `/components` – Reusable UI components
-* `/styles` – Global styles and Tailwind configuration
-* `/public` – Static assets
-
----
+| Tool | Purpose |
+|------|---------|
+| Next.js | App framework & routing |
+| React | Component-based UI |
+| Tailwind CSS | Styling |
+| TypeScript | Type safety |
+| Vercel | Hosting & deployment |
 
 ## Getting Started
 
-Clone the repository:
-
-\`\`\`
+```bash
+# 1. Clone
 git clone https://github.com/damilareoo/Portfolio-Website-V1.0.git
-\`\`\`
+cd Portfolio-Website-V1.0
 
-Install dependencies:
-
-\`\`\`
+# 2. Install dependencies
 npm install
-\`\`\`
 
-Run the development server:
-
-\`\`\`
+# 3. Run the dev server
 npm run dev
-\`\`\`
+```
 
-Open `http://localhost:3000` to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Project Structure
+
+```
+Portfolio-Website-V1.0/
+├── app/           # Pages, routing, API routes (OG images)
+├── components/    # Reusable UI (hero, navbar, projects, etc.)
+├── public/        # Images and static files
+└── styles/        # Global CSS
+```
+
+## Deploy
+
+Push to `main` and Vercel deploys automatically.
 
 ---
 
-## Deployment
-
-The project is deployed using **Vercel**. Any updates pushed to the main branch can be deployed instantly.
-
----
+Built by [Damilare Osofisan](https://www.damilareoo.xyz)
