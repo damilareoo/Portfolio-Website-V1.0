@@ -12,6 +12,13 @@ const projects = [
     tag: "collection",
   },
   {
+    id: 9,
+    title: "PNG to SVG",
+    description: "Convert PNG images to scalable SVG format",
+    link: "https://v0-png-to-svg.vercel.app/",
+    tag: "tool",
+  },
+  {
     id: 0,
     title: "SmallChess",
     description: "Chess ecosystem",
@@ -22,19 +29,6 @@ const projects = [
     title: "Trieuth Capital",
     description: "Brand, web design and dev",
     link: "https://trieuthcapital.com",
-  },
-
-  {
-    id: 3,
-    title: "Reveriee",
-    description: "Interactive quotes",
-    link: "https://chord-gig-63118351.figma.site",
-  },
-  {
-    id: 4,
-    title: "Dithering Background",
-    description: "Generative shader design",
-    link: "https://v0-shader-component-generation.vercel.app/",
   },
   {
     id: 5,
