@@ -12,6 +12,13 @@ const projects = [
     tag: "collection",
   },
   {
+    id: 9,
+    title: "PNG to SVG",
+    description: "Convert PNG images to scalable SVG format",
+    link: "https://v0-png-to-svg.vercel.app/",
+    tag: "tool",
+  },
+  {
     id: 0,
     title: "SmallChess",
     description: "Chess ecosystem",
