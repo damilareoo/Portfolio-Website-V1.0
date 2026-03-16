@@ -1,8 +1,8 @@
 # Portfolio Website
 
-My personal portfolio — a space to share experiments, projects, and things I'm actively exploring.
+**My personal portfolio** — a space to share experiments, projects, and things I'm actively exploring.
 
-🔗 **[Visit → damilareoo.xyz](https://www.damilareoo.xyz)**
+[Visit damilareoo.xyz](https://www.damilareoo.xyz)
 
 ---
 
