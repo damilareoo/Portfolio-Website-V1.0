@@ -30,19 +30,6 @@ const projects = [
     description: "Brand, web design and dev",
     link: "https://trieuthcapital.com",
   },
-
-  {
-    id: 3,
-    title: "Reveriee",
-    description: "Interactive quotes",
-    link: "https://chord-gig-63118351.figma.site",
-  },
-  {
-    id: 4,
-    title: "Dithering Background",
-    description: "Generative shader design",
-    link: "https://v0-shader-component-generation.vercel.app/",
-  },
   {
     id: 5,
     title: "Image to ASCII",
