@@ -6,7 +6,6 @@ import { HeroSection } from "@/components/hero-section"
 import { FeaturedProject } from "@/components/featured-project-section"
 import { WorkSection } from "@/components/work-section"
 import { ContactSection } from "@/components/contact-section"
-import { WorkbenchEmbed } from "@/components/workbench-embed"
 import { Footer } from "@/components/footer"
 import { Navbar } from "@/components/navbar"
 import { SmoothScrollProvider, SectionTransition } from "@/components/smooth-scroll-provider"
@@ -15,7 +14,6 @@ export default function Home() {
   const featuredRef = useRef<HTMLElement>(null)
   const workRef = useRef<HTMLElement>(null)
   const contactRef = useRef<HTMLElement>(null)
-  const workbenchRef = useRef<HTMLElement>(null)
   const footerRef = useRef<HTMLElement>(null)
   return (
     <SmoothScrollProvider>
@@ -65,12 +63,6 @@ export default function Home() {
             <section id="across-the-web" ref={contactRef} aria-label="Elsewhere and contact" className="scroll-section">
               <SectionTransition id="across-the-web">
                 <ContactSection />
-              </SectionTransition>
-            </section>
-
-            <section id="workbench" ref={workbenchRef} aria-label="WorkBench design tool" className="scroll-section">
-              <SectionTransition id="workbench">
-                <WorkbenchEmbed />
               </SectionTransition>
             </section>
 
