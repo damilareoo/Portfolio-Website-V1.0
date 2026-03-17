@@ -19,36 +19,10 @@ const projects = [
     tag: "tool",
   },
   {
-    id: 0,
-    title: "SmallChess",
-    description: "Chess ecosystem",
-    link: "https://small-chess.vercel.app/",
-  },
-  {
-    id: 1,
-    title: "Trieuth Capital",
-    description: "Brand, web design and dev",
-    link: "https://trieuthcapital.com",
-  },
-  {
-    id: 5,
-    title: "Image to ASCII",
-    description: "Fork of",
-    link: "https://v0-test-mu-eight-72.vercel.app/",
-    credit: { name: "Rauch", url: "https://x.com/rauchg" },
-  },
-  {
     id: 6,
     title: "Pixel Soccer",
     description: "Interactive pixel art game",
     link: "https://pixel-soccer.vercel.app",
-    tag: "game",
-  },
-  {
-    id: 7,
-    title: "Caged Bird",
-    description: "Puzzle game experience",
-    link: "https://cagedbird.vercel.app",
     tag: "game",
   },
 ]
