@@ -19,18 +19,6 @@ const projects = [
     tag: "tool",
   },
   {
-    id: 0,
-    title: "SmallChess",
-    description: "Web development",
-    link: "https://small-chess.vercel.app/",
-  },
-  {
-    id: 1,
-    title: "Trieuth Capital",
-    description: "Web design and dev",
-    link: "https://trieuthcapital.com",
-  },
-  {
     id: 6,
     title: "Pixel Soccer",
     description: "Interactive pixel art game",
