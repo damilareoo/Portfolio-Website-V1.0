@@ -21,7 +21,7 @@ const projects = [
   {
     id: 0,
     title: "SmallChess",
-    description: "Chess ecosystem",
+    description: "Web development",
     link: "https://small-chess.vercel.app/",
   },
   {
