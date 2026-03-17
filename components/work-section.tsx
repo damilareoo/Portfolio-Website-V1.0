@@ -27,7 +27,7 @@ const projects = [
   {
     id: 1,
     title: "Trieuth Capital",
-    description: "Brand, web design and dev",
+    description: "Web design and dev",
     link: "https://trieuthcapital.com",
   },
   {
