@@ -22,7 +22,7 @@ This site is built to be lightweight, iterative, and honest about process — it
 
 ## Getting Started
 
-```bash
+\`\`\`bash
 # 1. Clone
 git clone https://github.com/damilareoo/Portfolio-Website-V1.0.git
 cd Portfolio-Website-V1.0
@@ -32,19 +32,19 @@ npm install
 
 # 3. Run the dev server
 npm run dev
-```
+\`\`\`
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Project Structure
 
-```
+\`\`\`
 Portfolio-Website-V1.0/
 ├── app/           # Pages, routing, API routes (OG images)
 ├── components/    # Reusable UI (hero, navbar, projects, etc.)
 ├── public/        # Images and static files
 └── styles/        # Global CSS
-```
+\`\`\`
 
 ## Deploy
 
