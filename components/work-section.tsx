@@ -15,7 +15,7 @@ const projects = [
     id: 10,
     title: "WorkBench",
     description: "Design tool and workspace",
-    link: "https://workbench.vercel.app",
+    link: "https://nacre-quake-50137672.figma.site",
     tag: "tool",
   },
   {
