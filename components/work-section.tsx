@@ -12,6 +12,13 @@ const projects = [
     tag: "collection",
   },
   {
+    id: 11,
+    title: "Damilare's Skills",
+    description: "Interactive skills showcase",
+    link: "https://damilares-skills.vercel.app/",
+    tag: "portfolio",
+  },
+  {
     id: 10,
     title: "WorkBench",
     description: "Design tool and workspace",
