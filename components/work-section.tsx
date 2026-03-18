@@ -14,9 +14,9 @@ const projects = [
   {
     id: 11,
     title: "Damilare's Skills",
-    description: "Interactive skills showcase",
+    description: "Skills for Claude Code, etc",
     link: "https://damilares-skills.vercel.app/",
-    tag: "portfolio",
+    tag: "skills",
   },
   {
     id: 10,
