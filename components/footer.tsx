@@ -34,7 +34,6 @@ export function Footer() {
             </a>
 
             <span className="relative inline-flex items-center cursor-pointer">
-              {/* Spotify icon — turns green + scales on hover */}
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -42,126 +41,122 @@ export function Footer() {
                 className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0"
                 animate={
                   showSpotifyEmbed
-                    ? { color: "#1DB954", scale: 1.2 }
+                    ? { color: "#1DB954", scale: 1.15 }
                     : { color: "#a1a1a1", scale: 1 }
                 }
-                transition={{ duration: 0.2, ease: [0.2, 0, 0.38, 0.9] }}
+                transition={{ duration: 0.22, ease: [0.2, 0, 0.38, 0.9] }}
               >
                 <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
               </motion.svg>
 
               <AnimatePresence>
                 {showSpotifyEmbed && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.82, y: 14, filter: "blur(8px)" }}
-                    animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, scale: 0.88, y: 8, filter: "blur(4px)" }}
-                    transition={{
-                      scale: { type: "spring", stiffness: 420, damping: 26 },
-                      opacity: { duration: 0.18 },
-                      filter: { duration: 0.18 },
-                      y: { type: "spring", stiffness: 420, damping: 26 },
-                    }}
+                  /* Perspective wrapper for 3D flip entrance */
+                  <div
                     className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 z-50"
-                    style={{ filter: "drop-shadow(0 0 28px rgba(29,185,84,0.18))" }}
+                    style={{ perspective: "700px", perspectiveOrigin: "50% 100%" }}
                   >
-                    {/* Card shell with green glow border */}
-                    <div
-                      className="rounded-2xl overflow-hidden"
-                      style={{
-                        boxShadow:
-                          "0 0 0 1px rgba(29,185,84,0.28), 0 28px 64px rgba(0,0,0,0.85), inset 0 1px 0 rgba(29,185,84,0.08)",
-                        background: "#0d0d0d",
-                        width: "300px",
+                    <motion.div
+                      initial={{ opacity: 0, y: 20, rotateX: -12, scale: 0.94, filter: "blur(6px)" }}
+                      animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, y: 10, rotateX: 8, scale: 0.95, filter: "blur(3px)" }}
+                      transition={{
+                        y: { type: "spring", stiffness: 360, damping: 28 },
+                        rotateX: { type: "spring", stiffness: 360, damping: 28 },
+                        scale: { type: "spring", stiffness: 360, damping: 28 },
+                        opacity: { duration: 0.16, ease: "easeOut" },
+                        filter: { duration: 0.22, ease: "easeOut" },
                       }}
+                      style={{ transformOrigin: "50% 100%" }}
                     >
-                      {/* Animated green sweep bar */}
-                      <motion.div
-                        className="h-px w-full"
+                      {/* Card */}
+                      <div
+                        className="rounded-2xl overflow-hidden"
                         style={{
-                          background:
-                            "linear-gradient(90deg, transparent 0%, #1DB954 50%, transparent 100%)",
+                          background: "#0f0f0f",
+                          boxShadow: "0 0 0 1px rgba(255,255,255,0.08), 0 32px 72px rgba(0,0,0,0.92)",
+                          width: "300px",
                         }}
-                        initial={{ scaleX: 0, opacity: 0 }}
-                        animate={{ scaleX: 1, opacity: 1 }}
-                        transition={{ delay: 0.08, duration: 0.45, ease: "easeOut" }}
-                      />
-
-                      {/* Now Playing header */}
-                      <motion.div
-                        className="flex items-center gap-2.5 px-3.5 pt-3 pb-2"
-                        initial={{ opacity: 0, y: 4 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1, duration: 0.2 }}
                       >
-                        {/* Animated equalizer bars */}
-                        <div className="flex items-end gap-[2.5px] h-3.5">
-                          {[0, 0.12, 0.06, 0.18].map((delay, i) => (
-                            <motion.div
-                              key={i}
-                              className="w-[3px] rounded-full"
-                              style={{ background: "#1DB954" }}
-                              animate={{ height: ["3px", "11px", "5px", "14px", "3px"] }}
-                              transition={{
-                                repeat: Infinity,
-                                duration: 0.75,
-                                delay,
-                                ease: "easeInOut",
-                              }}
-                            />
-                          ))}
-                        </div>
-                        <span
-                          className="text-[9px] font-semibold tracking-[0.18em] uppercase"
-                          style={{ color: "#1DB954" }}
-                        >
-                          Now Playing
-                        </span>
-                      </motion.div>
-
-                      {/* Spotify iframe */}
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.12, duration: 0.2 }}
-                      >
-                        <iframe
-                          src="https://open.spotify.com/embed/track/69AHqDMcDKyxKL1lNNCIve?utm_source=generator&theme=0"
-                          width="100%"
-                          height="152"
-                          frameBorder="0"
-                          allowFullScreen
-                          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                          loading="lazy"
-                          style={{ display: "block" }}
+                        {/* Top line — sweeps in */}
+                        <motion.div
+                          className="h-px w-full"
+                          style={{ background: "linear-gradient(90deg, transparent, #1DB954 50%, transparent)" }}
+                          initial={{ scaleX: 0, opacity: 0 }}
+                          animate={{ scaleX: 1, opacity: 1 }}
+                          transition={{ delay: 0.1, duration: 0.5, ease: [0.2, 0, 0.38, 0.9] }}
                         />
-                      </motion.div>
 
-                      {/* Bottom green shimmer line */}
-                      <motion.div
-                        className="h-px w-full"
+                        {/* Now Playing header — slides up after card */}
+                        <motion.div
+                          className="flex items-center gap-2.5 px-3.5 pt-3 pb-2"
+                          initial={{ opacity: 0, y: 6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.1, duration: 0.22, ease: [0.2, 0, 0.38, 0.9] }}
+                        >
+                          {/* Equalizer bars */}
+                          <div className="flex items-end gap-[2.5px] h-3.5">
+                            {[
+                              { delay: 0,    heights: ["3px","12px","5px","10px","3px"] },
+                              { delay: 0.13, heights: ["6px","3px","14px","4px","8px"] },
+                              { delay: 0.06, heights: ["10px","5px","3px","13px","6px"] },
+                              { delay: 0.19, heights: ["4px","11px","7px","3px","10px"] },
+                            ].map((bar, i) => (
+                              <motion.div
+                                key={i}
+                                className="w-[3px] rounded-full"
+                                style={{ background: "#1DB954" }}
+                                animate={{ height: bar.heights }}
+                                transition={{
+                                  repeat: Infinity,
+                                  duration: 0.9,
+                                  delay: bar.delay,
+                                  ease: "easeInOut",
+                                  repeatType: "mirror",
+                                }}
+                              />
+                            ))}
+                          </div>
+                          <span
+                            className="text-[9px] font-semibold tracking-[0.18em] uppercase"
+                            style={{ color: "#1DB954" }}
+                          >
+                            Now Playing
+                          </span>
+                        </motion.div>
+
+                        {/* iFrame — fades up last */}
+                        <motion.div
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.16, duration: 0.26, ease: [0.2, 0, 0.38, 0.9] }}
+                        >
+                          <iframe
+                            src="https://open.spotify.com/embed/track/69AHqDMcDKyxKL1lNNCIve?utm_source=generator&theme=0"
+                            width="100%"
+                            height="152"
+                            frameBorder="0"
+                            allowFullScreen
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"
+                            style={{ display: "block" }}
+                          />
+                        </motion.div>
+                      </div>
+
+                      {/* Arrow */}
+                      <div
+                        className="absolute top-full left-1/2 -translate-x-1/2"
                         style={{
-                          background:
-                            "linear-gradient(90deg, transparent 0%, rgba(29,185,84,0.4) 50%, transparent 100%)",
+                          width: 0,
+                          height: 0,
+                          borderLeft: "7px solid transparent",
+                          borderRight: "7px solid transparent",
+                          borderTop: "7px solid rgba(255,255,255,0.08)",
                         }}
-                        initial={{ scaleX: 0, opacity: 0 }}
-                        animate={{ scaleX: 1, opacity: 1 }}
-                        transition={{ delay: 0.2, duration: 0.45, ease: "easeOut" }}
                       />
-                    </div>
-
-                    {/* Arrow pointing down */}
-                    <div
-                      className="absolute top-full left-1/2 -translate-x-1/2"
-                      style={{
-                        width: 0,
-                        height: 0,
-                        borderLeft: "7px solid transparent",
-                        borderRight: "7px solid transparent",
-                        borderTop: "7px solid rgba(29,185,84,0.28)",
-                      }}
-                    />
-                  </motion.div>
+                    </motion.div>
+                  </div>
                 )}
               </AnimatePresence>
             </span>
