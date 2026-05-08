@@ -45,7 +45,7 @@ export const HeroSection = () => {
               >
                 ChessEver
               </a>{" "}
-              as Product Designer and{" "}
+              and{" "}
               <a
                 href="https://hex.inc"
                 target="_blank"
@@ -53,8 +53,8 @@ export const HeroSection = () => {
                 className="text-[#fafafa] underline decoration-[#525252] hover:decoration-[#fafafa] transition-colors duration-300"
               >
                 Hex
-              </a>{" "}
-              as Experimental Designer.
+              </a>
+              .
             </p>
           </motion.div>
         </motion.div>
