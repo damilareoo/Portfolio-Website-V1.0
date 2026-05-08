@@ -36,25 +36,7 @@ export const HeroSection = () => {
           <motion.div variants={itemVariants} className="relative">
             <p className="text-base md:text-lg text-[#a1a1a1] max-w-2xl leading-relaxed text-balance">
               Designer and builder creating 0–1 experiences. I design products, build what makes them work, and ship
-              them. Currently at{" "}
-              <a
-                href="https://chessever.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#fafafa] underline decoration-[#525252] hover:decoration-[#fafafa] transition-colors duration-300"
-              >
-                ChessEver
-              </a>{" "}
-              and{" "}
-              <a
-                href="https://hex.inc"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#fafafa] underline decoration-[#525252] hover:decoration-[#fafafa] transition-colors duration-300"
-              >
-                Hex
-              </a>
-              .
+              them.
             </p>
           </motion.div>
         </motion.div>
