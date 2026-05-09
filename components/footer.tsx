@@ -54,12 +54,15 @@ export function Footer() {
 
             <span
               className="relative inline-flex items-center"
-              style={{ cursor: isTouch ? "pointer" : "default" }}
+              style={{
+                cursor: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath d='M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z' fill='white'/%3E%3C/svg%3E") 6 0, pointer`,
+              }}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               onClick={handleClick}
               aria-label="Now playing on Spotify"
-              role={isTouch ? "button" : undefined}
+              role="button"
+              tabIndex={0}
             >
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
