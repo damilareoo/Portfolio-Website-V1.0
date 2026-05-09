@@ -206,30 +206,9 @@
   ::-webkit-scrollbar-thumb:hover { background: #333; }
   * { scrollbar-width: thin; scrollbar-color: #222 transparent; }
 
-  /* ── Custom cursor ── */
-  .cursor-dot {
-    position: fixed;
-    top: 0; left: 0;
-    width: 8px; height: 8px;
-    background: #fafafa;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 99999;
-  }
-  .cursor-outline {
-    position: fixed;
-    top: 0; left: 0;
-    width: 32px; height: 32px;
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 99998;
-  }
-
   /* Restore cursor on mobile / touch */
   @media (hover: none) and (pointer: coarse) {
     html, body { cursor: auto; }
-    .cursor-dot, .cursor-outline { display: none; }
   }
 
   /* Smooth transitions on interactive elements */
@@ -237,6 +216,14 @@
     transition-property: color, background-color, border-color, opacity;
     transition-duration: 220ms;
     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Suppress native cursor on everything — custom cursor handles it */
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+  @media (hover: none) and (pointer: coarse) {
+    *, *::before, *::after { cursor: auto !important; }
   }
 
   /* GPU acceleration for interactive elements */
