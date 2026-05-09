@@ -152,14 +152,12 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    cursor: none;
   }
 
   body {
     position: relative;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
-    cursor: none;
   }
 
   /* ── Grain texture overlay ── */
@@ -191,24 +189,11 @@
   ::-webkit-scrollbar-thumb:hover { background: #333; }
   * { scrollbar-width: thin; scrollbar-color: #222 transparent; }
 
-  /* Restore cursor on mobile / touch */
-  @media (hover: none) and (pointer: coarse) {
-    html, body { cursor: auto; }
-  }
-
   /* Smooth transitions on interactive elements */
   a, button {
     transition-property: color, background-color, border-color, opacity;
     transition-duration: 220ms;
     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  /* Suppress native cursor on everything — custom cursor handles it */
-  *, *::before, *::after {
-    cursor: none !important;
-  }
-  @media (hover: none) and (pointer: coarse) {
-    *, *::before, *::after { cursor: auto !important; }
   }
 
   /* GPU acceleration for interactive elements */

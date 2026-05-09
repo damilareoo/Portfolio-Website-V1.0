@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-const FALLBACK_TRACK = "69AHqDMcDKyxKL1lNNCIve"
-
 interface NowPlayingData {
   isPlaying: boolean
   title?: string
@@ -12,10 +10,9 @@ interface NowPlayingData {
   songUrl?: string
 }
 
-function getTrackId(songUrl?: string): string {
-  if (!songUrl) return FALLBACK_TRACK
+function getTrackId(songUrl: string): string {
   const match = songUrl.match(/track\/([a-zA-Z0-9]+)/)
-  return match ? match[1] : FALLBACK_TRACK
+  return match ? match[1] : ""
 }
 
 function embedUrl(trackId: string) {
@@ -28,7 +25,6 @@ const EQ = [
   { delay: 0.07, h: ["10px","5px","2px","12px","4px"] },
 ]
 
-// Corner bracket — signature element of this portfolio
 function Corner({ pos }: { pos: "tl" | "tr" | "bl" | "br" }) {
   return (
     <div
@@ -52,7 +48,6 @@ function Corner({ pos }: { pos: "tl" | "tr" | "bl" | "br" }) {
 export function NowPlaying() {
   const [data, setData] = useState<NowPlayingData | null>(null)
   const [loading, setLoading] = useState(true)
-  const [trackId, setTrackId] = useState(FALLBACK_TRACK)
 
   useEffect(() => {
     const poll = async () => {
@@ -60,11 +55,6 @@ export function NowPlaying() {
         const res = await fetch("/api/now-playing", { cache: "no-store" })
         const json: NowPlayingData = await res.json()
         setData(json)
-        if (json.isPlaying && json.songUrl) {
-          setTrackId(getTrackId(json.songUrl))
-        } else if (!json.isPlaying) {
-          setTrackId(FALLBACK_TRACK)
-        }
       } catch { /* silent */ } finally {
         setLoading(false)
       }
@@ -74,11 +64,11 @@ export function NowPlaying() {
     return () => clearInterval(t)
   }, [])
 
-  const isPlaying = !loading && data?.isPlaying
+  const isPlaying = !loading && !!data?.isPlaying
+  const trackId = isPlaying && data?.songUrl ? getTrackId(data.songUrl) : null
 
   return (
     <div style={{ position: "relative", width: "300px" }}>
-      {/* ── Card ── */}
       <div
         style={{
           background: "#0a0a0a",
@@ -87,22 +77,19 @@ export function NowPlaying() {
           overflow: "hidden",
         }}
       >
-        {/* Corner brackets */}
         {(["tl","tr","bl","br"] as const).map(p => <Corner key={p} pos={p} />)}
 
-        {/* ── Header bar ── */}
+        {/* Header */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             padding: "9px 12px",
-            borderBottom: "1px solid #141414",
+            borderBottom: isPlaying && trackId ? "1px solid #141414" : undefined,
           }}
         >
-          {/* Left: status + label */}
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            {/* EQ bars — animated when playing, static dot when not */}
             <AnimatePresence mode="wait">
               {isPlaying ? (
                 <motion.div
@@ -134,7 +121,6 @@ export function NowPlaying() {
               )}
             </AnimatePresence>
 
-            {/* Label */}
             <span
               style={{
                 fontFamily: "var(--font-geist-mono), monospace",
@@ -149,10 +135,9 @@ export function NowPlaying() {
             </span>
           </div>
 
-          {/* Right: track info (when playing) + Spotify mark */}
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <AnimatePresence>
-              {isPlaying && data?.title && (
+              {isPlaying && data?.artist && (
                 <motion.span
                   initial={{ opacity: 0, x: 4 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -161,7 +146,7 @@ export function NowPlaying() {
                   style={{
                     fontFamily: "var(--font-geist-mono), monospace",
                     fontSize: "9px",
-                    color: "#888",
+                    color: "#767676",
                     letterSpacing: "0.04em",
                     maxWidth: "110px",
                     overflow: "hidden",
@@ -174,28 +159,15 @@ export function NowPlaying() {
               )}
             </AnimatePresence>
 
-            {/* Spotify icon */}
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#555" style={{ flexShrink: 0 }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill={isPlaying ? "#1DB954" : "#2a2a2a"} style={{ flexShrink: 0, transition: "fill 0.3s" }}>
               <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
             </svg>
           </div>
         </div>
 
-        {/* ── Spotify iframe — dynamic track ── */}
+        {/* Iframe — only when actively playing */}
         <AnimatePresence mode="wait">
-          {loading ? (
-            <motion.div
-              key="loading"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              style={{ height: "80px", display: "flex", alignItems: "center", justifyContent: "center" }}
-            >
-              <span style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: "10px", color: "#666", letterSpacing: "0.1em" }}>
-                ···
-              </span>
-            </motion.div>
-          ) : (
+          {isPlaying && trackId && (
             <motion.div
               key={trackId}
               initial={{ opacity: 0 }}
@@ -204,7 +176,6 @@ export function NowPlaying() {
               transition={{ duration: 0.3 }}
             >
               <iframe
-                key={trackId}
                 src={embedUrl(trackId)}
                 width="100%"
                 height="80"
@@ -217,12 +188,9 @@ export function NowPlaying() {
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* ── Bottom hairline ── */}
-        <div style={{ height: "1px", background: "#141414" }} />
       </div>
 
-      {/* ── Arrow / pointer ── diamond shape ── */}
+      {/* Diamond pointer */}
       <div
         style={{
           position: "absolute",

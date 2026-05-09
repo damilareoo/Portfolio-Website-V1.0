@@ -4,7 +4,6 @@ import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { Analytics } from "@vercel/analytics/react"
 import { Suspense } from "react"
-import { CustomCursor } from "@/components/custom-cursor"
 
 const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
@@ -82,7 +81,6 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Damilare" />
       </head>
       <body className="font-sans antialiased">
-        <CustomCursor />
         <Suspense fallback={<div>Loading...</div>}>
           {children}
           <Analytics />
