@@ -148,37 +148,103 @@
 }
 
 @layer base {
-  /* Premium animation and performance optimizations */
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    cursor: none;
   }
 
   body {
     position: relative;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
+    cursor: none;
   }
 
-  /* GPU acceleration for interactive elements */
-  a,
-  button,
-  input,
-  textarea,
-  [role="button"] {
-    will-change: auto;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    perspective: 1000px;
+  /* ── Grain texture overlay — the single biggest upgrade ── */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    opacity: 0.028;
+    mix-blend-mode: overlay;
+  }
+
+  /* ── Atmosphere — faint top-center glow, like light from above ── */
+  body::after {
+    content: "";
+    position: fixed;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    max-width: 700px;
+    height: 55%;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.022) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Text selection ── */
+  ::selection {
+    background: #2a2a2a;
+    color: #fafafa;
+  }
+
+  /* ── Custom scrollbar ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #333; }
+  * { scrollbar-width: thin; scrollbar-color: #222 transparent; }
+
+  /* ── Custom cursor ── */
+  .cursor-dot {
+    position: fixed;
+    top: 0; left: 0;
+    width: 8px; height: 8px;
+    background: #fafafa;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    mix-blend-mode: difference;
+  }
+  .cursor-outline {
+    position: fixed;
+    top: 0; left: 0;
+    width: 32px; height: 32px;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+  }
+
+  /* Restore cursor on mobile / touch */
+  @media (hover: none) and (pointer: coarse) {
+    html, body { cursor: auto; }
+    .cursor-dot, .cursor-outline { display: none; }
   }
 
   /* Smooth transitions on interactive elements */
-  a,
-  button {
-    transition-property: color, background-color, border-color, box-shadow;
-    transition-duration: 300ms;
-    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  a, button {
+    transition-property: color, background-color, border-color, opacity;
+    transition-duration: 220ms;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: none;
+  }
+
+  /* GPU acceleration for interactive elements */
+  a, button, input, textarea, [role="button"] {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   /* iframe momentum scrolling for iOS */
@@ -276,10 +342,9 @@
     contain: layout style;
   }
 
-  /* Optimize off-screen element rendering */
+  /* content-visibility: auto intentionally removed — breaks scroll animations */
   @supports (content-visibility: auto) {
     section {
-      content-visibility: auto;
       contain-intrinsic-size: auto 500px;
     }
   }

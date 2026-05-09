@@ -1,11 +1,13 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { Menu } from "lucide-react"
 import { useScrollContext } from "./smooth-scroll-provider"
 import { MobileMenu } from "./mobile-menu"
 import { Logo } from "./logo"
+
+const ease = [0.16, 1, 0.3, 1]
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -19,33 +21,24 @@ export function Navbar() {
   ]
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10)
-    }
-
+    const handleScroll = () => setScrolled(window.scrollY > 10)
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
-    return () => {
-      document.body.style.overflow = ""
-    }
+    document.body.style.overflow = isOpen ? "hidden" : ""
+    return () => { document.body.style.overflow = "" }
   }, [isOpen])
 
   return (
     <>
       <motion.header
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1.0] }}
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "bg-black/90 backdrop-blur-sm" : ""
+          scrolled ? "bg-black/85 backdrop-blur-md" : ""
         }`}
         role="navigation"
         aria-label="Main navigation"
@@ -54,43 +47,85 @@ export function Navbar() {
 
         <div className="grid-container">
           <div className="flex items-center justify-between py-3 md:py-4 px-6 md:px-8">
-            <a 
-              href="#" 
+            {/* Logo */}
+            <a
+              href="#"
               className="flex items-center gap-2 md:gap-3 group focus-visible:outline-2 outline-offset-2 outline-[#525252]"
               aria-label="Portfolio home"
             >
-              <div className="w-1.5 md:w-2 h-px bg-[#333] group-hover:w-3 md:group-hover:w-4 group-hover:bg-[#4a4a4a] transition-all duration-300" />
+              <motion.div
+                className="h-px bg-[#333]"
+                style={{ width: "6px" }}
+                whileHover={{ width: "16px", backgroundColor: "#555" }}
+                transition={{ duration: 0.25, ease }}
+              />
               <Logo />
             </a>
 
-            <nav className="hidden md:flex items-center gap-1.5 lg:gap-2" aria-label="Main links">
-              {navItems.map((item, index) => (
-                <div key={item.name} className="flex items-center">
-                  {index > 0 && <div className="w-3 md:w-3.5 lg:w-4 h-px bg-[#2a2a2a] mx-1.5 md:mx-2 lg:mx-2.5" />}
-                  <a
-                    href={item.href}
-                    className={`text-xs md:text-sm lg:text-base px-2 md:px-3 lg:px-4 py-1.5 md:py-2 transition-all duration-300 ease-out nav-link rounded ${
-                      currentSection === item.id
-                        ? "active text-[#fafafa] font-semibold"
-                        : "text-[#a9a9a9] hover:text-[#d1d1d1]"
-                    }`}
-                    aria-current={currentSection === item.id ? "page" : undefined}
-                  >
-                    {item.name}
-                  </a>
-                </div>
-              ))}
+            {/* Desktop nav */}
+            <nav className="hidden md:flex items-center gap-1" aria-label="Main links">
+              {navItems.map((item, index) => {
+                const active = currentSection === item.id
+                return (
+                  <div key={item.name} className="flex items-center">
+                    {index > 0 && (
+                      <div className="w-3 md:w-4 h-px bg-[#222] mx-1.5 md:mx-2" />
+                    )}
+                    <a
+                      href={item.href}
+                      className="relative px-2.5 md:px-3 py-2 text-xs md:text-sm transition-colors duration-200 focus-visible:outline-2 outline-offset-2 outline-[#525252] rounded"
+                      style={{ color: active ? "#fafafa" : "#6a6a6a" }}
+                      aria-current={active ? "page" : undefined}
+                    >
+                      {/* Sliding active indicator */}
+                      <AnimatePresence>
+                        {active && (
+                          <motion.span
+                            layoutId="nav-indicator"
+                            className="absolute inset-0 rounded"
+                            style={{ background: "rgba(255,255,255,0.04)" }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2, ease }}
+                          />
+                        )}
+                      </AnimatePresence>
+                      <span className="relative z-10 transition-colors duration-200" style={{ color: active ? "#fafafa" : undefined }}>
+                        {item.name}
+                      </span>
+                      {/* Bottom dot indicator */}
+                      <AnimatePresence>
+                        {active && (
+                          <motion.span
+                            layoutId="nav-dot"
+                            className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#555]"
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0 }}
+                            transition={{ duration: 0.2, ease }}
+                          />
+                        )}
+                      </AnimatePresence>
+                    </a>
+                  </div>
+                )
+              })}
             </nav>
 
+            {/* Mobile hamburger */}
             <div className="md:hidden">
-              <button
+              <motion.button
                 onClick={() => setIsOpen(true)}
-                className="flex items-center justify-center w-10 h-10 border border-[#2a2a2a] hover:border-[#3a3a3a] hover:bg-[#0a0a0a] transition-colors duration-300 text-[#ededed] focus-visible:outline-2 outline-offset-2 outline-[#525252]"
+                className="flex items-center justify-center w-9 h-9 border border-[#2a2a2a] text-[#ededed]"
+                whileHover={{ borderColor: "#444", backgroundColor: "rgba(255,255,255,0.03)" }}
+                whileTap={{ scale: 0.94 }}
+                transition={{ duration: 0.15 }}
                 aria-label="Open menu"
                 aria-expanded={isOpen}
               >
-                <Menu className="h-5 w-5" />
-              </button>
+                <Menu className="h-4 w-4" />
+              </motion.button>
             </div>
           </div>
         </div>

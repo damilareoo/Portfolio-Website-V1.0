@@ -1,7 +1,10 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useMotionValue, useSpring } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
+import { useState } from "react"
+
+const ease = [0.16, 1, 0.3, 1]
 
 const projects = [
   {
@@ -34,124 +37,130 @@ const projects = [
   },
 ]
 
+function ProjectRow({ project, index }: { project: typeof projects[0]; index: number }) {
+  const [hovered, setHovered] = useState(false)
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-30px" }}
+      transition={{ duration: 0.5, ease, delay: index * 0.06 }}
+    >
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative flex items-center justify-between py-4 md:py-5 border-b border-[#141414] md:pl-5 block"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{ textDecoration: "none" }}
+      >
+        {/* Left accent bar */}
+        <motion.div
+          className="absolute left-0 top-0 bottom-0 w-px"
+          style={{ background: "#1DB954", opacity: 0.7 }}
+          initial={{ scaleY: 0, opacity: 0 }}
+          animate={{ scaleY: hovered ? 1 : 0, opacity: hovered ? 0.7 : 0 }}
+          transition={{ duration: 0.22, ease }}
+          style={{ transformOrigin: "top", background: "#333" }}
+        />
+
+        {/* Left: index + title + tag */}
+        <div className="flex items-baseline gap-3 md:gap-4 min-w-0">
+          <span
+            className="font-mono text-[10px] md:text-[11px] flex-shrink-0 tabular-nums transition-colors duration-200"
+            style={{ color: hovered ? "#444" : "#2a2a2a", letterSpacing: "0.06em" }}
+          >
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <motion.span
+            className="text-base md:text-lg lg:text-xl font-normal truncate"
+            animate={{ color: hovered ? "#fafafa" : "#a1a1a1", x: hovered ? 2 : 0 }}
+            transition={{ duration: 0.2, ease }}
+          >
+            {project.title}
+          </motion.span>
+          {project.tag && (
+            <span
+              className="font-mono text-[10px] hidden sm:block flex-shrink-0 transition-colors duration-200"
+              style={{ color: hovered ? "#444" : "#2a2a2a", letterSpacing: "0.08em" }}
+            >
+              [{project.tag}]
+            </span>
+          )}
+        </div>
+
+        {/* Right: description + arrow */}
+        <div className="flex items-center gap-3 ml-4 flex-shrink-0">
+          <span
+            className="text-sm hidden md:block transition-colors duration-200"
+            style={{ color: hovered ? "#737373" : "#333" }}
+          >
+            {project.description}
+          </span>
+          <motion.div
+            animate={{
+              x: hovered ? 2 : 0,
+              y: hovered ? -2 : 0,
+              color: hovered ? "#737373" : "#2a2a2a",
+            }}
+            transition={{ duration: 0.2, ease }}
+          >
+            <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4" />
+          </motion.div>
+        </div>
+      </a>
+    </motion.div>
+  )
+}
+
 export function WorkSection() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.06,
-        delayChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        ease: [0.25, 0.1, 0.25, 1.0],
-      },
-    },
-  }
-
   return (
     <section id="work" className="py-8 md:py-12 relative">
       <div className="px-6 md:px-8">
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4, ease }}
           className="relative mb-8 md:mb-10"
         >
-          <div className="h-px bg-[#2a2a2a] mb-6 md:mb-6" />
-
+          <div className="h-px bg-[#1e1e1e] mb-6" />
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 md:gap-3">
-              <div className="w-4 md:w-6 h-px bg-[#404040]" />
-              <span className="text-mono text-[#737373] text-xs md:text-sm">experiments</span>
+              <div className="w-4 md:w-6 h-px bg-[#333]" />
+              <span className="font-mono text-[#555] text-xs tracking-widest uppercase">experiments</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
-              <div className="w-6 md:w-8 h-px bg-[#2a2a2a]" />
+              <div className="w-1.5 h-1.5 bg-[#2a2a2a] rounded-full" />
+              <div className="w-6 md:w-8 h-px bg-[#1e1e1e]" />
             </div>
           </div>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="relative"
-        >
-          <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-[#404040] via-[#2a2a2a] to-transparent hidden md:block" />
-
-          <div className="md:pl-6">
-            {projects.map((project) => (
-              <motion.div key={project.id} variants={itemVariants}>
-                <div className="group relative py-4 md:py-4 border-b border-[#1a1a1a] hover:border-[#404040] transition-all duration-300">
-                  {/* Hover indicator line */}
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0 group-hover:w-3 h-px bg-[#525252] transition-all duration-300 hidden md:block" />
-
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex flex-col md:flex-row md:items-center md:justify-between md:pl-4"
-                  >
-                    <div className="flex items-start gap-2 md:items-center md:gap-4 flex-wrap">
-                      <span className="text-lg md:text-xl lg:text-2xl font-normal text-[#fafafa] group-hover:text-white transition-colors duration-300 flex-shrink-0">
-                        {project.title}
-                      </span>
-                      {project.tag && (
-                        <span className="text-mono text-[#525252] text-xs md:text-sm flex-shrink-0">
-                          [{project.tag}]
-                        </span>
-                      )}
-                      <ArrowUpRight className="w-4 h-4 md:w-4 md:h-4 text-[#525252] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0" />
-                    </div>
-
-                    <div className="flex items-center gap-2 mt-2 md:mt-0 flex-wrap">
-                      <span className="text-sm md:text-base text-[#737373] group-hover:text-[#a1a1a1] transition-colors duration-300">
-                        {project.description}
-                      </span>
-                      {project.credit && (
-                        <span className="text-xs md:text-sm">
-                          <span
-                            onClick={(e) => {
-                              e.preventDefault()
-                              e.stopPropagation()
-                              window.open(project.credit.url, "_blank")
-                            }}
-                            className="text-[#737373] hover:text-[#fafafa] underline underline-offset-2 decoration-[#525252] hover:decoration-[#fafafa] transition-colors cursor-pointer"
-                          >
-                            {project.credit.name}
-                          </span>
-                          <span className="text-[#737373]">'s original</span>
-                        </span>
-                      )}
-                    </div>
-                  </a>
-                </div>
-              </motion.div>
+        {/* Project list */}
+        <div className="relative">
+          <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-[#2a2a2a] via-[#1a1a1a] to-transparent hidden md:block" />
+          <div className="md:pl-0">
+            {projects.map((project, index) => (
+              <ProjectRow key={project.id} project={project} index={index} />
             ))}
           </div>
-        </motion.div>
+        </div>
 
+        {/* Trailing ornament */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.4, ease, delay: 0.3 }}
           className="mt-8 md:mt-10 flex items-center gap-3"
         >
-          <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
-          <div className="w-12 md:w-16 h-px bg-[#2a2a2a]" />
-          <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-[#363636] rounded-full" />
+          <div className="w-1.5 h-1.5 bg-[#2a2a2a] rounded-full" />
+          <div className="w-12 md:w-16 h-px bg-[#1e1e1e]" />
+          <div className="w-1 h-1 bg-[#1e1e1e] rounded-full" />
         </motion.div>
       </div>
     </section>

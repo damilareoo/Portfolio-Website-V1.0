@@ -6,6 +6,8 @@ import { useScrollContext } from "./smooth-scroll-provider"
 import { createPortal } from "react-dom"
 import { useEffect, useState } from "react"
 
+const ease = [0.16, 1, 0.3, 1]
+
 interface MobileMenuProps {
   isOpen: boolean
   onClose: () => void
@@ -15,21 +17,19 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const { currentSection } = useScrollContext()
   const [mounted, setMounted] = useState(false)
 
-  const handleNavClick = (href: string) => {
-    onClose()
-    setTimeout(() => {
-      const element = document.querySelector(href)
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" })
-      }
-    }, 300)
-  }
-
   const navItems = [
     { name: "Featured", href: "#featured", id: "featured" },
     { name: "Experiments", href: "#work", id: "work" },
     { name: "Elsewhere", href: "#across-the-web", id: "across-the-web" },
   ]
+
+  const handleNavClick = (href: string) => {
+    onClose()
+    setTimeout(() => {
+      const el = document.querySelector(href)
+      if (el) el.scrollIntoView({ behavior: "smooth" })
+    }, 320)
+  }
 
   useEffect(() => {
     setMounted(true)
@@ -42,65 +42,84 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[9999] isolate">
+          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/95 backdrop-blur-md"
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 bg-black/92 backdrop-blur-md"
             onClick={onClose}
             style={{ zIndex: 1 }}
           />
 
+          {/* Panel */}
           <motion.div
-            initial={{ translateX: "100%" }}
-            animate={{ translateX: 0 }}
-            exit={{ translateX: "100%" }}
-            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] }}
-            className="fixed top-0 right-0 bottom-0 w-full max-w-xs bg-black border-l border-[#222] flex flex-col h-full"
+            initial={{ x: "100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: "100%", opacity: 0 }}
+            transition={{ duration: 0.38, ease }}
+            className="fixed top-0 right-0 bottom-0 w-full max-w-[280px] bg-[#080808] border-l border-[#1e1e1e] flex flex-col"
             style={{ zIndex: 2, willChange: "transform" }}
           >
-            <div className="flex justify-between items-center p-3 border-b border-[#222]">
+            {/* Header */}
+            <div className="flex justify-between items-center px-5 py-4 border-b border-[#1a1a1a]">
               <div className="flex items-center gap-2">
                 <div className="w-1.5 h-px bg-[#333]" />
-                <span className="text-mono text-[#444]">menu</span>
+                <span className="font-mono text-[#3a3a3a] text-xs tracking-widest uppercase">menu</span>
               </div>
-              <button
+              <motion.button
                 onClick={onClose}
-                className="w-7 h-7 flex items-center justify-center border border-[#222] hover:border-[#333] text-[#666] hover:text-[#ededed] transition-colors"
+                className="w-8 h-8 flex items-center justify-center border border-[#1e1e1e] text-[#555]"
+                whileHover={{ borderColor: "#333", color: "#ededed" }}
+                whileTap={{ scale: 0.92 }}
+                transition={{ duration: 0.15 }}
                 aria-label="Close menu"
               >
                 <X className="h-3.5 w-3.5" />
-              </button>
+              </motion.button>
             </div>
 
-            <div className="flex-1 overflow-y-auto py-6">
-              <nav className="flex flex-col px-3">
-                {navItems.map((item) => (
-                  <a
+            {/* Nav items — staggered */}
+            <nav className="flex-1 flex flex-col px-5 pt-6 pb-4">
+              {navItems.map((item, i) => {
+                const active = currentSection === item.id
+                return (
+                  <motion.a
                     key={item.name}
                     href={item.href}
-                    className={`group flex items-center gap-3 py-3 border-b border-[#1a1a1a] ${
-                      currentSection === item.id ? "text-[#ededed]" : "text-[#666] hover:text-[#ededed]"
-                    } transition-colors duration-300`}
+                    initial={{ opacity: 0, x: 16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, ease, delay: 0.08 + i * 0.06 }}
+                    className="group flex items-center justify-between py-4 border-b border-[#141414]"
+                    style={{ color: active ? "#fafafa" : "#555" }}
                     onClick={(e) => {
                       e.preventDefault()
                       handleNavClick(item.href)
                     }}
                   >
-                    <span className="text-large">{item.name}</span>
-                  </a>
-                ))}
-              </nav>
-            </div>
+                    <span className="text-xl font-normal tracking-tight transition-colors duration-200 group-hover:text-[#d1d1d1]">
+                      {item.name}
+                    </span>
+                    {active && (
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#555]" />
+                    )}
+                  </motion.a>
+                )
+              })}
+            </nav>
 
-            <div className="border-t border-[#222] p-3">
-              <div className="flex items-center gap-2">
-                <div className="w-1 h-1 bg-[#333] rounded-full" />
-                <span className="text-mono text-[#444]">&copy; {new Date().getFullYear()}</span>
-                <div className="flex-1 h-px bg-[#1a1a1a]" />
-              </div>
-            </div>
+            {/* Footer */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.3 }}
+              className="border-t border-[#1a1a1a] px-5 py-4 flex items-center gap-2"
+            >
+              <div className="w-1 h-1 bg-[#2a2a2a] rounded-full" />
+              <span className="font-mono text-[#333] text-xs">&copy; {new Date().getFullYear()} Damilare</span>
+              <div className="flex-1 h-px bg-[#141414]" />
+            </motion.div>
           </motion.div>
         </div>
       )}
