@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server"
 
+export const dynamic = "force-dynamic"
+
 const TOKEN_URL = "https://accounts.spotify.com/api/token"
 const NOW_PLAYING_URL = "https://api.spotify.com/v1/me/player/currently-playing"
 
@@ -23,23 +25,25 @@ async function getAccessToken() {
   return res.json()
 }
 
+const NO_CACHE = { "Cache-Control": "no-store, no-cache, must-revalidate", Pragma: "no-cache" }
+
 export async function GET() {
   try {
     const { access_token } = await getAccessToken()
 
     const res = await fetch(NOW_PLAYING_URL, {
       headers: { Authorization: `Bearer ${access_token}` },
-      next: { revalidate: 0 },
+      cache: "no-store",
     })
 
     if (res.status === 204 || res.status >= 400) {
-      return NextResponse.json({ isPlaying: false })
+      return NextResponse.json({ isPlaying: false }, { headers: NO_CACHE })
     }
 
     const data = await res.json()
 
     if (!data?.item) {
-      return NextResponse.json({ isPlaying: false })
+      return NextResponse.json({ isPlaying: false }, { headers: NO_CACHE })
     }
 
     return NextResponse.json({
@@ -51,8 +55,8 @@ export async function GET() {
       songUrl: data.item.external_urls.spotify,
       duration: data.item.duration_ms,
       progress: data.progress_ms,
-    })
+    }, { headers: NO_CACHE })
   } catch {
-    return NextResponse.json({ isPlaying: false })
+    return NextResponse.json({ isPlaying: false }, { headers: NO_CACHE })
   }
 }

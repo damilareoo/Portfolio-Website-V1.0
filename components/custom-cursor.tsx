@@ -1,146 +1,87 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
-import { motion } from "framer-motion"
+import { useEffect } from "react"
+import { useMotionValue, useSpring, useTransform, motion } from "framer-motion"
 
 export function CustomCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [clicked, setClicked] = useState(false)
-  const [linkHovered, setLinkHovered] = useState(false)
-  const [hidden, setHidden] = useState(false)
-  const [overIframe, setOverIframe] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-  const [isHydrated, setIsHydrated] = useState(false)
-  const rafRef = useRef<number | null>(null)
-  const observerRef = useRef<MutationObserver | null>(null)
-  const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
+  const mouseX = useMotionValue(-100)
+  const mouseY = useMotionValue(-100)
+  const dotScale = useMotionValue(1)
+  const outlineScaleX = useMotionValue(1)
+  const outlineScaleY = useMotionValue(1)
+  const cursorOpacity = useMotionValue(1)
+
+  // Dot tracks instantly, offset by half its size (4px)
+  const dotX = useTransform(mouseX, (v) => v - 4)
+  const dotY = useTransform(mouseY, (v) => v - 4)
+
+  // Outline springs behind the mouse, offset by half its size (16px)
+  const springX = useSpring(mouseX, { stiffness: 220, damping: 30, mass: 0.4 })
+  const springY = useSpring(mouseY, { stiffness: 220, damping: 30, mass: 0.4 })
+  const outlineX = useTransform(springX, (v) => v - 16)
+  const outlineY = useTransform(springY, (v) => v - 16)
 
   useEffect(() => {
-    setIsHydrated(true)
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768)
+    if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) return
+
+    const onMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX)
+      mouseY.set(e.clientY)
+    }
+    const onLeave = () => cursorOpacity.set(0)
+    const onEnter = () => cursorOpacity.set(1)
+    const onDown = () => { dotScale.set(0.5); outlineScaleX.set(0.7); outlineScaleY.set(0.7) }
+    const onUp = () => { dotScale.set(1); outlineScaleX.set(1); outlineScaleY.set(1) }
+
+    const onLinkEnter = () => { dotScale.set(2.5); outlineScaleX.set(1.4); outlineScaleY.set(1.4) }
+    const onLinkLeave = () => { dotScale.set(1); outlineScaleX.set(1); outlineScaleY.set(1) }
+    const onIframeEnter = () => cursorOpacity.set(0)
+    const onIframeLeave = () => cursorOpacity.set(1)
+
+    document.addEventListener("mousemove", onMove, { passive: true })
+    document.addEventListener("mouseleave", onLeave)
+    document.addEventListener("mouseenter", onEnter)
+    document.addEventListener("mousedown", onDown)
+    document.addEventListener("mouseup", onUp)
+
+    const attach = () => {
+      document.querySelectorAll<Element>("a, button, [role='button']").forEach((el) => {
+        if (el.getAttribute("data-c")) return
+        el.setAttribute("data-c", "1")
+        el.addEventListener("mouseenter", onLinkEnter, { passive: true })
+        el.addEventListener("mouseleave", onLinkLeave, { passive: true })
+      })
+      document.querySelectorAll<HTMLIFrameElement>("iframe").forEach((el) => {
+        if (el.getAttribute("data-c")) return
+        el.setAttribute("data-c", "1")
+        el.addEventListener("mouseenter", onIframeEnter, { passive: true })
+        el.addEventListener("mouseleave", onIframeLeave, { passive: true })
+      })
     }
 
-    checkIfMobile()
-    window.addEventListener("resize", checkIfMobile)
+    attach()
+    const observer = new MutationObserver(attach)
+    observer.observe(document.body, { childList: true, subtree: true })
 
     return () => {
-      window.removeEventListener("resize", checkIfMobile)
+      document.removeEventListener("mousemove", onMove)
+      document.removeEventListener("mouseleave", onLeave)
+      document.removeEventListener("mouseenter", onEnter)
+      document.removeEventListener("mousedown", onDown)
+      document.removeEventListener("mouseup", onUp)
+      observer.disconnect()
     }
-  }, [])
-
-  useEffect(() => {
-    if (isMobile || !isHydrated) return
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
-      rafRef.current = requestAnimationFrame(() => {
-        setPosition({ x: e.clientX, y: e.clientY })
-      })
-    }
-
-    const handleMouseDown = () => setClicked(true)
-    const handleMouseUp = () => setClicked(false)
-    const handleMouseEnter = () => setHidden(false)
-    const handleMouseLeave = () => setHidden(true)
-
-    document.addEventListener("mousemove", handleMouseMove, { passive: true })
-    document.addEventListener("mousedown", handleMouseDown)
-    document.addEventListener("mouseup", handleMouseUp)
-    document.addEventListener("mouseenter", handleMouseEnter)
-    document.addEventListener("mouseleave", handleMouseLeave)
-
-    // Cache DOM queries - don't requery on every mutation
-    let cachedLinks: Set<Element> = new Set()
-    let cachedIframes: Set<Element> = new Set()
-
-    const attachLinkListeners = (el: Element) => {
-      el.addEventListener("mouseenter", () => setLinkHovered(true), { passive: true })
-      el.addEventListener("mouseleave", () => setLinkHovered(false), { passive: true })
-    }
-
-    const attachIframeListeners = (el: Element) => {
-      el.addEventListener("mouseenter", () => setOverIframe(true), { passive: true })
-      el.addEventListener("mouseleave", () => setOverIframe(false), { passive: true })
-    }
-
-    const handleLinkHoverEvents = () => {
-      const newLinks = document.querySelectorAll("a, button, input, textarea, [role='button']")
-      newLinks.forEach((el) => {
-        if (!cachedLinks.has(el)) {
-          attachLinkListeners(el)
-          cachedLinks.add(el)
-        }
-      })
-    }
-
-    const handleIframeHoverEvents = () => {
-      const newIframes = document.querySelectorAll(".spotify-popup, iframe")
-      newIframes.forEach((el) => {
-        if (!cachedIframes.has(el)) {
-          attachIframeListeners(el)
-          cachedIframes.add(el)
-        }
-      })
-    }
-
-    handleLinkHoverEvents()
-    handleIframeHoverEvents()
-
-    observerRef.current = new MutationObserver(() => {
-      if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current)
-      debounceTimerRef.current = setTimeout(() => {
-        handleLinkHoverEvents()
-        handleIframeHoverEvents()
-      }, 500)
-    })
-    observerRef.current.observe(document.body, { childList: true, subtree: true })
-
-    return () => {
-      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
-      if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current)
-      document.removeEventListener("mousemove", handleMouseMove)
-      document.removeEventListener("mousedown", handleMouseDown)
-      document.removeEventListener("mouseup", handleMouseUp)
-      document.removeEventListener("mouseenter", handleMouseEnter)
-      document.removeEventListener("mouseleave", handleMouseLeave)
-      observerRef.current?.disconnect()
-    }
-  }, [isMobile, isHydrated])
-
-  if (!isHydrated || isMobile) return null
+  }, [mouseX, mouseY, dotScale, outlineScaleX, outlineScaleY, cursorOpacity])
 
   return (
     <>
       <motion.div
         className="cursor-dot"
-        animate={{
-          x: position.x - 4,
-          y: position.y - 4,
-          scale: clicked ? 0.5 : linkHovered ? 2 : 1,
-          opacity: hidden || overIframe ? 0 : 1,
-        }}
-        transition={{
-          type: "spring",
-          mass: 0.15,
-          stiffness: 1000,
-          damping: 35,
-        }}
+        style={{ x: dotX, y: dotY, scale: dotScale, opacity: cursorOpacity }}
       />
       <motion.div
         className="cursor-outline"
-        animate={{
-          x: position.x - 16,
-          y: position.y - 16,
-          scale: clicked ? 0.5 : linkHovered ? 1.5 : 1,
-          opacity: hidden || overIframe ? 0 : 1,
-        }}
-        transition={{
-          type: "spring",
-          mass: 0.3,
-          stiffness: 300,
-          damping: 30,
-        }}
+        style={{ x: outlineX, y: outlineY, scaleX: outlineScaleX, scaleY: outlineScaleY, opacity: cursorOpacity }}
       />
     </>
   )

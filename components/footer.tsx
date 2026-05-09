@@ -1,11 +1,31 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { NowPlaying } from "./now-playing"
 
 export function Footer() {
   const [show, setShow] = useState(false)
+  const [isTouch, setIsTouch] = useState(false)
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    setIsTouch(window.matchMedia("(hover: none) and (pointer: coarse)").matches)
+  }, [])
+
+  const handleMouseEnter = () => {
+    if (isTouch) return
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    setShow(true)
+  }
+  const handleMouseLeave = () => {
+    if (isTouch) return
+    closeTimer.current = setTimeout(() => setShow(false), 120)
+  }
+  const handleClick = () => {
+    if (!isTouch) return
+    setShow((v) => !v)
+  }
 
   return (
     <motion.footer
@@ -18,12 +38,10 @@ export function Footer() {
       <div className="h-px bg-[#2a2a2a] mb-4 sm:mb-6 md:mb-8" />
 
       <div className="flex flex-col items-center justify-center gap-6 sm:gap-8">
-        <div
-          className="flex justify-center items-center px-2"
-          onMouseEnter={() => setShow(true)}
-          onMouseLeave={() => setShow(false)}
-        >
-          <p className="text-[#a1a1a1] text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 md:gap-2.5 flex-wrap justify-center leading-relaxed">
+        <div className="flex flex-col items-center gap-4">
+          <p
+            className="text-[#a1a1a1] text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center leading-relaxed"
+          >
             <span className="whitespace-nowrap">Built with love and music by</span>
             <a
               href="https://x.com/damilareoo"
@@ -34,58 +52,73 @@ export function Footer() {
               Damilare
             </a>
 
-            <span className="relative inline-flex items-center cursor-pointer">
-              {/* Spotify icon */}
+            <span
+              className="relative inline-flex items-center"
+              style={{ cursor: isTouch ? "pointer" : "default" }}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onClick={handleClick}
+              aria-label="Now playing on Spotify"
+              role={isTouch ? "button" : undefined}
+            >
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0"
                 animate={show ? { color: "#1DB954", scale: 1.15 } : { color: "#a1a1a1", scale: 1 }}
-                transition={{ duration: 0.2, ease: [0.2, 0, 0.38, 0.9] }}
+                transition={{ duration: 0.2 }}
               >
                 <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
               </motion.svg>
 
-              <AnimatePresence>
-                {show && (
-                  <div
-                    className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 z-50"
-                    style={{ perspective: "800px", perspectiveOrigin: "50% 100%" }}
-                  >
-                    <motion.div
-                      initial={{ opacity: 0, y: 22, rotateX: -14, scale: 0.93, filter: "blur(8px)" }}
-                      animate={{ opacity: 1, y: 0,  rotateX: 0,   scale: 1,    filter: "blur(0px)" }}
-                      exit={{    opacity: 0, y: 12, rotateX: 10,  scale: 0.95, filter: "blur(4px)" }}
-                      transition={{
-                        y:       { type: "spring", stiffness: 340, damping: 26 },
-                        rotateX: { type: "spring", stiffness: 340, damping: 26 },
-                        scale:   { type: "spring", stiffness: 340, damping: 26 },
-                        opacity: { duration: 0.15, ease: "easeOut" },
-                        filter:  { duration: 0.2,  ease: "easeOut" },
-                      }}
-                      style={{ transformOrigin: "50% 100%" }}
+              {/* Desktop: hover popup above icon */}
+              {!isTouch && (
+                <AnimatePresence>
+                  {show && (
+                    <div
+                      className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 z-50"
+                      style={{ perspective: "800px", perspectiveOrigin: "50% 100%" }}
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
                     >
-                      <NowPlaying />
-                      {/* Arrow */}
-                      <div
-                        style={{
-                          position: "absolute",
-                          top: "100%",
-                          left: "50%",
-                          transform: "translateX(-50%)",
-                          width: 0, height: 0,
-                          borderLeft: "7px solid transparent",
-                          borderRight: "7px solid transparent",
-                          borderTop: "7px solid rgba(255,255,255,0.07)",
+                      <motion.div
+                        initial={{ opacity: 0, y: 22, rotateX: -14, scale: 0.93, filter: "blur(8px)" }}
+                        animate={{ opacity: 1, y: 0,  rotateX: 0,   scale: 1,    filter: "blur(0px)" }}
+                        exit={{    opacity: 0, y: 12, rotateX: 10,  scale: 0.95, filter: "blur(4px)" }}
+                        transition={{
+                          y:       { type: "spring", stiffness: 340, damping: 26 },
+                          rotateX: { type: "spring", stiffness: 340, damping: 26 },
+                          scale:   { type: "spring", stiffness: 340, damping: 26 },
+                          opacity: { duration: 0.15 },
+                          filter:  { duration: 0.2 },
                         }}
-                      />
-                    </motion.div>
-                  </div>
-                )}
-              </AnimatePresence>
+                        style={{ transformOrigin: "50% 100%" }}
+                      >
+                        <NowPlaying />
+                      </motion.div>
+                    </div>
+                  )}
+                </AnimatePresence>
+              )}
             </span>
           </p>
+
+          {/* Mobile: inline player below footer text */}
+          {isTouch && (
+            <AnimatePresence>
+              {show && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 4, scale: 0.97 }}
+                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <NowPlaying />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          )}
         </div>
 
         <div className="flex items-center justify-center gap-2 md:gap-3">

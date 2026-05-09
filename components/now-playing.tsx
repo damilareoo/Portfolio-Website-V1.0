@@ -57,18 +57,20 @@ export function NowPlaying() {
   useEffect(() => {
     const poll = async () => {
       try {
-        const res = await fetch("/api/now-playing")
+        const res = await fetch("/api/now-playing", { cache: "no-store" })
         const json: NowPlayingData = await res.json()
         setData(json)
         if (json.isPlaying && json.songUrl) {
           setTrackId(getTrackId(json.songUrl))
+        } else if (!json.isPlaying) {
+          setTrackId(FALLBACK_TRACK)
         }
       } catch { /* silent */ } finally {
         setLoading(false)
       }
     }
     poll()
-    const t = setInterval(poll, 10_000)
+    const t = setInterval(poll, 5_000)
     return () => clearInterval(t)
   }, [])
 
@@ -187,7 +189,7 @@ export function NowPlaying() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              style={{ height: "152px", display: "flex", alignItems: "center", justifyContent: "center" }}
+              style={{ height: "80px", display: "flex", alignItems: "center", justifyContent: "center" }}
             >
               <span style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: "10px", color: "#666", letterSpacing: "0.1em" }}>
                 ···
@@ -205,7 +207,7 @@ export function NowPlaying() {
                 key={trackId}
                 src={embedUrl(trackId)}
                 width="100%"
-                height="152"
+                height="80"
                 frameBorder="0"
                 allowFullScreen
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
