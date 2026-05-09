@@ -2,14 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
-
-const EQ_BARS = [
-  { delay: 0,    seq: ["3px", "13px", "5px", "10px", "3px"] },
-  { delay: 0.14, seq: ["7px", "3px", "15px", "4px", "9px"] },
-  { delay: 0.07, seq: ["11px", "5px", "3px", "14px", "6px"] },
-  { delay: 0.21, seq: ["4px", "12px", "8px", "3px", "11px"] },
-  { delay: 0.11, seq: ["9px", "4px", "13px", "6px", "3px"] },
-]
+import { NowPlaying } from "./now-playing"
 
 export function Footer() {
   const [show, setShow] = useState(false)
@@ -42,7 +35,7 @@ export function Footer() {
             </a>
 
             <span className="relative inline-flex items-center cursor-pointer">
-              {/* Spotify logo — greens on hover */}
+              {/* Spotify icon */}
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -73,151 +66,7 @@ export function Footer() {
                       }}
                       style={{ transformOrigin: "50% 100%" }}
                     >
-                      {/* ── Card shell ── */}
-                      <div
-                        style={{
-                          width: "320px",
-                          background: "#0a0a0a",
-                          borderRadius: "18px",
-                          overflow: "hidden",
-                          boxShadow:
-                            "0 0 0 1px rgba(255,255,255,0.07), 0 40px 80px rgba(0,0,0,0.96), 0 8px 24px rgba(0,0,0,0.7)",
-                        }}
-                      >
-                        {/* Green sweep — top */}
-                        <motion.div
-                          style={{
-                            height: "1px",
-                            background: "linear-gradient(90deg, transparent 0%, #1DB954 50%, transparent 100%)",
-                          }}
-                          initial={{ scaleX: 0, opacity: 0 }}
-                          animate={{ scaleX: 1, opacity: 1 }}
-                          transition={{ delay: 0.1, duration: 0.55, ease: [0.2, 0, 0.38, 0.9] }}
-                        />
-
-                        {/* ── Header: vinyl + label + eq bars ── */}
-                        <motion.div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "13px",
-                            padding: "14px 16px 12px",
-                          }}
-                          initial={{ opacity: 0, y: 6 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.12, duration: 0.22, ease: [0.2, 0, 0.38, 0.9] }}
-                        >
-                          {/* Spinning vinyl record */}
-                          <motion.svg
-                            width="42"
-                            height="42"
-                            viewBox="0 0 42 42"
-                            animate={{ rotate: 360 }}
-                            transition={{ repeat: Infinity, duration: 3.2, ease: "linear" }}
-                            style={{ flexShrink: 0 }}
-                          >
-                            <circle cx="21" cy="21" r="21" fill="#181818" />
-                            <circle cx="21" cy="21" r="18" fill="none" stroke="#242424" strokeWidth="0.7" />
-                            <circle cx="21" cy="21" r="15" fill="none" stroke="#242424" strokeWidth="0.7" />
-                            <circle cx="21" cy="21" r="12" fill="none" stroke="#242424" strokeWidth="0.7" />
-                            <circle cx="21" cy="21" r="9"  fill="none" stroke="#242424" strokeWidth="0.7" />
-                            <circle cx="21" cy="21" r="6"  fill="none" stroke="#242424" strokeWidth="0.7" />
-                            {/* Green label */}
-                            <circle cx="21" cy="21" r="5"  fill="#1DB954" />
-                            {/* Center hole */}
-                            <circle cx="21" cy="21" r="2"  fill="#0a0a0a" />
-                          </motion.svg>
-
-                          {/* Text block */}
-                          <div style={{ flex: 1, minWidth: 0 }}>
-                            <div
-                              style={{
-                                fontSize: "9px",
-                                fontWeight: 700,
-                                letterSpacing: "0.2em",
-                                textTransform: "uppercase",
-                                color: "#1DB954",
-                                marginBottom: "3px",
-                              }}
-                            >
-                              Now Playing
-                            </div>
-                            <div
-                              style={{
-                                fontSize: "10px",
-                                color: "#3a3a3a",
-                                letterSpacing: "0.03em",
-                              }}
-                            >
-                              via Spotify
-                            </div>
-                          </div>
-
-                          {/* EQ bars */}
-                          <div
-                            style={{
-                              display: "flex",
-                              alignItems: "flex-end",
-                              gap: "3px",
-                              height: "18px",
-                              flexShrink: 0,
-                            }}
-                          >
-                            {EQ_BARS.map((bar, i) => (
-                              <motion.div
-                                key={i}
-                                style={{
-                                  width: "3px",
-                                  borderRadius: "2px",
-                                  background: "#1DB954",
-                                }}
-                                animate={{ height: bar.seq }}
-                                transition={{
-                                  repeat: Infinity,
-                                  duration: 0.85,
-                                  delay: bar.delay,
-                                  ease: "easeInOut",
-                                  repeatType: "mirror",
-                                }}
-                              />
-                            ))}
-                          </div>
-                        </motion.div>
-
-                        {/* Hairline separator */}
-                        <div style={{ height: "1px", background: "rgba(255,255,255,0.05)" }} />
-
-                        {/* ── iframe ── */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.18, duration: 0.28, ease: [0.2, 0, 0.38, 0.9] }}
-                        >
-                          <iframe
-                            src="https://open.spotify.com/embed/track/69AHqDMcDKyxKL1lNNCIve?utm_source=generator&theme=0"
-                            width="100%"
-                            height="152"
-                            frameBorder="0"
-                            allowFullScreen
-                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                            loading="lazy"
-                            style={{ display: "block" }}
-                          />
-                        </motion.div>
-
-                        {/* Green sweep — bottom */}
-                        <motion.div
-                          style={{
-                            height: "1px",
-                            background:
-                              "linear-gradient(90deg, transparent 0%, rgba(29,185,84,0.35) 50%, transparent 100%)",
-                          }}
-                          initial={{ scaleX: 0, opacity: 0 }}
-                          animate={{ scaleX: 1, opacity: 1 }}
-                          transition={{ delay: 0.22, duration: 0.55, ease: [0.2, 0, 0.38, 0.9] }}
-                        />
-                      </div>
-
+                      <NowPlaying />
                       {/* Arrow */}
                       <div
                         style={{
@@ -225,8 +74,7 @@ export function Footer() {
                           top: "100%",
                           left: "50%",
                           transform: "translateX(-50%)",
-                          width: 0,
-                          height: 0,
+                          width: 0, height: 0,
                           borderLeft: "7px solid transparent",
                           borderRight: "7px solid transparent",
                           borderTop: "7px solid rgba(255,255,255,0.07)",
