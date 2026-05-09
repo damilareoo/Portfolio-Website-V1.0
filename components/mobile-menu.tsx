@@ -92,7 +92,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, ease, delay: 0.08 + i * 0.06 }}
                     className="group flex items-center justify-between py-4 border-b border-[#141414]"
-                    style={{ color: active ? "#fafafa" : "#a1a1a1" }}
+                    style={{ color: active ? "#fafafa" : "#888888" }}
                     onClick={(e) => {
                       e.preventDefault()
                       handleNavClick(item.href)

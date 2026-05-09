@@ -175,21 +175,6 @@
     mix-blend-mode: overlay;
   }
 
-  /* ── Atmosphere — faint top-center glow, like light from above ── */
-  body::after {
-    content: "";
-    position: fixed;
-    top: -10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
-    max-width: 700px;
-    height: 55%;
-    background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.022) 0%, transparent 65%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
   /* ── Text selection ── */
   ::selection {
     background: #2a2a2a;

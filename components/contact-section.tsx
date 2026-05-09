@@ -96,7 +96,7 @@ export function ContactSection() {
                     </span>
                     <button
                       onClick={copyEmail}
-                      className="text-[#6a6a6a] hover:text-[#fafafa] transition-colors duration-300 flex-shrink-0"
+                      className="text-[#888888] hover:text-[#fafafa] transition-colors duration-300 flex-shrink-0"
                       aria-label="Copy email"
                     >
                       {copied ? (
@@ -119,7 +119,7 @@ export function ContactSection() {
                     <span className="text-sm md:text-base text-[#a1a1a1] group-hover:text-[#fafafa] transition-colors duration-300 truncate">
                       {link.value}
                     </span>
-                    <ArrowUpRight className="w-4 h-4 text-[#6a6a6a] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0" />
+                    <ArrowUpRight className="w-4 h-4 text-[#888888] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0" />
                   </a>
                 )}
               </motion.div>

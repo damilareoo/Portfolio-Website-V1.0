@@ -95,7 +95,7 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
         <div className="flex items-center gap-3 ml-4 flex-shrink-0">
           <span
             className="text-sm hidden md:block transition-colors duration-200"
-            style={{ color: hovered ? "#909090" : "#606060" }}
+            style={{ color: hovered ? "#b0b0b0" : "#808080" }}
           >
             {project.description}
           </span>
@@ -103,7 +103,7 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
             animate={{
               x: hovered ? 2 : 0,
               y: hovered ? -2 : 0,
-              color: hovered ? "#909090" : "#505050",
+              color: hovered ? "#b0b0b0" : "#767676",
             }}
             transition={{ duration: 0.2, ease }}
           >
