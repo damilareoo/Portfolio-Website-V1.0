@@ -22,13 +22,16 @@ const EQ_BARS = [
 
 export function NowPlaying() {
   const [data, setData] = useState<NowPlayingData | null>(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetch_ = async () => {
       try {
         const res = await fetch("/api/now-playing")
         setData(await res.json())
-      } catch { /* silent */ }
+      } catch { /* silent */ } finally {
+        setLoading(false)
+      }
     }
     fetch_()
     const t = setInterval(fetch_, 30_000)
@@ -90,7 +93,21 @@ export function NowPlaying() {
 
       {/* Content */}
       <AnimatePresence mode="wait">
-        {data?.isPlaying ? (
+        {loading ? (
+          <motion.div
+            key="loading"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            style={{ padding: "12px 14px", display: "flex", alignItems: "center", gap: "12px" }}
+          >
+            <div style={{ width: "2px", height: "32px", background: "#1e1e1e", borderRadius: "1px", flexShrink: 0 }} />
+            <span style={{ fontFamily: "monospace", fontSize: "11px", color: "#333", letterSpacing: "0.04em" }}>
+              loading...
+            </span>
+          </motion.div>
+        ) : data?.isPlaying ? (
           <motion.a
             key="playing"
             href={data.songUrl}
