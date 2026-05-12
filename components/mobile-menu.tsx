@@ -117,7 +117,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               className="border-t border-[#1a1a1a] px-5 py-4 flex items-center gap-2"
             >
               <div className="w-1 h-1 bg-[#2a2a2a] rounded-full" />
-              <span className="font-mono text-[#666] text-xs">&copy; {new Date().getFullYear()} Damilare</span>
+              <span className="font-mono text-[#999] text-xs">&copy; {new Date().getFullYear()} Damilare</span>
               <div className="flex-1 h-px bg-[#141414]" />
             </motion.div>
           </motion.div>
