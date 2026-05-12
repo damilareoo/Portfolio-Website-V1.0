@@ -132,10 +132,10 @@ export function FeaturedProject() {
                       {project.funding && <span className="text-[#999]"> ({project.funding})</span>}
                     </h3>
 
-                    <div className="space-y-4 text-base md:text-lg text-[#a1a1a1] leading-relaxed">
-                      <p>{project.description}</p>
+                    <div className="space-y-4 text-base md:text-lg leading-relaxed">
+                      <p className="text-[#c4c4c4]">{project.description}</p>
 
-                      <div className="space-y-3 pt-2">
+                      <div className="space-y-3 pt-2 text-[#a1a1a1]">
                         {project.sections.map((section, idx) => (
                           <div key={idx}>
                             <h4 className="text-[#fafafa] font-medium mb-2">{section.title}</h4>

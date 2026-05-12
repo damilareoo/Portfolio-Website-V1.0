@@ -71,19 +71,19 @@ export function AboutSection() {
         >
           <div className="space-y-8">
             <div>
-              <p className="text-base md:text-lg text-[#a1a1a1] leading-relaxed">
+              <p className="text-base md:text-lg text-[#c4c4c4] leading-relaxed">
                 Designer and builder creating 0–1 experiences. I design products, build what makes them work, and ship them. Most recently, I've been focused on designing brands, systems, and products that feel intuitive and delightful.
               </p>
             </div>
 
             <div>
-              <p className="text-base md:text-lg text-[#a1a1a1] leading-relaxed">
+              <p className="text-base md:text-lg text-[#c4c4c4] leading-relaxed">
                 Currently at{" "}
                 <a
                   href="https://chessever.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#fafafa] underline decoration-[#525252] hover:decoration-[#fafafa] transition-colors duration-300"
+                  className="text-[#fafafa] underline decoration-[#a1a1a1] hover:decoration-[#fafafa] transition-colors duration-300"
                 >
                   ChessEver
                 </a>{" "}
@@ -92,7 +92,7 @@ export function AboutSection() {
                   href="https://hex.inc"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#fafafa] underline decoration-[#525252] hover:decoration-[#fafafa] transition-colors duration-300"
+                  className="text-[#fafafa] underline decoration-[#a1a1a1] hover:decoration-[#fafafa] transition-colors duration-300"
                 >
                   Hex
                 </a>{" "}
@@ -103,13 +103,13 @@ export function AboutSection() {
 
           <div className="space-y-8">
             <div>
-              <p className="text-base md:text-lg text-[#a1a1a1] leading-relaxed">
+              <p className="text-base md:text-lg text-[#c4c4c4] leading-relaxed">
                 I believe in creating work that not only looks exceptional but actually solves real problems and delivers meaningful experiences. Every detail matters—from the initial spark to the final polish.
               </p>
             </div>
 
             <div>
-              <p className="text-base md:text-lg text-[#a1a1a1] leading-relaxed">
+              <p className="text-base md:text-lg text-[#c4c4c4] leading-relaxed">
                 When I'm not designing or coding, you'll find me playing basketball, exploring new music, and experimenting with playful side projects.
               </p>
             </div>

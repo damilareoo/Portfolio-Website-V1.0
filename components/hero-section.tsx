@@ -22,7 +22,7 @@ export const HeroSection = () => {
         </motion.h1>
 
         {/* Bio — word-by-word stagger */}
-        <p className="text-base md:text-lg text-[#a1a1a1] max-w-xl leading-relaxed">
+        <p className="text-base md:text-lg text-[#c4c4c4] max-w-xl leading-relaxed">
           {bioWords.map((word, i) => (
             <motion.span
               key={i}
