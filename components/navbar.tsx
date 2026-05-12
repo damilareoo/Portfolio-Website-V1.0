@@ -74,7 +74,7 @@ export function Navbar() {
                     <a
                       href={item.href}
                       className="relative px-2.5 md:px-3 py-2 text-xs md:text-sm transition-colors duration-200 focus-visible:outline-2 outline-offset-2 outline-[#525252] rounded"
-                      style={{ color: active ? "#fafafa" : "#6a6a6a" }}
+                      style={{ color: active ? "#fafafa" : "#999" }}
                       aria-current={active ? "page" : undefined}
                     >
                       {/* Sliding active indicator */}

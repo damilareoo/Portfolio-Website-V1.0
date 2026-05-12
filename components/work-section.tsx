@@ -131,7 +131,7 @@ export function WorkSection() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 md:gap-3">
               <div className="w-4 md:w-6 h-px bg-[#333]" />
-              <span className="font-mono text-[#555] text-xs tracking-widest uppercase">experiments</span>
+              <span className="font-mono text-[#999] text-xs tracking-widest uppercase">experiments</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 bg-[#2a2a2a] rounded-full" />

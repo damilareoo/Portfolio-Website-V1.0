@@ -129,7 +129,7 @@ export function FeaturedProject() {
                   >
                     <h3 className="text-lg md:text-xl lg:text-2xl font-medium text-[#fafafa] text-pretty">
                       {project.title}
-                      {project.funding && <span className="text-[#737373]"> ({project.funding})</span>}
+                      {project.funding && <span className="text-[#999]"> ({project.funding})</span>}
                     </h3>
 
                     <div className="space-y-4 text-base md:text-lg text-[#a1a1a1] leading-relaxed">
@@ -144,7 +144,7 @@ export function FeaturedProject() {
                         ))}
 
                         <div className="pt-2">
-                          <p className="text-sm text-[#737373]">
+                          <p className="text-sm text-[#999]">
                             <span className="text-[#fafafa] font-medium">Role:</span> {project.role}
                           </p>
                         </div>

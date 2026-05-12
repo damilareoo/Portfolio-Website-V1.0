@@ -115,7 +115,7 @@ export function WorkbenchEmbed() {
             className="group/cta inline-flex items-center gap-2.5 px-4 py-2.5 text-sm font-medium text-[#fafafa] hover:text-white transition-all duration-300 ease-out hover:gap-3.5 active:scale-95 md:active:scale-100"
           >
             <span>Explore fullscreen</span>
-            <ExternalLink className="w-4 h-4 text-[#737373] group-hover/cta:text-white group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 transition-all duration-300 ease-out will-change-transform" />
+            <ExternalLink className="w-4 h-4 text-[#555] group-hover/cta:text-white group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 transition-all duration-300 ease-out will-change-transform" />
           </a>
         </motion.div>
 

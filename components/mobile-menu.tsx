@@ -66,7 +66,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <div className="flex justify-between items-center px-5 py-4 border-b border-[#1a1a1a]">
               <div className="flex items-center gap-2">
                 <div className="w-1.5 h-px bg-[#333]" />
-                <span className="font-mono text-[#3a3a3a] text-xs tracking-widest uppercase">menu</span>
+                <span className="font-mono text-[#999] text-xs tracking-widest uppercase">menu</span>
               </div>
               <motion.button
                 onClick={onClose}
@@ -92,13 +92,13 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, ease, delay: 0.08 + i * 0.06 }}
                     className="group flex items-center justify-between py-4 border-b border-[#141414]"
-                    style={{ color: active ? "#fafafa" : "#555" }}
+                    style={{ color: active ? "#fafafa" : "#a1a1a1" }}
                     onClick={(e) => {
                       e.preventDefault()
                       handleNavClick(item.href)
                     }}
                   >
-                    <span className="text-xl font-normal tracking-tight transition-colors duration-200 group-hover:text-[#d1d1d1]">
+                    <span className="text-xl font-medium tracking-tight transition-colors duration-200 group-hover:text-[#d1d1d1]">
                       {item.name}
                     </span>
                     {active && (
@@ -117,7 +117,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               className="border-t border-[#1a1a1a] px-5 py-4 flex items-center gap-2"
             >
               <div className="w-1 h-1 bg-[#2a2a2a] rounded-full" />
-              <span className="font-mono text-[#333] text-xs">&copy; {new Date().getFullYear()} Damilare</span>
+              <span className="font-mono text-[#666] text-xs">&copy; {new Date().getFullYear()} Damilare</span>
               <div className="flex-1 h-px bg-[#141414]" />
             </motion.div>
           </motion.div>
