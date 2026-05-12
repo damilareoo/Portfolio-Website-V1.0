@@ -13,7 +13,7 @@ export const HeroSection = () => {
 
         {/* Name */}
         <motion.h1
-          className="text-2xl md:text-3xl lg:text-[2.6rem] font-normal text-[#fafafa] tracking-tight mb-7 md:mb-10 leading-tight"
+          className="text-2xl md:text-3xl lg:text-[2.6rem] font-medium text-[#fafafa] tracking-tight mb-7 md:mb-10 leading-tight"
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease }}

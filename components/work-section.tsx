@@ -70,7 +70,7 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
         <div className="flex items-baseline gap-3 md:gap-4 min-w-0">
           <span
             className="font-mono text-[10px] md:text-[11px] flex-shrink-0 tabular-nums transition-colors duration-200"
-            style={{ color: hovered ? "#444" : "#2a2a2a", letterSpacing: "0.06em" }}
+            style={{ color: hovered ? "#888" : "#555", letterSpacing: "0.06em" }}
           >
             {String(index + 1).padStart(2, "0")}
           </span>
@@ -84,7 +84,7 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
           {project.tag && (
             <span
               className="font-mono text-[10px] hidden sm:block flex-shrink-0 transition-colors duration-200"
-              style={{ color: hovered ? "#444" : "#2a2a2a", letterSpacing: "0.08em" }}
+              style={{ color: hovered ? "#888" : "#555", letterSpacing: "0.08em" }}
             >
               [{project.tag}]
             </span>
@@ -95,7 +95,7 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
         <div className="flex items-center gap-3 ml-4 flex-shrink-0">
           <span
             className="text-sm hidden md:block transition-colors duration-200"
-            style={{ color: hovered ? "#737373" : "#333" }}
+            style={{ color: hovered ? "#a1a1a1" : "#555" }}
           >
             {project.description}
           </span>
@@ -103,7 +103,7 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
             animate={{
               x: hovered ? 2 : 0,
               y: hovered ? -2 : 0,
-              color: hovered ? "#737373" : "#2a2a2a",
+              color: hovered ? "#a1a1a1" : "#555",
             }}
             transition={{ duration: 0.2, ease }}
           >
