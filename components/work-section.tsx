@@ -69,8 +69,8 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
         {/* Left: index + title + tag */}
         <div className="flex items-baseline gap-3 md:gap-4 min-w-0">
           <span
-            className="font-mono text-[10px] md:text-[11px] flex-shrink-0 tabular-nums transition-colors duration-200"
-            style={{ color: hovered ? "#888" : "#555", letterSpacing: "0.06em" }}
+            className="font-mono text-[11px] md:text-xs flex-shrink-0 tabular-nums transition-colors duration-200"
+            style={{ color: hovered ? "#aaa" : "#888", letterSpacing: "0.06em" }}
           >
             {String(index + 1).padStart(2, "0")}
           </span>
@@ -83,8 +83,8 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
           </motion.span>
           {project.tag && (
             <span
-              className="font-mono text-[10px] hidden sm:block flex-shrink-0 transition-colors duration-200"
-              style={{ color: hovered ? "#888" : "#555", letterSpacing: "0.08em" }}
+              className="font-mono text-[11px] hidden sm:block flex-shrink-0 transition-colors duration-200"
+              style={{ color: hovered ? "#aaa" : "#888", letterSpacing: "0.08em" }}
             >
               [{project.tag}]
             </span>
@@ -131,7 +131,7 @@ export function WorkSection() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 md:gap-3">
               <div className="w-4 md:w-6 h-px bg-[#333]" />
-              <span className="font-mono text-[#999] text-xs md:text-sm">experiments</span>
+              <span className="font-mono text-[#999] text-xs md:text-sm tracking-widest">experiments</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 bg-[#2a2a2a] rounded-full" />

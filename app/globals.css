@@ -158,6 +158,26 @@
     position: relative;
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
+    letter-spacing: 0.012em;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3 {
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  h4, h5, h6 {
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+
+  .font-mono {
+    letter-spacing: 0.04em;
   }
 
   /* ── Grain texture overlay ── */

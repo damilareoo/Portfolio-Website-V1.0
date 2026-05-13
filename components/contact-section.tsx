@@ -64,7 +64,7 @@ export function ContactSection() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 md:gap-3">
               <div className="w-4 md:w-6 h-px bg-[#404040]" />
-              <span className="font-mono text-[#999] text-xs md:text-sm">elsewhere</span>
+              <span className="font-mono text-[#999] text-xs md:text-sm tracking-widest">elsewhere</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 md:w-1.5 md:h-1.5 bg-[#404040] rounded-full" />
@@ -90,8 +90,8 @@ export function ContactSection() {
               >
                 {link.copyable ? (
                   <div className="flex items-center gap-2 md:gap-3 min-w-0">
-                    <span className="font-mono text-[#999] text-xs md:text-sm flex-shrink-0">{link.label}</span>
-                    <span className="text-sm md:text-base text-[#a1a1a1] truncate">
+                    <span className="font-mono text-[#999] text-xs md:text-sm flex-shrink-0 tracking-wider">{link.label}</span>
+                    <span className="text-sm md:text-base text-[#a1a1a1] truncate leading-relaxed">
                       {link.value}
                     </span>
                     <button
@@ -113,10 +113,10 @@ export function ContactSection() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 md:gap-3 w-full min-w-0"
                   >
-                    <span className="font-mono text-[#999] group-hover:text-[#a1a1a1] transition-colors text-xs md:text-sm flex-shrink-0">
+                    <span className="font-mono text-[#999] group-hover:text-[#a1a1a1] transition-colors text-xs md:text-sm flex-shrink-0 tracking-wider">
                       {link.label}
                     </span>
-                    <span className="text-sm md:text-base text-[#a1a1a1] group-hover:text-[#fafafa] transition-colors duration-300 truncate">
+                    <span className="text-sm md:text-base text-[#a1a1a1] group-hover:text-[#fafafa] transition-colors duration-300 truncate leading-relaxed">
                       {link.value}
                     </span>
                     <ArrowUpRight className="w-4 h-4 text-[#888888] group-hover:text-[#fafafa] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0" />

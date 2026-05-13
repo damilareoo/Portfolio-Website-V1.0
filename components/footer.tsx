@@ -40,7 +40,7 @@ export function Footer() {
       <div className="flex flex-col items-center justify-center gap-6 sm:gap-8">
         <div className="flex flex-col items-center gap-4">
           <p
-            className="text-[#a1a1a1] text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center leading-relaxed"
+            className="text-[#a1a1a1] text-xs sm:text-sm tracking-wide flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center leading-relaxed"
           >
             <span className="whitespace-nowrap">Built with love and music by</span>
             <a

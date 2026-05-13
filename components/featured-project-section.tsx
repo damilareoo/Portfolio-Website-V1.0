@@ -85,7 +85,7 @@ export function FeaturedProject() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 md:gap-3">
                     <div className="w-4 md:w-6 h-px bg-[#404040]" />
-                    <span className="font-mono text-[#999] text-xs md:text-sm font-medium">featured projects</span>
+                    <span className="font-mono text-[#999] text-xs md:text-sm font-medium tracking-widest">featured projects</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-[#525252] rounded-full" />
