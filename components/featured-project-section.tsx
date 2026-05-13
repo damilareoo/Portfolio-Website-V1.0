@@ -135,11 +135,11 @@ export function FeaturedProject() {
                     <div className="space-y-4 text-base md:text-lg leading-relaxed">
                       <p className="text-[#c4c4c4]">{project.description}</p>
 
-                      <div className="space-y-3 pt-2 text-[#a1a1a1]">
+                      <div className="space-y-5 md:space-y-6 pt-2 text-[#a1a1a1]">
                         {project.sections.map((section, idx) => (
                           <div key={idx}>
-                            <h4 className="text-[#fafafa] font-medium mb-2">{section.title}</h4>
-                            <p className="text-sm md:text-base">{section.content}</p>
+                            <h4 className="text-sm md:text-base text-[#fafafa] font-semibold mb-2 md:mb-2.5">{section.title}</h4>
+                            <p className="text-sm md:text-base leading-relaxed">{section.content}</p>
                           </div>
                         ))}
 
@@ -166,7 +166,7 @@ export function FeaturedProject() {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group/link inline-flex items-center gap-2 text-sm font-medium text-[#fafafa] hover:text-white transition-colors duration-300"
+                        className="group/link inline-flex items-center gap-2 text-sm font-medium tracking-wide text-[#fafafa] hover:text-white transition-colors duration-300"
                       >
                         {link.text}
                         <ExternalLink className="w-4 h-4 group-hover/link:text-white group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-all duration-300" />
