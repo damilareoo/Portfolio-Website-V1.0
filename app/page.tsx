@@ -9,8 +9,6 @@ import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 import { Navbar } from "@/components/navbar"
 import { SmoothScrollProvider, SectionTransition } from "@/components/smooth-scroll-provider"
-import { CustomCursor } from "@/components/custom-cursor"
-
 export default function Home() {
   const featuredRef = useRef<HTMLElement>(null)
   const workRef = useRef<HTMLElement>(null)
@@ -18,7 +16,6 @@ export default function Home() {
   const footerRef = useRef<HTMLElement>(null)
   return (
     <SmoothScrollProvider>
-      <CustomCursor />
       <motion.main
         className="min-h-screen relative w-full overflow-x-hidden"
         initial={{ opacity: 0 }}

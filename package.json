@@ -1,4 +1,11 @@
 {
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "vercel-build": "next build"
+  },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
     "@paper-design/shaders-react": "^0.0.68",
