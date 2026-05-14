@@ -11,7 +11,7 @@ const projects = [
     id: 8,
     title: "Hitman's Library",
     description: "A collection of cool experiences across the web",
-    link: "https://mars-hitman-library.vercel.app/",
+    link: "https://hitmanslibrary.xyz/",
     tag: "collection",
   },
   {
