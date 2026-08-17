@@ -130,8 +130,8 @@
 
 @layer components {
   .eyebrow { @apply font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground; }
-  .halftone { position: absolute; right: 0; bottom: 0; width: 34%; height: 42%; opacity: .5; background-image: radial-gradient(circle, currentColor 1px, transparent 1.5px); background-size: 9px 9px; color: var(--muted-foreground); mask-image: linear-gradient(135deg, transparent 10%, black 75%); transition: transform .5s ease, opacity .5s ease; }
-  .halftone:hover { transform: scale(1.08) rotate(-3deg); opacity: .85; }
+  .halftone { position: absolute; right: 0; bottom: 0; width: 34%; height: 42%; border: 0; opacity: .5; cursor: crosshair; background-color: transparent; background-image: radial-gradient(circle, currentColor 1px, transparent 1.5px); background-position: var(--x, 0) var(--y, 0); background-size: 9px 9px; color: var(--muted-foreground); mask-image: linear-gradient(135deg, transparent 10%, black 75%); transition: transform .5s ease, opacity .5s ease, background-position .15s ease; }
+  .halftone:hover, .halftone:focus-visible, .halftone-active { transform: scale(1.08) rotate(-3deg); opacity: .9; outline: 1px solid currentColor; outline-offset: 6px; }
   /* Grid container - centers content with frame lines */
   .grid-container {
     @apply relative mx-auto w-full;
