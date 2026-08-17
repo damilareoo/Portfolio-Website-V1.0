@@ -15,9 +15,10 @@ export function Navbar() {
   const { currentSection } = useScrollContext()
 
   const navItems = [
-    { name: "Featured", href: "#featured", id: "featured" },
-    { name: "Experiments", href: "#work", id: "work" },
-    { name: "Elsewhere", href: "#across-the-web", id: "across-the-web" },
+    { name: "Home", href: "/", id: "home" },
+    { name: "Feed", href: "/feed", id: "feed" },
+    { name: "About", href: "/about", id: "about" },
+    { name: "Colophon", href: "/colophon", id: "colophon" },
   ]
 
   useEffect(() => {

@@ -1,0 +1,8 @@
+import Link from "next/link"
+import { SiteNav } from "@/components/site-nav"
+
+export const metadata = { title: "About — Damilare Osofisan", description: "About Damilare Osofisan, designer and product builder." }
+
+export default function AboutPage() {
+  return <main className="min-h-screen bg-background text-foreground"><SiteNav active="About" /><div className="mx-auto max-w-[1200px] px-4 pb-24 pt-36 md:px-8 md:pt-48"><p className="eyebrow">Information / 03</p><div className="mt-10 grid gap-16 md:grid-cols-[1fr_1.2fr]"><h1 className="text-6xl font-medium tracking-[-0.07em] md:text-9xl">I make useful things feel inevitable.</h1><div className="flex flex-col gap-10 text-lg leading-8 text-muted-foreground"><p>I&apos;m Damilare Osofisan, a designer and product builder working across identity, interfaces, and the messy middle between an idea and a real product.</p><p>My work starts with listening. I like the first version, the sharp question, the system that can stretch without losing its character. These days I&apos;m building with teams who care about clarity as much as they care about craft.</p><div className="grid grid-cols-2 gap-8 border-t border-border pt-6 text-sm"><div><p className="eyebrow mb-3">Based</p><p className="text-foreground">Lagos, Nigeria<br />WAT / UTC+1</p></div><div><p className="eyebrow mb-3">Available for</p><p className="text-foreground">Product direction<br />Brand systems<br />0—1 work</p></div></div><Link href="mailto:hello@damilareoo.xyz" className="w-fit border-b border-foreground pb-1 text-foreground">Start a conversation ↗</Link></div></div></div></main>
+}

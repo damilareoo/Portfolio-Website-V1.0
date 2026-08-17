@@ -1,0 +1,9 @@
+"use client"
+
+import { useState } from "react"
+import { SiteNav } from "@/components/site-nav"
+
+export default function ColophonPage() {
+  const [secret, setSecret] = useState(false)
+  return <main className="min-h-screen bg-background text-foreground"><SiteNav active="Colophon" /><div className="mx-auto max-w-[1200px] px-4 pb-24 pt-36 md:px-8 md:pt-48"><p className="eyebrow">Colophon / 04</p><div className="mt-12 grid gap-16 md:grid-cols-[0.7fr_1.3fr]"><h1 className="text-6xl font-medium tracking-[-0.07em] md:text-9xl">A small record of how this place was made.</h1><div className="flex flex-col gap-10"><p className="max-w-xl text-2xl leading-9 text-muted-foreground">This portfolio is a working document, not a showroom. It is designed to get out of the way, then leave a trace.</p><dl className="grid grid-cols-2 border-t border-border text-sm"><div className="border-b border-r border-border py-5"><dt className="eyebrow mb-3">Direction</dt><dd> Damilare Osofisan</dd></div><div className="border-b border-border py-5 pl-5"><dt className="eyebrow mb-3">Edition</dt><dd>v2.0 / 2026</dd></div><div className="border-r border-border py-5"><dt className="eyebrow mb-3">Built with</dt><dd>Next.js, React, Framer Motion</dd></div><div className="py-5 pl-5"><dt className="eyebrow mb-3">Type</dt><dd>Geist / Geist Mono</dd></div></dl><button type="button" onClick={() => setSecret(!secret)} className="group relative min-h-48 overflow-hidden border border-border p-6 text-left transition hover:border-foreground"><span className="eyebrow">There is a little more here</span><span className="mt-10 block text-2xl tracking-tight">{secret ? "You found the quiet room. Keep making things that deserve to exist." : "Press this if you are still looking."}</span><span className="absolute bottom-4 right-5 font-mono text-xs text-muted-foreground">{secret ? "signal: received" : "[ + ]"}</span></button></div></div></div></main>
+}
