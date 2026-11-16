@@ -55,8 +55,6 @@ Workers Builds settings:
 - Build command: `npx opennextjs-cloudflare build`
 - Deploy command: `npx wrangler deploy`
 
-Set `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET` and `SPOTIFY_REFRESH_TOKEN` as Worker secrets for the now-playing route.
-
 Manual deploy: `pnpm run deploy`. Local Worker preview: `pnpm run preview`.
 
 ---
