@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server"
 import { ImageResponse } from "next/og"
 
-export const runtime = "edge"
 
 export async function GET() {
   try {

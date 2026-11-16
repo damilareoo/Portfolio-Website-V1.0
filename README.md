@@ -18,7 +18,7 @@ This site is built to be lightweight, iterative, and honest about process — it
 | React | Component-based UI |
 | Tailwind CSS | Styling |
 | TypeScript | Type safety |
-| Vercel | Hosting & deployment |
+| Cloudflare Workers + OpenNext | Hosting & deployment |
 
 ## Getting Started
 
@@ -48,7 +48,16 @@ Portfolio-Website-V1.0/
 
 ## Deploy
 
-Push to `main` and Vercel deploys automatically.
+Hosted on Cloudflare Workers (`portfolio-website-v1-0`) via [OpenNext](https://opennext.js.org/cloudflare). Pushes to `main` build automatically once the repo is connected in Workers Builds.
+
+Workers Builds settings:
+
+- Build command: `npx opennextjs-cloudflare build`
+- Deploy command: `npx wrangler deploy`
+
+Set `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET` and `SPOTIFY_REFRESH_TOKEN` as Worker secrets for the now-playing route.
+
+Manual deploy: `pnpm run deploy`. Local Worker preview: `pnpm run preview`.
 
 ---
 
